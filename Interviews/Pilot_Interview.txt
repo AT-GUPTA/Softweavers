@@ -1,0 +1,122 @@
+1.	What is your name?
+
+John Ha
+
+
+2.	Could you briefly tell me about your background and yourself?
+
+Biology major, 35 years old. Works for national defence. Currently studies computer science in a part time basis.
+
+
+2b. Could you describe your current occupation? 
+
+Policy analysts of the defence team (official language policy analysts). Took linear, calculous, and stats. Used trigonometric, log and exponential.
+
+
+3.	Could you tell me about your educational profile?
+
+BIO. Comp-sci part time.
+
+
+4.	How do you solve calculations in your daily life?
+
+Uses a calculator, for simple calculations he used math lab.
+
+
+4b. What kind of mathematical calculations do you perform?
+
+Finding eigen values and all sorts of calculations, used the calculator more for integrals and derivatives.
+
+
+5b. How often do you use a calculator?
+
+Almost never, when he takes a course that requires calculations, he uses it at least once a week.
+
+
+5.	Under which context do you use a calculator? (eg. work, academic, personal)
+
+Mostly academic.
+
+
+7. What kind of devices do you use to perform the calculations?
+7b. Do you prefer any specific software’s to do these calculations on?
+
+His computer, really likes mathlab.
+
+
+8. How important is the user interface and design of a calculator to you? 
+
+Doesn’t really put much importance, doesn’t care about design.
+
+
+10. Would you consider the undo/edit function important in a calculator?
+
+Yes, he does.
+
+
+11. How useful would you find a calculator that provides history of previous calculations?
+
+Pretty dam important, mistakes happen, and it makes it easy to solve.
+
+
+# Scientific Calculator
+As its name suggests, the scientific calculator is designed for performing scientific calculations. This type of calculator usually has more buttons than a standard calculator, as it needs to be able to perform trigonometric functions, logarithms, and exponential operations (transcendental functions).
+Ref: https://www.techtarget.com/whatis/definition/calculator#:~:text=Scientific%20calculators,sine%2Fcosine%20and%20exponential%20operations.
+<<FACT= explain briefly what a scientific calc is>>
+
+12. How would you describe your experience with a scientific calculator, if you have any?
+
+Very useful. Without it he wouldn’t be able to complete the calculations quickly.
+
+
+13. Do you usually need an explanation for the functions on a scientific calculator? 
+    (If the person does not use a scientific calculator, ask them if they will prefer to see such explanations if using one)
+
+He does, sometimes. Thinks it would be useful, when starts to learn new math functions serves as a reminder.
+
+
+14. What are the features that you use the most in a scientific calculator?
+    (If the person does not user a scientific calculator, ask them what feature of a scientific calculator would they find most useful)
+
+Trigonometric functions. 
+
+
+15. What is your goto function on a calculator? Would you prefer a hotkey mapped for this function?
+
+square root, which is already mapped. Doesn’t need many variations of this function.
+
+
+16. Would you prefer the ability to navigate through the steps of the calculation?
+
+He would
+
+
+17. How important is accuracy in decimal places of your calculations.
+
+Not very important
+
+
+18. Would you need a calculator that can handle complex numbers?
+
+Never needed one. Calculations with complex numbers were done quicker and more accurately by hand.
+
+
+19. What are the most frustrating things about your calculator?
+
+Accidentally loses the tract of the calculations by clicking the wrong button
+
+
+20. Does the scientific calculator meet your needs? If not, what do you think does it lack?
+
+Generally, meets the need, calculator he uses lacks integral/derivative function. Also doesn’t allow to go back and would like that feature.
+
+
+21. If you could add any ability, which one would you add in a scientific calculator?
+
+Derivative
+
+
+22. Is there anything else that you would like to add about your views/use of a scientific calculator?
+
+Doesn’t use a calculator often enough to be able to supply additional views
+
