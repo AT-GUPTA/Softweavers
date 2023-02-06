@@ -25,13 +25,15 @@ Start with a brief introduction of yourself and the purpose of this interview. M
 
 8. How important is the user interface and design of a calculator to you? 
 
-9. Do you need to be able to save and recall previous calculations or export them for later?
-
+// #9-10 are yes/no questions, but these will give us ideas how pertinent it would be to add these functions.
+// Overlaps with #11. Suggest removing this question. 9. Do you need to be able to save and recall previous calculations or export them for later?
 10. Would you consider the undo/edit function important in a calculator?
 
 11. How usefull would you find a calculator that provides history of previous calculations?
 
 # Scientific Calculator
+As its name suggests, the scientific calculator is designed for performing scientific calculations. This type of calculator usually has more buttons than a standard calculator, as it needs to be able to perform trigonometric functions, logarithms, sine/cosine and exponential operations (transcendental functions).
+Ref: https://www.techtarget.com/whatis/definition/calculator#:~:text=Scientific%20calculators,sine%2Fcosine%20and%20exponential%20operations.
 <<FACT= explain briefly what a scientific calc is>>
 
 12. How would you describe your experience with a scientific calculator, if you have any?
@@ -39,23 +41,25 @@ Start with a brief introduction of yourself and the purpose of this interview. M
 13. Do you usually need an explanation for the functions on a scientific calculator? 
     (If the person does not use a scientific calcualtor, ask them if they will prefer to see such explanations if using one)
 
-14. What are the most used features that you take advantage of in a scientific calculator?
-    (If the person does not user a scientific calculator, ask them what feature of a scientific calculator would they find most advantageous)
+14. What are the features that you use the most in a scientific calculator?
+    (If the person does not user a scientific calculator, ask them what feature of a scientific calculator would they find most useful)
 
-15. What is your goto function not available on a regular calculator. Would you prefer a hotkey mapped to this function?
+15. What is your goto function on a regular calculator? Would you prefer a hotkey mapped for this function?
 
-16. Would you prefer the ability to navigate through the steps a calculator does or would you prefer a direct solution?
+16. Would you prefer the ability to navigate through the steps of the calculation?
 
 17. How important is accuracy in decimal places of your calculations.
 
 18. Would you need a calculator that can handle complex numbers?
 
 # Pain Points
-19. What are the most frustrating things about your calculator currently?
+19. What are the most frustrating things about your calculator?
 
-20. Does the scientific calculator that you use meet your needs? If not, what do you think does it lack?
+20. Does the scientific calculator meet your needs? If not, what do you think does it lack?
 
 # Winding up
-21. If you could add any ability, which one would you adde in a scientific calculator?
+21. If you could add any ability, which one would you add in a scientific calculator?
 
 22. Is there anything else that you would like to add about your views/use of a scientific calculator?
+
+// Conclude the interview by thanking the interviewee
