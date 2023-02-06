@@ -1,22 +1,27 @@
 # Introductions
-1. What is your name?
+Start with a brief introduction of yourself and the purpose of this interview. Mention that the information gathered will be confidential and will only be used within the course (COMP 354).
 
-2. Could you briefly tell me about your background and yourself. #2
-2b.Could you describe your present occupation in general? 
+1. What is your name? (As we will not be using their real name, it is not necessary to ask for their name)
 
-3. Could you tell me about your educational profile
+// #2-3 Gather information to build the persona's background.
+2. Could you briefly tell me about your background and yourself?
+(If the interviewee does not mention their occupation) 2b. Could you describe your current occupation? 
 
-4. Howdo you currently solve calculations in your daily life.
-(What kind of mathematical calculations do you perform on a regular basis?)
+3. Could you tell me about your educational profile?
+
+// Transition question towards calculator.
+4. How do you solve calculations in your daily life?
+4b. What kind of mathematical calculations do you perform?
 
 # General Calculator
-5. Do you use a calculator for these questions?
+(Not necessary if the interviewee answered calculator in #4. Skip to 5b.) 5. Do you use a calculator?
 5b. How often do you use a calculator?
 
 6. Under which context do you use a calculator? (eg. work, academic, personal)
 
-7. What kind of devices do you use to perform these calculations?
-7b. Do you prefer any specific softwares to do these calculations on?
+// We want to know if there is any common preference on a particular device or a software.
+7. What kind of devices do you use to perform the calculations?
+(If the interviewee answered computer or phone) 7b. Do you prefer any specific softwares to do these calculations on?
 
 8. How important is the user interface and design of a calculator to you? 
 
