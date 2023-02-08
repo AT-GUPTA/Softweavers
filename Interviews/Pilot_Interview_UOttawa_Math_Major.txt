@@ -1,0 +1,98 @@
+# Introductions
+1. What is your name?
+Narmeen Fatimah Oozeer
+
+2. Could you briefly tell me about your background and yourself.
+I am an international student currently studying Mathematics in Canada. I come from an island called Mauritius.
+I have a passion for solving analytical/ mathematical problems particularly related to Algebra, Analysis and Topology. I am currently invested in growing my grasp of Mathematics alongsided my other hobbies.
+
+2b.Could you describe your present occupation in general? 
+I am working as a Junior Web Master at the University of Ottawa under the Health and Wellness Department.
+
+3. Could you tell me about your educational profile.
+I am currently in my 4th year of being enrolled in a joint major in Mathematics and Computer Science at the University of Ottawa.
+
+4. How do you currently solve calculations in your daily life.
+I extensively use SageMath or Maple packages. 
+I have a preference for SageMath since it’s libraries are open source and mathematicians have worked hard to incorporate a myriad of abstract algebra within it’s scope.
+
+(What kind of mathematical calculations do you perform on a regular basis?)
+Here are examples of mathematical calculation I use a calculator for:
+•	I have been performing divisions in other fields other than the Reals such as complex numbers for which I use a scientific calculator to work with the real coefficients while applying the division algorithm.(Ring Theory)
+•	To plot functions in R^2 or to do polynomial division/partial fraction decomposition (Discrete Mathematics/Calculus)
+•	To model some distribution in statistics, normal, binomial, exponential distribution, etc (Statistics)
+•	I do Matrix operations, multiplication, addition, the adjoint or transpose operation. Computing the eigenvalues and eigenvectors(Linear Algebra with SageMath)
+Lately, I have also been doing calculus on manifolds and used SageMath to produce some smooth manifolds and with the latest Manifold package, we can extract an atlas for a Manifold (Calculus on Manifolds/Lie groups)
+
+# General Calculator
+5. Do you use a calculator for these questions?
+I use scientific calculators mostly for my school work (homework/assignments) as opposed to my personal use on a daily basis.
+
+5b. How often do you use a calculator?
+On a daily basis to complete my Math assignments.
+
+6. Under which context do you use a calculator? (eg. work, academic, personal)
+Mostly for academic purpose. However, I am not fast at performing calculations mentally so, it happens for me to use one for routinary tasks as well such as calculating daily expenses, etc. 
+
+7. What kind of devices do you use to perform these calculations?
+Casio  calculator
+
+7b. Do you prefer any specific softwares to do these calculations on?
+Yes, I usually make use of Desmos, Wolfram Alpha, SageMath, Maple, Matlab and Rstudio packages.
+However, SageMath is my favourite since the scripts are easy to run. I can run them either in Jupyter Notebook or use the kernel.
+
+8. How important is the user interface and design of a calculator to you? 
+I can work with a user interface that does not have an optimal design as long as I have some level of control on the functions of the calculator and the interface is relatively easy to interact with/ or use to do computations.
+
+9. Do you need to be able to save and recall previous calculations or export them for later?
+Yes. Such a function would be highly efficient and save a lot of time since in my case, the results of previous calculations usually tend to be the input for the next steps of the calculations.
+
+10. Would you consider the undo/edit function important in a calculator?
+Yes.  It would saves time and facilitate error correction.
+
+11. How usefull would you find a calculator that provides history of previous calculations?
+Extremely useful.  90 percent of the time I need to work with my previous results.
+
+# Scientific Calculator
+<<FACT= explain briefly what a scientific calc is>>
+12. How would you describe your experience with a scientific calculator, if you have any?
+I am quite dependent on SageMath since I learn most of the mathematical concepts that I am concerned with through visualisation. SageMath actually provideds a multitude of interesting libraries for visualisation, for example Three.min.js for 3D objects. 
+
+13. Do you usually need an explanation for the functions on a scientific calculator? 
+For newly implemented functions, I believe having a guide that walks you through the function parameters and results is extremely important. 
+Otherwise, at the very least,  having a source of online documentation available that can be referred to would be crucial.
+(If the person does not use a scientific calcualtor, ask them if they will prefer to see such explanations if using one)
+
+14. What are the most used features that you take advantage of in a scientific calculator?
+Currently, the visualisation features or graphing capabilities.
+(If the person does not use a scientific calculator, ask them what feature of a scientific calculator would they find most advantageous)
+
+15. What is your go-to function not available on a regular calculator. Would you prefer a hotkey mapped to this function?
+Yes or if I can import it.
+
+16. Would you prefer the ability to navigate through the steps a calculator does or would you prefer a direct solution?
+Both options should be available. I would prefer to display only the results if they seem make tally with my expectations. 
+However, in the case that they do not, I would want to query the results and see how the computations led to this result.
+
+17. How important is accuracy in decimal places of your calculations.
+I prefer using irrational numbers that have a convenient form such as sqrt(2) or e but if need be, then, 5 decimal places would be fine. 
+
+18. Would you need a calculator that can handle complex numbers?
+Absolutely since that would make performing advanced calculations much easier.
+Being able to perform division with complex numbers, would imply, within the scope of mathematical calculations, being able to find the nth roots of unity and perform polynomial division (with complex coefficients) within fewer steps.
+
+# Pain Points
+19. What are the most frustrating things about your calculator currently?
+Inputting mathematical notations in Desmos for exmaple. I love to having a pre-existing keypad of mathematical symbols, which another more complex mathematical software, Maple, offers that.
+
+20. Does the scientific calculator that you use meet your needs? If not, what do you think does it lack?
+The few that I use do meet my needs, however, I believe that as new concepts of Mathematics emerge, we should be able to implement new packages/libraries/functions that facilitate working with the computations involving these emerging fields.
+
+
+# Winding up
+21. If you could add any ability, which one would you add in a scientific calculator?
+Graphing 3D surfaces such as the Klein Bottle or Torus(doghnuts), mainly as a quality of life upgrade. 
+
+22. Is there anything else that you would like to add about your views/use of a scientific calculator?
+I love them since scientific calculators helped me through the learning process of the mathematical concepts that I was introduced to while making the calculations involved more accessible.
+
