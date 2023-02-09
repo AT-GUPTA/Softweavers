@@ -46,7 +46,7 @@ Calculator Usage: Jessica uses her calculator about 20 times a day for financial
 General Expectations/Needs for Calculator: Jessica values a calculator with a user-friendly interface, the ability to perform complex financial calculations, and the ability to handle large amounts of data.
 Challenges encountered while using a calculator: Jessica often encounters errors in calculations when using a calculator with a small screen, leading to time-consuming revisions.
 
-Conclusion: A calculator is a critical tool for Jessica in her work as a financial planner. She is likely to use a calculator that is efficient, user-friendly, and has advanced financial functions to support her work. She may also look for a calculator that can handle large amounts of data.
+Conclusion: A calculator is a critical tool for Jessica in her work as a financial planner. She is likely to use a calculator that has advanced financial functions to support her work. She may also look for a calculator that can handle large amounts of data.
 
 
 "University Student"
@@ -81,3 +81,20 @@ General Expectations/Needs for Calculator: Michael values the ease of inputting 
 Challenges encountered while using a calculator: Michael may struggle with navigating the interface of a software calculator as he is unfamiliar with the technology.
 
 Conclusion: A software calculator is a new tool for Michael, who is looking to expand his tech literacy. He is likely to be attracted to a calculator that is user-friendly and easy to use. He may also look for a calculator that has clear explanations of the functions and features it offers, and provides a simple and straightforward interface.
+
+
+"Computer science student"
+Name: Sarah
+Age: 22
+Gender: Female
+Education: Bachelor's degree in Computer Science
+Occupation: University Student
+Personality Traits: Curious, Innovative, and Data-Driven
+Tech Literacy: Sarah has a strong background in computer science and is proficient in a variety of programming languages and software tools.
+Disability: None
+Device (calculator) Preference: Sarah prefers to use a software calculator as part of her computer setup.
+Calculator Usage: Sarah uses her calculator about 15 times a week for both basic arithmetic and more complex scientific calculations.
+General Expectations/Needs for Calculator: Sarah values advanced features and functions, as well as the ability to integrate her calculator with other software tools.
+Challenges encountered while using a calculator: Sarah may find it challenging to choose a software calculator that meets all of her advanced needs and integrates well with the tools she already uses.
+
+Conclusion: A software calculator is a crucial tool for Sarah in her studies as it helps her perform complex calculations quickly and accurately. She is likely to use a calculator that has a wide range of advanced features, integrates well with other software tools, and is highly customizable. Sarah may also be interested in a calculator that offers programming functionality, and the ability to perform data analysis and visualization.
