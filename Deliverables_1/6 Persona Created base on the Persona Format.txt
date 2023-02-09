@@ -1,0 +1,83 @@
+"Disabled Mathematician"
+Name: Emily
+Age: 40
+Gender: Female
+Education: PhD in Mathematics
+Occupation: Mathematician
+Personality Traits: Curious, Analytical, Determined, and Passionate about mathematics
+Tech literacy: Emily is proficient in using computers and mathematical software, but struggles with physical calculators due to her disability.
+Disability: Emily has limited dexterity in her hands and finds it difficult to use physical calculators.
+Device (calculator) Preference: Emily prefers using a digital calculator with a large, touch-screen display and easy-to-use buttons.
+Calculator Usage: Emily uses her calculator about 20 times a day for various mathematical calculations and research.
+General Expectations/Needs for Calculator: Emily values a calculator that is easy to use and accessible, and has advanced mathematical functions. She also needs a calculator that can handle large amounts of data and has a user-friendly interface.
+Challenges encountered while using a calculator: Emily finds it difficult to use physical calculators due to her limited dexterity in her hands. She also struggles with calculators that have small buttons and displays, leading to frustration and errors in her calculations.
+
+Conclusion: A calculator is a critical tool for Emily in her work as a mathematician. She is likely to use a calculator that is easy to use and accessible, and has advanced mathematical functions. She may also look for a calculator that can handle large amounts of data and has a user-friendly interface. She values a calculator with a large, touch-screen display and buttons designed to accommodate her disability.
+
+
+"Young Student"
+Name: Alex
+Age: 16
+Gender: Male
+Education: High School Student
+Occupation: Student
+Personality Traits: Innovative, Competitive, and Interested in programming
+Tech literacy: Alex has intermediate computer skills and is familiar with using software calculators as well as other software programs.
+Disability: None
+Device (calculator) Preference: Alex prefers using a software calculator that is integrated into his computer or smartphone as it offers more advanced features and functions.
+Calculator Usage: Alex uses his calculator about 15 times a week for basic arithmetic calculations and for programming assignments.
+General Expectations/Needs for Calculator: Alex values a calculator that is flexible, efficient, and has advanced features. He also needs a calculator that can perform complex calculations, has a user-friendly interface, and can handle multiple modes of input.
+Challenges encountered while using a calculator: Alex finds it difficult to use a calculator that has limited features and functions, or one that is not user-friendly.
+
+Conclusion: A software calculator is a valuable tool for Alex in his studies and interests as it offers advanced features and functions that support his programming assignments. He is likely to use a calculator that is flexible, efficient, and has advanced features and functions. He may also look for a calculator that can perform complex calculations, has a user-friendly interface, and can handle multiple modes of input.
+
+
+"Financial Planner"
+Name: Jessica
+Age: 42
+Gender: Female
+Education: Master's degree in Economics
+Occupation: Financial Planner
+Personality Traits: Organized, Analytical, Detail-oriented, and Confident
+Tech literacy: Jessica is proficient in using computers and various financial planning software for her work.
+Disability: None
+Device (calculator) Preference: Jessica prefers to use a digital calculator as a part of her financial planning software.
+Calculator Usage: Jessica uses her calculator about 20 times a day for financial calculations such as interest rates, loan payments, and savings projections. She needs a calculator with advanced financial functions and the ability to handle large amounts of data.
+General Expectations/Needs for Calculator: Jessica values a calculator with a user-friendly interface, the ability to perform complex financial calculations, and the ability to handle large amounts of data.
+Challenges encountered while using a calculator: Jessica often encounters errors in calculations when using a calculator with a small screen, leading to time-consuming revisions.
+
+Conclusion: A calculator is a critical tool for Jessica in her work as a financial planner. She is likely to use a calculator that is efficient, user-friendly, and has advanced financial functions to support her work. She may also look for a calculator that can handle large amounts of data.
+
+
+"University Student"
+Name: Samantha
+Age: 22
+Gender: Female
+Education: Bachelor's degree in Mathematics
+Occupation: Student
+Personality Traits: Organized, Strong problem-solving skills
+Tech literacy: Samantha is comfortable with using software calculators and has experience using them for mathematical calculations and problem solving.
+Disability: None
+Device (calculator) Preference: Samantha prefers using a software calculator on her laptop as it provides greater functionality and ease of use compared to a physical calculator.
+Calculator Usage: Samantha uses her calculator about 20 times a week for mathematical calculations, problem-solving, and for coursework.
+General Expectations/Needs for Calculator: Samantha values a calculator that is user-friendly, reliable, and has advanced functions. She also needs a calculator that can handle multiple modes of input, perform complex calculations, and is efficient.
+Challenges encountered while using a calculator: Samantha finds it difficult to use a calculator that has limited functions, is slow, or has a cluttered interface.
+
+Conclusion: A software calculator is a critical tool for Samantha in her university studies as it supports her mathematical calculations, problem-solving, and coursework. She is likely to use a calculator that is user-friendly, reliable, and has advanced functions. She may also look for a calculator that can handle multiple modes of input, perform complex calculations, and is efficient.
+
+
+"Construction Workder"
+Name: Michael
+Age: 35
+Gender: Male
+Education: High School Diploma
+Occupation: Construction Worker
+Personality Traits: Practical, Reliable, and Hands-on
+Tech Literacy: Michael is familiar with using computers, but has limited experience with software calculators.
+Disability: None
+Device (calculator) Preference: Michael has always used a physical calculator for basic arithmetic calculations, but is now looking to try a software calculator for the first time.
+Calculator Usage: Michael only uses his calculator about 4 times a week for basic arithmetic calculations.
+General Expectations/Needs for Calculator: Michael values the ease of inputting data in a calculator and the accuracy of calculations.
+Challenges encountered while using a calculator: Michael may struggle with navigating the interface of a software calculator as he is unfamiliar with the technology.
+
+Conclusion: A software calculator is a new tool for Michael, who is looking to expand his tech literacy. He is likely to be attracted to a calculator that is user-friendly and easy to use. He may also look for a calculator that has clear explanations of the functions and features it offers, and provides a simple and straightforward interface.
