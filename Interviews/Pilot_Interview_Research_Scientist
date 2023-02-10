@@ -1,0 +1,59 @@
+1. Could you briefly tell me about your background and yourself?
+I am working as a Research Assistant at a clinical research organization where we develop and test clinical medicines and vaccines. I am also a Lead Scientist and am leading clinical trials for three different studies related to oncology. I aim to continue my research in pursuit of prevention and high order diagnosis of cancer.
+
+2. Could you tell me about your educational profile?
+I completed my Masters from McGill University in Biotechnology where I majored in gene therapy. I have completed my Bachelors from LPU India, also majoring in Biotechnology. 
+
+4. How do you solve calculations in your daily life?
+My phone’s calculator handles most of my everyday calculations which most generally include basic mathematics. For work, we do need to perform more advanced calculations for data analysis, media preparation, time typing, and other tasks. This is mostly done with help of calculation softwares.
+
+4b. What kind of mathematical calculations do you perform for work?
+The type of mathematical calculations are very specific to project and our tasks in a particular project. In general, my calculation may be based around sampling sizes, statistical analysis, dosage calculations, risk calculations, survival analysis etc. Most of these calculations have predefined models which process our inputs based on given factors which are laid out from research data analysis.
+ 
+5b. How often do you use a calculator?
+For work, I have to use calculators almost daily. Preparation of a clinical trial runs requires tasks where we have to calculate sample sizes, hypothesis analysis, predicting output probabilities, etc. During the runs, we generally need to calculate component percentage for media preparations, volume analysis, and titrations. But the main calculations happen once we get the results where we draw out statistics, comparisons and errors. 
+
+7. What kind of devices do you use to perform the calculations?
+Scientific calculators and softwares.
+
+8. How important is the user interface and design of a calculator to you? 
+I am fine with the interface as long as its clear enough and not too complex to understand.
+
+10. Would you consider the undo/edit function important in a calculator?
+Definitely, this could help with redoing wrong inputs.
+
+11. How usefull would you find a calculator that provides history of previous calculations?
+This is a must. A history is needed when we perform a series of calculations, to recheck the work done. In some cases, we even need to log the entire history for QA purposes.
+12. How would you describe your experience with a scientific calculator, if you have any?
+They get the job done. At first, I didn’t quite use them to their full extent, but as you start using them, they seem more reliable and dependable. I haven’t used a normal calculator at work for a long time. All the calculations are done using a scientific calculator.  For certain advanced functions, scientific calculators are a must.
+
+13. Do you usually need an explanation for the functions on a scientific calculator? 
+ There are certain functions I see in a calculators that I have no idea about. It would be nice to see what they do but a quick google can also help to know what they mean. 
+
+14. What are the features that you use the most in a scientific calculator?
+Apart from basic calculations, we have certain programs that we have fed to our calculation softwares. We reuse them a lot. We also use some graphing calculators which draw comparisons between different datasets. 
+
+15. What is your goto function on a calculator? Would you prefer a hotkey mapped for this function?
+In media preparation, we have a certain series of calculations we perform for titrations, survival probabilities, and incubation times. Having a shortcut that takes all the inputs and directly give the desired outputs would be helpful. 
+
+16. Would you prefer the ability to navigate through the steps of the calculation?
+Not necessarily.
+
+17. How important is accuracy in decimal places of your calculations. [ had to explain about accuracy ]
+Not sure, I always think that calculators will be exact and accurate.
+
+17b. Different calculators have different backend mechanisms and the calculation values after a certain limit of decimal spaces may vary. This change may be very minute, somewhere on the scale of 1 billionth or so. In such cases, with respect to your calculations, what is the margin of error that your calculations wouldn’t mind. 
+This is news to me. Scientific calculations need to be very accurate. I don’t think there is any scope of error. Some of our calculations deal with pico units, so I’d expect a calculator to be very sharp. 
+
+18. Would you need a calculator that can handle complex numbers?
+Nope, I have never used them.
+# Pain Points
+19. What are the most frustrating things about your calculator?
+Our current calculator undo redo feature, so if you enter some value wrong, you have to redo the entire calculation. Also, the calculation export feature is buggy at times as the document it produces is distorted at times.
+
+20. Does the scientific calculator meet your needs? If not, what do you think does it lack?
+Yes, it does fulfil its purpose.
+
+21. If you could add any ability, which one would you add in a scientific calculator?
+Undo/redo feature
+
