@@ -1,0 +1,122 @@
+# Introductions
+2.	Could you briefly tell me about your background and yourself?
+
+Math and Computer science student who depends heavily on calculator. Moved here 4 years ago from Syria and really enjoys the time she’s spend here. Lives with her aunt who works at a data science company, DRW that she hopes to be a part of when she graduates.
+
+
+2b. Could you describe your current occupation? 
+
+T.A for Concordia. Teaches Algorithms and Java (1 & 2).
+
+
+3.	Could you tell me about your educational profile?
+
+Undergrad at Concordia. Planning on doing a master’s in mathematics.
+
+
+4.	How do you solve calculations in your daily life?
+
+Maple, mathematic.
+
+
+4b. What kind of mathematical calculations do you perform?
+
+Derivates or integration mostly but also does some logarithmic calculations.
+
+
+5b.  How often do you use a calculator?
+
+Everyday.
+
+
+5.	Under which context do you use a calculator? (eg. work, academic, personal)
+
+Academic.
+
+
+6.	 What kind of devices do you use to perform the calculations?
+
+Laptop.
+
+
+7b. Do you prefer any specific software’s to do these calculations on?
+
+Maple, mathematic, python.
+
+
+7.	How important is the user interface and design of a calculator to you? 
+
+Not important, more about the functionality.
+
+
+8.	Would you consider the undo/edit function important in a calculator?
+
+Yes, would be nice.
+
+
+9.	How useful would you find a calculator that provides history of previous calculations?
+
+Not the most important, would be a nice feature.
+
+
+# Scientific Calculator
+As its name suggests, the scientific calculator is designed for performing scientific calculations. This type of calculator usually has more buttons than a standard calculator, as it needs to be able to perform trigonometric functions, logarithms, and exponential operations (transcendental functions).
+
+10.	How would you describe your experience with a scientific calculator if you have any?
+
+Easy to work with. Could be frustrating when you get an error.
+
+
+11.	 Do you usually need an explanation for the functions on a scientific calculator? 
+    (If the person does not use a scientific calculator, ask them if they will prefer to see such explanations if using one)
+
+For some at first yes. imagines for those who don’t know the functions it would be helpful, or even has a reminder, just as long has it doesn’t get in the way.
+
+
+12.	 What are the features that you use the most in a scientific calculator?
+    (If the person does not use a scientific calculator, ask them what feature of a scientific calculator they would find most useful)
+
+Log and trigonometric functions.
+
+
+13.	 What is your go-to function on a calculator? Would you prefer a hotkey mapped for this function?
+
+No, prefers less buttons. Everything she needs is already mapped to a button.
+
+
+14.	 Would you prefer the ability to navigate through the steps of the calculation?
+
+No, just wants the answer. Does usually have a problem with how you get to them.
+
+
+15.	 How important is accuracy in decimal places of your calculations.
+
+It does matter greatly. Wishes to be able to set and adjust the scale.
+
+
+16.	 Would you need a calculator that can handle complex numbers?
+
+Yes, would be nice. 
+
+
+# Pain Points
+17.	 What are the most frustrating things about your calculator?
+
+Display is limited. The screen is small. When there is an error, it just displays that there is a error and not where the error is.
+
+
+18.	 Does the scientific calculator meet your needs? If not, what do you think does it lack?
+
+It does. For the thing she’s doing now.
+
+
+# Winding up
+19.	 If you could add any ability, which one would you add in a scientific calculator?
+
+Finding all possible roots.
+
+
+20.	 Is there anything else that you would like to share about your views/use of a calculator?
+
+Complex numbers.
+Instead of just saying ERROR, show where the error is.
