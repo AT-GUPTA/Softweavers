@@ -1,0 +1,99 @@
+# Introductions
+Start with a brief introduction of yourself and the purpose of this interview. Mention that the information gathered will be confidential and will only be used within the course (COMP 354).
+
+1. What is your name? (As we will not be using their real name, it is not necessary to ask for their name)
+Jack
+
+// #2-3 Gather information to build the persona's background.
+2. Could you briefly tell me about your background and yourself? 
+I am a 3rd year computer science student studying at Concordia University.
+
+(If the interviewee does not mention their occupation) 
+2b. Could you describe your current occupation?
+N/A
+
+3. Could you tell me about your educational profile?
+This is my last semester before graduating.
+
+// Transition question towards calculator.
+4. How do you solve calculations in your daily life?
+Usually by using google calculator or the built-in calculator app on my laptop or by use of a physical calculator.
+
+4b. What kind of mathematical calculations do you perform?
+Simple arithmetic calculations for personal as well as educational purposes (assignments)
+
+# General Calculator
+(Not necessary if the interviewee answered calculator in #4. Skip to 5b.) 
+5. Do you use a calculator? Yes
+
+5b. How often do you use a calculator?
+Not too often (3-4 times a week)
+
+6. Under which context do you use a calculator? (eg. work, academic, personal)
+Personal & academic (assignments)
+
+// We want to know if there is any common preference on a particular device or a software.
+7. What kind of devices do you use to perform the calculations? 
+Phone or computer
+
+(If the interviewee answered computer or phone) 
+7b. Do you prefer any specific software to do these calculations on? 
+Phone as I can use it more easily and everywhere. No particular software.
+
+8. How important is the user interface and design of a calculator to you? 
+As long as you can do simple and complex calculations, UI does not really matter.
+
+// #9-10 are yes/no questions, but these will give us ideas how pertinent it would be to add these functions.
+
+// Overlaps with #11. Suggest removing this question. 
+9. Do you need to be able to save and recall previous calculations or export them for later?
+No
+
+10. Would you consider the undo/edit function important in a calculator?
+No
+
+11. How usefull would you find a calculator that provides history of previous calculations?
+Not too useful as my calculations would be different everytime
+
+# Scientific Calculator
+As its name suggests, the scientific calculator is designed for performing scientific calculations. This type of calculator usually has more buttons than a standard calculator, as it needs to be able to perform trigonometric functions, logarithms and exponential operations (transcendental functions).
+Ref: https://www.techtarget.com/whatis/definition/calculator#:~:text=Scientific%20calculators,sine%2Fcosine%20and%20exponential%20operations.
+<<FACT= explain briefly what a scientific calc is>>
+
+12. How would you describe your experience with a scientific calculator, if you have any?
+I have used it in the past and it was very useful during my Math classes.
+
+13. Do you usually need an explanation for the functions on a scientific calculator? 
+Sometimes (if it is a new function).
+(If the person does not use a scientific calcualtor, ask them if they will prefer to see such explanations if using one)
+
+14. What are the features that you use the most in a scientific calculator?
+(If the person does not user a scientific calculator, ask them what feature of a scientific calculator would they find most useful)
+Basic Math operations, trigonometry function and Power function
+
+15. What is your goto function on a calculator? Would you prefer a hotkey mapped for this function?
+No go-to function or hotkey.
+
+16. Would you prefer the ability to navigate through the steps of the calculation?
+Yes, it could be useful sometimes.
+
+17. How important is accuracy in decimal places of your calculations.
+I usually want a maximum of 5 decimal places.
+
+18. Would you need a calculator that can handle complex numbers?
+No
+
+# Pain Points
+19. What are the most frustrating things about your calculator?
+The lack of insertion inbetween expressions, instead it always replaces the character
+
+20. Does the scientific calculator meet your needs? If not, what do you think does it lack?
+Yes.
+
+# Winding up
+21. If you could add any ability, which one would you add in a scientific calculator?
+Nothing comes to mind as I am already comfortable with the functions in a scientific calculator.
+
+22. Is there anything else that you would like to share about your views/use of a calculator?
+No.
+// Conclude the interview by thanking the interviewee
