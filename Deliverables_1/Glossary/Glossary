@@ -1,6 +1,7 @@
 
 Term                      Definition
 
+Accuracy                  The degree of how close a calculated or measured value is to the actual value. (e.g. 3.1416 is more accurate than 3.14 when calculating pi)
 Scientific Calculator     A calculator that can compute more than basic algebraic functions. The functions include transcendental functions.
 Subordinate function      A function that supports one or more of the other functions. (e.g. factorial function or square root function) 
 Transcendental function   A function that does not satisfy any single-variable polynomial equation whose coefficients are themselves roots of polynomials.
