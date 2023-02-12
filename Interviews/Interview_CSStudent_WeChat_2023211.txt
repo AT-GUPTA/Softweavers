@@ -1,0 +1,56 @@
+1. Could you briefly tell me about your background and yourself?
+Studying computer science at Tianjin University in China. Passionate about technology and programming. Hopes to work in the tech industry after graduation.
+
+2. Could you tell me about your educational profile?
+Completed high school with a focus on math. Currently studying computer science at Tianjin University.
+
+4. How do you solve calculations in your daily life?
+Uses phone's calculator for basic arithmetic and software-based calculators for more advanced calculations.
+
+4b. What kind of mathematical calculations do you perform for work?
+As a computer science student, focuses on calculations related to programming and data analysis.
+
+5b. How often do you use a calculator?
+Uses a calculator almost every day for personal and academic purposes.
+
+7. What kind of devices do you use to perform the calculations?
+Mainly uses phone's calculator but also uses software-based calculators for more complex calculations.
+
+8. How important is the user interface and design of a calculator to you? 
+The user interface and design are important because it affects ease of use. Prefers a simple and clear design.
+
+10. Would you consider the undo/edit function important in a calculator?
+Definitely. The ability to undo or edit calculations is important to avoid mistakes and ensure accuracy.
+
+11. How usefull would you find a calculator that provides history of previous calculations?
+It would be useful for checking work and having a record for future reference.
+
+12. How would you describe your experience with a scientific calculator, if you have any?
+Had experience with scientific calculators and found them useful with a lot of functions.
+
+13. Do you usually need an explanation for the functions on a scientific calculator? 
+Sometimes, might not be familiar with all the functions on a scientific calculator. Can usually find the information needed by searching online.
+
+14. What are the features that you use the most in a scientific calculator?
+The most used features are the basic arithmetic functions and the statistical functions such as mean and standard deviation, as well as conversion functions like binary-to-decimal.
+
+15. What is your goto function on a calculator? Would you prefer a hotkey mapped for this function?
+The go-to function is probably the basic arithmetic functions. Having a hotkey for these functions would be helpful to save time.
+
+16. Would you prefer the ability to navigate through the steps of the calculation?
+Could be useful for checking accuracy.
+
+17. How important is accuracy in decimal places of your calculations. [ had to explain about accuracy ]
+Accuracy is important because even small inaccuracies can lead to significant errors.
+
+18. Would you need a calculator that can handle complex numbers?
+Not necessary, never used them before.
+
+19. What are the most frustrating things about your calculator?
+There's nothing depressing about it, I'm usually frustrating about my intelligence.
+
+20. Does the scientific calculator meet your needs? If not, what do you think does it lack?
+Yes it does.
+
+21. If you could add any ability, which one would you add in a scientific calculator?
+The ability to perform matrix operations. This interface better to be graphical.
