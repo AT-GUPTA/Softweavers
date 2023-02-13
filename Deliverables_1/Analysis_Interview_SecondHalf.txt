@@ -35,7 +35,7 @@ The question is context-free. There is no clear bias in the responses. The trend
 
 Pain point
 19. What are the most frustrating things about your calculator?
-The question is context-free. There is no clear bias in the responses. Out of the 8 responses, 4 of the respondents mentioned frustration with the calculator's display, inputting mathematical notations, or the calculator's undo/redo feature. 3 respondents had no frustrations with the calculator, while 1 respondent mentioned frustration with accidentally losing track of the calculations and 1 respondent mentioned frustration with the lack of insertion in between expressions. These findings suggest that there is room for improvement for scientific calculators.
+The question is context-free. There is no clear bias in the responses. More than half of the interviewees had different degrees of dissatisfaction with the calculator, which mainly lay in: undo/redo feature, screen display, mathematical notations input, clicking wrong button. These findings suggest that there is room for improvement for calculators.
 
 
 Meet your needs / Lack
