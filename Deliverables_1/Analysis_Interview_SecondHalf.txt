@@ -1,0 +1,52 @@
+
+Experience with a scientific calculator
+12. How would you describe your experience with a scientific calculator, if you have any?
+
+The question is context-free. There is no clear bias in the responses. The responses to the question indicate that the majority of the individuals have a positive experience with scientific calculators. They find them useful for their daily work or academic work, and they consider them a convenient and reliable tool. Many individuals describe their experience as great or very useful, and some also use scientific calculators for advanced mathematical functions and visualizations. Despite one mention of frustration when getting an error, the overall trend of the answers is positive.
+
+
+Explanation for the functions
+13. Do you usually need an explanation for the functions on a scientific calculator? Not so much now.
+The question is context-free. There is no clear bias in the responses. The trend of the answers is that there is a mix of opinions on the need for explanations of functions on scientific calculators. Some individuals find it helpful to have a guide or online documentation available, especially when learning new functions, while others do not need explanations for most functions.
+
+
+Most used features
+14. What are the features that you use the most in a scientific calculator?
+The question is context-free. There is no clear bias in the responses. The trend of the answers is that the most commonly used features in a scientific calculator are basic arithmetic functions, logarithmic functions, and trigonometric functions. Some individuals also use statistical functions and conversion functions, while others use the visualisation and graphing capabilities of their calculator. In conclusion, the responses to the question suggest that the features used the most in a scientific calculator vary among individuals.
+
+
+Goto function
+15. What is your goto function on a calculator? Would you prefer a hotkey mapped for this function?
+The question is context-free. There is no clear bias in the responses. The trend of the answers is that some individuals do not have a go-to function on a calculator, while others use basic arithmetic functions, square root, and specific functions for media preparation. Some individuals prefer hotkeys for their go-to functions, while others prefer less buttons and already have the functions they need mapped to a button. In conclusion, the responses to the question suggest that the go-to function on a calculator and the preference for a hotkey mapped for this function vary among individuals.
+
+Navigating steps of the calculations
+16. Would you prefer the ability to navigate through the steps of the calculation? 
+The question is context-free. There is no clear bias in the responses. The trend of the answers is that some individuals prefer the ability to navigate through the steps of a calculation, while others do not. Some individuals believe it is useful for checking accuracy, while others prefer to just see the answer. Some individuals believe that both options should be available, and they would prefer to display only the results if they match their expectations but be able to query the results and see the steps if they do not. About 60% of the responses found this feature necessary.
+
+Accuracy
+17. How important is accuracy in decimal places of your calculations.
+The question is context-free. There is no clear bias in the responses. The trend of the answers is that some individuals place great importance on accuracy in decimal places of calculations, while others place less importance on it. Some individuals believe that even small inaccuracies can lead to significant errors, while others do not care much about decimal places. Some individuals prefer to use irrational numbers that have a convenient form and prefer higher precision. In conclusion, the responses to the question suggest that the importance of accuracy in decimal places of calculations varies among individuals. The accuracy of 5 decimal places is the most common answer.
+
+
+Complex number handling
+18. Would you need a calculator that can handle complex numbers?
+The question is context-free. There is no clear bias in the responses. The trend of the answers is that most individuals do not need a calculator that can handle complex numbers. Some individuals have never used them and do not see the importance of this feature in a calculator, while others believe that the ability to perform complex numbers would make advanced calculations easier. In conclusion, the responses to the question suggest that most individuals do not need this feature, but some believe that it would be useful for performing advanced calculations. 
+
+
+Pain point
+19. What are the most frustrating things about your calculator?
+The question is context-free. There is no clear bias in the responses. Out of the 8 responses, 4 of the respondents mentioned frustration with the calculator's display, inputting mathematical notations, or the calculator's undo/redo feature. 3 respondents had no frustrations with the calculator, while 1 respondent mentioned frustration with accidentally losing track of the calculations and 1 respondent mentioned frustration with the lack of insertion in between expressions. These findings suggest that there is room for improvement for scientific calculators.
+
+
+Meet your needs / Lack
+20. Does the scientific calculator meet your needs? If not, what do you think does it lack?
+The question is context-free. There is no clear bias in the responses. The trend of the answers shows that the majority of the users (7 out of 8) believe that the scientific calculator meets their needs. One user mentioned that they would like the calculator to have an integral/derivative function and the ability to go back.
+
+
+Add any ability
+21.If you could add any ability, which one would you add in a scientific calculator?
+The question is context-free. There is no clear bias in the responses. The trend of the answers shows that most people have different opinions on what they would like to add to a scientific calculator. Some people are already comfortable with the functions of a scientific calculator and do not have any suggestions. However, some people suggested adding features like autocorrection, matrix operations, finding all possible roots, derivative, undo/redo feature, and graphing 3D surfaces. From the answers, it is clear that users have diverse needs and requirements for a scientific calculator, and the manufacturers should keep these requirements in mind while designing the scientific calculators.
+
+Varia
+22. Is there anything else that you would like to share about your views/use of a calculator?
+The question is context-free. There is no clear bias in the responses. Out of the eight responses, two respondents have shared that they do not have any additional views to share about scientific calculators. Two respondents have mentioned the importance of the ability to perform matrix operations in a graphical interface. Based on the responses, it can be concluded that most of the respondents are satisfied with their current scientific calculator and do not have any significant complaints. However, some respondents have mentioned the need for additional features such as matrix operations, autocorrection, error handling mechanism, and undo/redo features, which could enhance the user experience.
