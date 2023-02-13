@@ -28,29 +28,46 @@ Importance of user interface/design
 Interviewees tend to give less to no importance to the UI or design. However, simple and easy to use would be a preferred design.
 
 Undo/edit function
-Most of interviewees answered it would be useful. Something to consider adding.
+Most of interviewees answered it would be useful. Something to consider adding in the project.
 
 History of previous calculations
 Many of interviewees showed high interest to this feature. It could be the marketing point.
 
 Experience with a scientific calculator
+The responses to the question indicate that the majority of the individuals have a positive experience with scientific calculators. They find them useful for their daily work or academic work, and they consider them a convenient and reliable tool. Many individuals describe their experience as great or very useful, and some also use scientific calculators for advanced mathematical functions and visualizations. Despite one mention of frustration when getting an error, the overall trend of the answers is positive.
 
 Explanation for the functions
+There is mixed opinions on the need for explanations of functions on scientific calculators. Some individuals find it helpful to have a guide or online documentation available, especially when learning new functions, while others do not need explanations for most functions.
 
 Most used features
+The most commonly used features in a scientific calculator are basic arithmetic functions, logarithmic functions, and trigonometric functions. Some individuals also use statistical functions and conversion functions, while others use the visualisation and graphing capabilities of their calculator. In conclusion, the responses to the question suggest that the features used the most in a scientific calculator vary among individuals.
 
 Goto function
-
-Mapping most used functions
+Some individuals do not have a go-to function on a calculator, while others use basic arithmetic functions, square root, and specific functions for media preparation. In general, there were positive reactions to the ability to set up a hotkey (wheter the combination of calculations or a single symbol).
 
 Navigating steps of the calculations
+Some individuals prefer the ability to navigate through the steps of a calculation, while others do not. Some individuals believe it is useful for checking accuracy, while others prefer to just see the answer. Some individuals believe that both options should be available, and they would prefer to display only the results if they match their expectations but be able to query the results and see the steps if they do not. About 60% of the responses found this feature necessary.
 
 Accuracy
+Few individuals place great importance on accuracy in decimal places of calculations, while the majority place less importance on it. Some individuals prefer to use irrational numbers that have a convenient form and prefer higher precision. The accuracy of 5 decimal places is the most common answer.
 
 Complex number handling
+Most individuals do not need a calculator that can handle complex numbers. Some individuals have never used them and do not see the importance of this feature in a calculator, while others believe that the ability to perform complex numbers would make advanced calculations easier. In conclusion, the responses to the question suggest that most individuals do not need this feature, but some believe that it would be useful for performing advanced calculations. 
 
 Pain point
+Besides redo/undo feature, some pain points were: error message without explanation, lack of mathematical symbols. 
 
-Improvements
+Meet your needs / Lack
+The majority of the users (7 out of 8) believe that the scientific calculator meets their needs. One user mentioned that they would like the calculator to have an integral/derivative function and the ability to go back.
+
+Add any ability
+Most people have different opinions on what they would like to add to a scientific calculator. Some people are already comfortable with the functions of a scientific calculator and do not have any suggestions. However, some people suggested adding features like autocorrection, matrix operations, finding all possible roots, derivative, undo/redo feature, and graphing 3D surfaces. From the answers, it is clear that users have diverse needs and requirements for a scientific calculator, and the manufacturers should keep these requirements in mind while designing the scientific calculators.
 
 Varia
+Out of the eight responses, two respondents have shared that they do not have any additional views to share about scientific calculators. Two respondents have mentioned the importance of the ability to perform matrix operations in a graphical interface. Based on the responses, it can be concluded that most of the respondents are satisfied with their current scientific calculator and do not have any significant complaints. However, some respondents have mentioned the need for additional features such as matrix operations, autocorrection, error handling mechanism, and undo/redo features, which could enhance the user experience.
+
+General conclusion
+Due to the convenience sampling and the context of the project (class project), there were some similar samples. However, it was interesting to see the different perspective amongst those samples with similar background.
+It is recommended to merge personas with similar backgrounds. 
+Although we do not have a large enough sampling pool to come up with a solid deduction, we can say that our main clientele are those in the academic field. Those who use calculation software professionally already use specialized softwares (stats/analytical/graphic).
+Also, we should definitely consider some of the ideas that came out from the pain points.
