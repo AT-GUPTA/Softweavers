@@ -86,3 +86,35 @@ Source: Google search with keyword “x^y”
 Reference
 Bloom, David M. (1979). Linear Algebra and Geometry. p. 45. ISBN 978-0-521-29324-2.
 Nykamp DQ, “Basic rules for exponentiation.” From Math Insight. http://mathinsight.org/exponentiation_basic_rules, 15-02-2023.
+
+
+
+Γ(α)
+The Gamma function
+
+Definition
+The gamma function Gamma(n) is defined to be an extension of the factorial to complex and real number arguments. 
+It is related to the factorial by Gamma(n)=(n-1)! and is now universally used instead of Gauss's simpler Pi(n)=n!.
+It is analytic everywhere except at z=0, -1, -2, ..., and the residue at z=-k is Res_(z=-k)Gamma(z)=((-1)^k)/(k!). 	
+There are no points z at which Gamma(z)=0
+
+The gamma function can be defined as a definite integral for R[z]>0 (Euler's integral form)
+
+Gamma(z)=int_0^inftyt^(z-1)e^(-t)dt	
+	=2int_0^inftye^(-t^2)t^(2z-1)dt,	
+or
+Gamma(z)=int_0^1[ln(1/t)]^(z-1)dt. 
+<Source: https://mathworld.wolfram.com/GammaFunction.html>
+
+Some Properties of Gamma function
+- Γ(z) is defined and analytic in the region  Re(z)>0
+- Γ(n+1)=n!, for integer  n≥0
+- Γ(z+1)=zΓ(z) (function equation)
+This property and Property 2 characterize the factorial function. Thus, Γ(z) generalizes n! to complex numbers z
+- Γ(α) can be analytically continued to be meromorphic on the entire plane with simple poles at 0, −1, −2 .... The residues are Res(Γ,−m)=((−1)^m)/m!
+- Γ(α + 1) = αΓ(α) and Γ(1/2) = √π
+<Source:https://math.libretexts.org/Bookshelves/Analysis/Complex_Variables_with_Applications_(Orloff)/14%3A_Analytic_Continuation_and_the_Gamma_Function/14.02%3A_Definition_and_properties_of_the_Gamma_function>
+
+Graphical Representation
+ 
+Source: Google search with keyword “Gamma function”
