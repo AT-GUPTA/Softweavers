@@ -57,3 +57,32 @@ Graphical Representation
 {Insert a graph of the function}
 
 Applications
+
+
+x^y
+Power Functions & Exponential Functions 
+
+Introduction
+
+Both power function and exponential function stem from the notion of exponentiation. They both have a base and an exponent, but the difference is where a variable is placed. A power function has a variable as its base whereas an exponential function has a variable as its exponent. But what happens if you mix them together?
+
+Definition
+
+Power function
+f(x) = axb 
+where x is a real variable and a and b are real numbers and a is known as coefficient.
+
+Exponential function
+f(x) = abx 
+where x is a real variable and a and b are real numbers and a is known as coefficient. 
+
+f(x, y) = xy is a mix of a power function and an exponential function. Just like an exponential function, y can be any real number. However, this function does not have any solution when x < 0.
+Therefore, f(x, y) = xy where x is a positive real variable and y is a real variable.
+
+Graphical Representation
+ 
+Source: Google search with keyword “x^y”
+
+Reference
+Bloom, David M. (1979). Linear Algebra and Geometry. p. 45. ISBN 978-0-521-29324-2.
+Nykamp DQ, “Basic rules for exponentiation.” From Math Insight. http://mathinsight.org/exponentiation_basic_rules, 15-02-2023.
