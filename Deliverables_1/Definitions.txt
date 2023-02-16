@@ -31,3 +31,29 @@ x ̅:         Sample mean
         x ̅ = ∑_(i=1)^n x_i / n
 
 <source: https://www.onlinemathlearning.com/population-mean.html>
+
+
+arccos(x)
+
+Introduction
+
+Motivation
+It is used to measure an unknown angle when the length of 2 sides of a right-triangle are known.
+
+Definition
+Arcos(x) is the inverse trigonometric function of cos when -1 x1 such that when cos(y) = x, arccos(x) = y.
+<source: https://www.rapidtables.com/math/trigonometry/arccos.html>
+
+Cos(x)
+The ratio of the length of the adjacent side to the hypotenuse of a right-triangle. It is one of the basic trigonometric functions. Cos() is the horizontal coordinate (x-value) of the arc endpoint of the unit circle.
+<source: https://mathworld.wolfram.com/Cosine.html>
+
+Unit Circle
+A circle with radius = 1 where we can directly measure cos.
+<source: https://www.mathsisfun.com/geometry/unit-circle.html>
+
+Graphical Representation
+
+{Insert a graph of the function}
+
+Applications
