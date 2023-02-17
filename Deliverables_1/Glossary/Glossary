@@ -4,18 +4,28 @@ Term                        Definition
 Accuracy                    The degree of how close a calculated or measured value is to the actual value. (e.g. 3.1416 is more accurate than 3.14 when calculating pi)
 Arccos(x)                   The inverse of cosine(x) used to measure the unknown angle of a right tirangle.
 Basic Arithmetics           The fundamental mathematical operations used to manipulate and compute numerical values - addition, subtraction, multiplication, and division.
-Command Line 
+Command Line                An interface for typing commands directly to a computer’s operating system, or as the input to a software.
 Calculation History         A record of the previous calculations performed by the user, which can be displayed and recalled for reference or correction purposes.
-Cosine                      A trigonometric function equal to the ratio of the length of the adjacent side to the hypotenuse of a right triangle. 
+Cosine                      A trigonometric function equal to the ratio of the length of the adjacent side to the hypotenuse of a right triangle.
+Decimal Point               A full point or dot placed after the figure representing units in a decimal function.
+Discord                     Discord is a Voice over IP(VoIP), instant messaging and digital distribution platform designed to enable users to interact in private chats or communities.
+Education                   The education level refers to the highest level of education someone has achieved.
 Function                    A relationship or expression involving one or more variables.
 Gamma Function              The gamma function is a mathematical function that extends the factorial function to complex and real numbers.
+Github                      Github is a software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development
+History                     History refers to the results of previous calculations which the user might need for later use.
 Input Field                 The space to enter numerical values and perform calculations using buttons or a keyboard.
+Interview                   Interview refers to the act of asking questions to an interviewee to obtain their response including their needs, opinions and pain points.
 Logarithmic Function        A logarithm is the inverse function of exponentiation that measures the power to which a given base must be raised to produce a given value.
 Maclauren Series Expansion  A representation of a function as an infinite sum of polynomial terms centered at zero, used to approximate the value of the function for a given input within a certain range of accuracy.
 Mathematical Expression     A combination of numbers, symbols, and operators that can be evaluated or simplified using mathematical rules and operations.
 Mathematical Symbol         A figure or a combination of figures that is used to represent a mathematical object, an action on mathematical objects, a relation between mathematical objects, or for structuring the other symbols that occur in a formula.
+Operation                   A process in which a number, quantity, expression, etc., is altered or manipulated according to set formal rules, such as those of addition, multiplication and differentiation.
+Overleaf                    Overleaf is a collaborative cloud-based LaTeX editor used for writing, editing and publishing scientific documents.
+Persona                     Persona is a profile of our product’s typical customer obtained from the interviews conducted.
 Power Function              A one-term function with a variable as its base that is raised to a fixed real number.
 Precision                   The degree of exactness of a calculated or a measured value. (e.g. 4.53678 is as precise as 5.95857)
+Project plan                A project plan defines project goals and objectives, specifies tasks and how goals will be achieved, identifies what resources will be needed and associated budgets and timelines for completion.
 Scientific Calculator       A calculator that can compute more than basic algebraic functions. The functions include transcendental functions.
 Scientific Notation         A floating-point representation system where a number is represented as the product of a number between one and ten and the appropriate power of ten.
 Subordinate function        A function that supports one or more of the other functions. (e.g. factorial function or square root function).
