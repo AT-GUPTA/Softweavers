@@ -7,14 +7,14 @@ Calculation History         A record of the previous calculations performed by t
 Function                    A relationship or expression involving one or more variables.
 Input Field                 The space to enter numerical values and perform calculations using buttons or a keyboard.
 Logarithmic Function        A logarithm is the inverse function of exponentiation that measures the power to which a given base must be raised to produce a given value.
-Mathematical Symbol         A figure or a combination of figures that is used to represent a mathematical object, an action on mathematical objects, a relation between mathematical objects, or for structuring the other symbols that occur in a formula.
+Maclauren Series Expansion  A representation of a function as an infinite sum of polynomial terms centered at zero, used to approximate the value of the function for a given input within a certain range of accuracy.
 Mathematical Expression     A combination of numbers, symbols, and operators that can be evaluated or simplified using mathematical rules and operations.
+Mathematical Symbol         A figure or a combination of figures that is used to represent a mathematical object, an action on mathematical objects, a relation between mathematical objects, or for structuring the other symbols that occur in a formula.
 Power Function              A one-term function with a variable as its base that is raised to a fixed real number.
 Precision                   The degree of exactness of a calculated or a measured value. (e.g. 4.53678 is as precise as 5.95857)
 Scientific Calculator       A calculator that can compute more than basic algebraic functions. The functions include transcendental functions.
 Scientific Notation         A floating-point representation system where a number is represented as the product of a number between one and ten and the appropriate power of ten.
 Subordinate function        A function that supports one or more of the other functions. (e.g. factorial function or square root function).
 Syntax                      A set of rules that govern the order and arrangement of mathematical symbols, in order to create a correct mathematical expression.
-Maclauren Series Expansion  A representation of a function as an infinite sum of polynomial terms centered at zero, used to approximate the value of the function for a given input within a certain range of accuracy.
 Tooltip                     A GUI element that provides additional information about a particular item or feature when the user hovers their cursor over it.
 Transcendental function     A function that does not satisfy any single-variable polynomial equation whose coefficients are themselves roots of polynomials.
