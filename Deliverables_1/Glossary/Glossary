@@ -4,9 +4,11 @@ Term                        Definition
 Accuracy                    The degree of how close a calculated or measured value is to the actual value. (e.g. 3.1416 is more accurate than 3.14 when calculating pi)
 Arccos(x)                   The inverse of cosine(x) used to measure the unknown angle of a right tirangle.
 Basic Arithmetics           The fundamental mathematical operations used to manipulate and compute numerical values - addition, subtraction, multiplication, and division.
+Command Line 
 Calculation History         A record of the previous calculations performed by the user, which can be displayed and recalled for reference or correction purposes.
 Cosine                      A trigonometric function equal to the ratio of the length of the adjacent side to the hypotenuse of a right triangle. 
 Function                    A relationship or expression involving one or more variables.
+Gamma Function              The gamma function is a mathematical function that extends the factorial function to complex and real numbers.
 Input Field                 The space to enter numerical values and perform calculations using buttons or a keyboard.
 Logarithmic Function        A logarithm is the inverse function of exponentiation that measures the power to which a given base must be raised to produce a given value.
 Maclauren Series Expansion  A representation of a function as an infinite sum of polynomial terms centered at zero, used to approximate the value of the function for a given input within a certain range of accuracy.
