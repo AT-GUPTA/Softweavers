@@ -2,8 +2,10 @@
 Term                        Definition
 
 Accuracy                    The degree of how close a calculated or measured value is to the actual value. (e.g. 3.1416 is more accurate than 3.14 when calculating pi)
+Arccos(x)                   The inverse of cosine(x) used to measure the unknown angle of a right tirangle.
 Basic Arithmetics           The fundamental mathematical operations used to manipulate and compute numerical values - addition, subtraction, multiplication, and division.
 Calculation History         A record of the previous calculations performed by the user, which can be displayed and recalled for reference or correction purposes.
+Cosine                      A trigonometric function equal to the ratio of the length of the adjacent side to the hypotenuse of a right triangle. 
 Function                    A relationship or expression involving one or more variables.
 Input Field                 The space to enter numerical values and perform calculations using buttons or a keyboard.
 Logarithmic Function        A logarithm is the inverse function of exponentiation that measures the power to which a given base must be raised to produce a given value.
@@ -18,3 +20,4 @@ Subordinate function        A function that supports one or more of the other fu
 Syntax                      A set of rules that govern the order and arrangement of mathematical symbols, in order to create a correct mathematical expression.
 Tooltip                     A GUI element that provides additional information about a particular item or feature when the user hovers their cursor over it.
 Transcendental function     A function that does not satisfy any single-variable polynomial equation whose coefficients are themselves roots of polynomials.
+Unit Circle                 A circle with a radius of one where we can directly measure sine, cosine, and tangent.
