@@ -1,0 +1,34 @@
+What is a use case?
+•	A written description detailing the response of the system under development to user interactions. That is, the sequence of steps required by the user to achieve their goal.
+•	A use case generally involves:
+I.	A profile of the user drafted through interview responses.
+II.	Desirable features that the user wants implemented.
+III.	User’s end-goal with respect to each feature
+IV.	Exact steps taken by the user through the system to achieve the goal.
+V.	Response of the system to the user’s actions
+
+Why create a use case?
+•	Use cases are a powerful tool in the early design stages of a project since they assist you in understanding the user’s needs and how the system will need to tailor to them. That is, defining the scope of the project and generating guidelines for development.
+
+====================================================================================================================================
+
+Use Case creation process.
+•	Identifying the Actor – an external entity interacting with the system is a fundamental step of Use Case creation.
+•	Establishing the user’s goals and the data required by the user to interact with the system interface and achieve their desired outcome.
+•	Defining candidate Use Cases from the project requirements mined from the user’s goals.
+•	Outlining the process, that is, the steps required by the user to reach their desired result. This step includes clearly defining the outcome and how the system would reach to the user’s interaction through each step of the procedure. This helps generate an overview of the system’s functionality.
+•	Brainstorm alternative scenarios for each Use Case since some cases might lead to various potential outcomes depending on the user’s reaction.
+•	Compare the use cases and pinpoint the overlapping features to help establish a set of pre-conditions.
+•	Draft the Use Case UML and Activity diagrams that illustrate the relationship and interactions between the system and the user.
+
+=====================================================================================================================================
+
+Evaluation Matrix for Use Cases:
+1.	Does the use case represent complete and accurate description of the user's goals and needs?
+2.	Does the use case specify the primary actor and the preconditions necessary for the actor to interact with the system?
+3.	Does the use case describe the entire flow required for the user to achieve their desired outcome?
+4.	Does the use case include alternate flows for scenarios where the user's actions or input may vary?
+5.	Does the use case identify any exceptional conditions that may occur during the user's interaction with the system?
+6.	Does the use case clearly specify the system response to the user's actions or input?
+7.	Does the use case accurately reflect the needs and goals of the user and the functionality of the system?
+
