@@ -43,7 +43,7 @@ public class Parser {
                 }
                 String res = "";
                 switch (func) {
-                    case "mad": {
+                    case "logbx": {
                         // res = mad(inputs)
                         res = "1";
                         break;
@@ -123,18 +123,6 @@ public class Parser {
             }
         }
         return -1;
-    }
-
-    private static String toPostfix(String expr) {
-        ArrayList<String> tokens = new ArrayList<>();
-        Stack<String> stack = new Stack<>();
-        stack.push("#");
-        String postfix = "";
-        // expr.split()
-        for (String token : tokens) {
-            //
-        }
-        return "";
     }
 
     private static int precedence(String symbol) {
