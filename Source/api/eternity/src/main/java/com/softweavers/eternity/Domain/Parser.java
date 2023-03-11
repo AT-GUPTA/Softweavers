@@ -1,64 +1,81 @@
 package com.softweavers.eternity.Domain;
-import java.util.ArrayList;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static com.softweavers.eternity.Domain.Functions.StandardDeviation.standardDeviation;
+
 
 public class Parser {
-    private static final ScriptEngineManager manager = new ScriptEngineManager();
-    private static final ScriptEngine engine = manager.getEngineByName("js");
 
-    public static void main(String[] args) {
-        try {
-            String expr = "(5 + mad(5 , mad(3,5), 6)) + sinh(pow(sd(1,2,3), 2))";
-            String evaluatedFunctionExpr = evaluateFunctions(expr);
-            System.out.println(evaluatedFunctionExpr);
-            System.out.println(engine.eval(evaluatedFunctionExpr));
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
+    public static ExpressionEvaluator engine = new ExpressionEvaluator();
 
-    public static String evaluateFunctions(String expr) {
+    public static String evaluateFunctions(String expr){
         System.out.println("expr: " + expr);
         expr = expr.replace(" ", "");
-        String[] functions = { "mad", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
+        String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
         for (String func : functions) {
             while (expr.contains(func)) {
-                System.out.println("func: " + func);
                 int funcStart = expr.indexOf(func);
                 int inputStart = funcStart + func.length() + 1;
                 int inputEnd = indexOfClosingBracket(expr, inputStart);
                 // get all inputs of the function, can be multiple seperated by commas or single
                 // input
                 String[] inputs = split(expr.substring(inputStart, inputEnd));
-                System.out.println("inputs: " + expr.substring(inputStart, inputEnd));
+                System.out.println("function: " + func + ", inputs: " + expr.substring(inputStart, inputEnd));
                 for (int i = 0; i < inputs.length; ++i) {
                     if (isComplexExpr(inputs[i])) {
                         // if an input of the function is an expression, recursively eval
                         // and replace expression with evaluated expression
                         System.out.println("complex expr: " + inputs[i]);
                         inputs[i] = evaluateFunctions(inputs[i]);
+
+                        // Solve any complex expressions with basic operations
+                        inputs[i] = Double.toString(engine.evaluate(inputs[i]));
                     }
                 }
                 String res = "";
                 switch (func) {
-                    case "logbx" -> // res = mad(inputs)
-                            res = "1";
-                    case "sd" -> // res = sd(inputs)
-                            res = "2";
-                    case "ab^x" -> // res = abx(inputs)
-                            res = "3";
-                    case "arccos" -> // res = arccos(inputs[0])
-                            res = "4";
-                    case "sinh" -> // res = sinh(inputs[0])
-                            res = "5";
-                    case "gamma" -> // res = gamma(inputs[0])
-                            res = "6";
-                    case "pow" -> // res = pow(inputs[0], inputs[1])
-                            res = "7";
+                    case "logbx": {
+                        // res = mad(inputs)
+                        res = "1";
+                        break;
+                    }
+                    case "sd": {
+//                        for (int i = 0; i < inputs.length; i++) {
+//                            inputs[i] = engine.eval(inputs[i]).toString();
+//                        }
+                        res = standardDeviation(inputs);
+                        break;
+                    }
+                    case "ab^x": {
+                        // res = abx(inputs)
+                        res = "3";
+                        break;
+                    }
+                    case "arccos": {
+                        // res = arccos(inputs[0])
+                        res = "4";
+                        break;
+                    }
+                    case "sinh": {
+                        // res = sinh(inputs[0])
+                        res = "5";
+                        break;
+                    }
+                    case "gamma": {
+                        // res = gamma(inputs[0])
+                        res = "6";
+                        break;
+                    }
+                    case "pow": {
+                        // res = pow(inputs[0], inputs[1])
+                        res = "7";
+                        break;
+                    }
                 }
                 expr = expr.substring(0, funcStart) + res + expr.substring(inputEnd + 1);
+                System.out.println(func + "(" + Arrays.toString(inputs) + ") = " + res);
             }
         }
         return expr;
@@ -69,11 +86,17 @@ public class Parser {
         ArrayList<String> arr = new ArrayList<>();
         StringBuilder currentInput = new StringBuilder();
         boolean isInsideFunction = false;
+        int openCount = 0;
         for (int i = 0; i < expr.length(); ++i) {
-            if (expr.charAt(i) == '(')
+            if (expr.charAt(i) == '(') {
+                openCount++;
                 isInsideFunction = true;
-            if (expr.charAt(i) == ')')
-                isInsideFunction = false;
+            }
+            if (expr.charAt(i) == ')') {
+                openCount--;
+                if (openCount == 0)
+                    isInsideFunction = false;
+            }
             if ((expr.charAt(i) == ',' && !isInsideFunction)) {
                 arr.add(currentInput.toString());
                 currentInput = new StringBuilder();
@@ -104,39 +127,6 @@ public class Parser {
         return -1;
     }
 
-    private static int precedence(String symbol) {
-        switch (symbol) {
-            case "+":
-            case "-":
-                return 2;
-            case "*":
-            case "/":
-                return 3;
-            case "^":
-                return 4;
-            case "(":
-            case ")":
-                return 1;
-            default:
-                return 0;
-        }
-    }
-
-    private static boolean isOperator(String symbol) {
-        switch (symbol) {
-            case "+":
-            case "-":
-            case "*":
-            case "/":
-            case "^":
-            case "(":
-            case ")":
-                return true;
-            default:
-                return false;
-        }
-    }
-
     private static boolean isComplexExpr(String expr) {
         try {
             Float.parseFloat(expr);
@@ -145,4 +135,8 @@ public class Parser {
             return true;
         }
     }
+
+//    private static String eval(){
+//
+//    }
 }
