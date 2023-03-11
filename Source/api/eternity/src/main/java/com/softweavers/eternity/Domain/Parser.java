@@ -1,87 +1,71 @@
 package com.softweavers.eternity.Domain;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.softweavers.eternity.Domain.Functions.StandardDeviation.standardDeviation;
 
-
 public class Parser {
+    boolean isVerbose = true;
+    String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
+    private static final Logger LOGGER = LoggerFactory.getLogger(Parser.class);
 
-    public static ExpressionEvaluator engine = new ExpressionEvaluator();
+    private static final ExpressionEvaluator engine = new ExpressionEvaluator();
 
-    public static String evaluateFunctions(String expr){
-        System.out.println("expr: " + expr);
+    public String evaluateFunctions(String expr){
+        if (isVerbose)
+            LOGGER.info("expr: " + expr);
+
         expr = expr.replace(" ", "");
-        String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
+
         for (String func : functions) {
             while (expr.contains(func)) {
                 int funcStart = expr.indexOf(func);
                 int inputStart = funcStart + func.length() + 1;
                 int inputEnd = indexOfClosingBracket(expr, inputStart);
-                // get all inputs of the function, can be multiple seperated by commas or single
-                // input
+
+                // get all inputs of the function, can be multiple seperated by commas or single input
                 String[] inputs = split(expr.substring(inputStart, inputEnd));
-                System.out.println("function: " + func + ", inputs: " + expr.substring(inputStart, inputEnd));
+
+                if(isVerbose)
+                    LOGGER.info("function: " + func + ", inputs: " + expr.substring(inputStart, inputEnd));
+
                 for (int i = 0; i < inputs.length; ++i) {
                     if (isComplexExpr(inputs[i])) {
                         // if an input of the function is an expression, recursively eval
                         // and replace expression with evaluated expression
-                        System.out.println("complex expr: " + inputs[i]);
+                        if(isVerbose)
+                            LOGGER.info("complex expr: " + inputs[i]);
+
                         inputs[i] = evaluateFunctions(inputs[i]);
 
                         // Solve any complex expressions with basic operations
                         inputs[i] = Double.toString(engine.evaluate(inputs[i]));
                     }
                 }
+
                 String res = "";
                 switch (func) {
-                    case "logbx": {
-                        // res = mad(inputs)
-                        res = "1";
-                        break;
-                    }
-                    case "sd": {
-//                        for (int i = 0; i < inputs.length; i++) {
-//                            inputs[i] = engine.eval(inputs[i]).toString();
-//                        }
-                        res = standardDeviation(inputs);
-                        break;
-                    }
-                    case "ab^x": {
-                        // res = abx(inputs)
-                        res = "3";
-                        break;
-                    }
-                    case "arccos": {
-                        // res = arccos(inputs[0])
-                        res = "4";
-                        break;
-                    }
-                    case "sinh": {
-                        // res = sinh(inputs[0])
-                        res = "5";
-                        break;
-                    }
-                    case "gamma": {
-                        // res = gamma(inputs[0])
-                        res = "6";
-                        break;
-                    }
-                    case "pow": {
-                        // res = pow(inputs[0], inputs[1])
-                        res = "7";
-                        break;
-                    }
+                    case "logbx" -> res = "1";
+                    case "sd" -> res = standardDeviation(inputs);
+                    case "ab^x" -> res = "3";
+                    case "arccos" -> res = "4";
+                    case "sinh" -> res = "5";
+                    case "gamma" -> res = "6";
+                    case "pow" -> res = "7";
+
                 }
                 expr = expr.substring(0, funcStart) + res + expr.substring(inputEnd + 1);
-                System.out.println(func + "(" + Arrays.toString(inputs) + ") = " + res);
+
+                if(isVerbose)
+                    LOGGER.info(func + "(" + Arrays.toString(inputs) + ") = " + res);
             }
         }
-        return expr;
+        return Double.toString(engine.evaluate(expr));
     }
-
-    private static String[] split(String expr) {
+    static String[] split(String expr) {
         expr += ",";
         ArrayList<String> arr = new ArrayList<>();
         StringBuilder currentInput = new StringBuilder();
@@ -111,7 +95,7 @@ public class Parser {
         return result;
     }
 
-    private static int indexOfClosingBracket(String expr, int indexOfStartingBracket) {
+    static int indexOfClosingBracket(String expr, int indexOfStartingBracket) {
         int sum = 1;
         for (int i = indexOfStartingBracket + 1; i < expr.length(); ++i) {
             if (expr.charAt(i) == '(') {
@@ -127,7 +111,7 @@ public class Parser {
         return -1;
     }
 
-    private static boolean isComplexExpr(String expr) {
+    static boolean isComplexExpr(String expr) {
         try {
             Float.parseFloat(expr);
             return false;
@@ -135,8 +119,4 @@ public class Parser {
             return true;
         }
     }
-
-//    private static String eval(){
-//
-//    }
 }
