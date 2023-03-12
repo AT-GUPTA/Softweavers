@@ -1,30 +1,35 @@
 package com.softweavers.eternity.Domain;
 
-public class ExpressionEvaluator {
+import java.math.BigDecimal;
 
+import static com.softweavers.eternity.Domain.FunctionParser.mc;
+
+public class ExpressionEvaluator {
     private int index = 0;
     private String expression;
 
-    public double evaluate(String expression) {
+    public BigDecimal evaluate(String expression) {
         this.expression = expression;
         index = 0;
         return evaluateExpression();
     }
 
-    private double evaluateExpression() {
-        double result = evaluateTerm();
+    private BigDecimal evaluateExpression() {
+        // Recursively get the left value
+        BigDecimal result = evaluateTerm();
 
         while (index < expression.length()) {
             char operator = expression.charAt(index);
 
             if (operator == '+' || operator == '-') {
                 index++;
-                double term = evaluateTerm();
+                // Get the right value
+                BigDecimal term = evaluateTerm();
 
                 if (operator == '+') {
-                    result += term;
+                    result = result.add(term);
                 } else {
-                    result -= term;
+                    result = result.subtract(term);
                 }
             } else {
                 break;
@@ -34,20 +39,22 @@ public class ExpressionEvaluator {
         return result;
     }
 
-    private double evaluateTerm() {
-        double result = evaluateFactor();
+    private BigDecimal evaluateTerm() {
+        // Recursively get the left value
+        BigDecimal result = evaluateParentheses();
 
         while (index < expression.length()) {
             char operator = expression.charAt(index);
 
             if (operator == '*' || operator == '/') {
                 index++;
-                double factor = evaluateFactor();
+                // Recursively get the right value
+                BigDecimal factor = evaluateParentheses();
 
                 if (operator == '*') {
-                    result *= factor;
+                    result = result.multiply(factor);
                 } else {
-                    result /= factor;
+                    result = result.divide(factor, mc);
                 }
             } else {
                 break;
@@ -57,16 +64,17 @@ public class ExpressionEvaluator {
         return result;
     }
 
-    private double evaluateFactor() {
-        double result;
+    private BigDecimal evaluateParentheses() {
+        BigDecimal result;
 
         char c = expression.charAt(index);
 
         if (c == '(') {
             index++;
+            // Recursive call for additional parentheses
             result = evaluateExpression();
-            index++; // consume closing parenthesis
-        } else {
+            index++; // consume closing parentheses
+        } else if (Character.isDigit(c) || c == '.') {
             int start = index;
             while (Character.isDigit(c) || c == '.') {
                 index++;
@@ -75,7 +83,13 @@ public class ExpressionEvaluator {
                 }
                 c = expression.charAt(index);
             }
-            result = Double.parseDouble(expression.substring(start, index));
+            result = new BigDecimal(expression.substring(start, index));
+        } else if (c == '-') {
+            index++;
+            // handle negative number
+            result = evaluateParentheses().negate();
+        } else {
+            throw new IllegalArgumentException("Invalid character: " + c);
         }
 
         return result;

@@ -1,29 +1,36 @@
 package com.softweavers.eternity.Domain.Functions;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
-public class StandardDeviation {
-    public static double calculateMean(double[] values){
-        double sum = 0;
-        for (double value : values){
-            sum += value;
-        }
+import static com.softweavers.eternity.Domain.FunctionParser.mc;
 
-        return sum/values.length;
-    }
+public class StandardDeviation {
 
     public static String standardDeviation(String[] input){
-        //TODO:: big dec
-        double[] values = Arrays.stream(input).mapToDouble(Double::parseDouble).toArray();
+        BigDecimal[] values = Arrays.stream(input)
+                .map(BigDecimal::new)
+                .toArray(BigDecimal[]::new);
 
-        double mean = calculateMean(values);
+        BigDecimal mean = calculateMean(values);
+
+        //TODO:: Change these values to BigDecimal once all functions have been implemented
         double standardDev = 0;
-        for (double value : values){
-            standardDev += Math.pow((value - mean), 2);
+        for (BigDecimal value : values){
+            double mu = value.subtract(mean).doubleValue();
+            standardDev += Math.pow(mu, 2);
         }
 
         standardDev /= values.length;
         standardDev = Math.pow(standardDev, .5);
         return Double.toString(standardDev);
+    }
+    private static BigDecimal calculateMean(BigDecimal[] values){
+        BigDecimal sum = new BigDecimal(0);
+        for (BigDecimal value : values){
+            sum = sum.add(value);
+        }
+
+        return sum.divide(BigDecimal.valueOf(values.length), mc);
     }
 }

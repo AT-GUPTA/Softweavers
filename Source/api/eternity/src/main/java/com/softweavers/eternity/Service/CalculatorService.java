@@ -1,6 +1,6 @@
 package com.softweavers.eternity.Service;
 
-import com.softweavers.eternity.Domain.Parser;
+import com.softweavers.eternity.Domain.FunctionParser;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +18,10 @@ public class CalculatorService {
         try {
             String expr = json.optString("formula");
             LOGGER.info("Recieved: " + expr);
-            Parser parse = new Parser();
+
+            FunctionParser parse = new FunctionParser();
             evaluatedFunctionExpr = parse.evaluateFunctions(expr);
+
             LOGGER.info("Result: " + evaluatedFunctionExpr);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());

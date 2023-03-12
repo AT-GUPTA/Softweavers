@@ -2,21 +2,24 @@ package com.softweavers.eternity.Domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.softweavers.eternity.Domain.Functions.StandardDeviation.standardDeviation;
 
-public class Parser {
-    boolean isVerbose = true;
-    String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
-    private static final Logger LOGGER = LoggerFactory.getLogger(Parser.class);
+public class FunctionParser {
 
+    String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
+    private static final Logger LOGGER = LoggerFactory.getLogger(FunctionParser.class);
     private static final ExpressionEvaluator engine = new ExpressionEvaluator();
+    public static final MathContext mc = new MathContext(20, RoundingMode.HALF_EVEN);
+
 
     public String evaluateFunctions(String expr){
-        if (isVerbose)
-            LOGGER.info("expr: " + expr);
+
+        LOGGER.debug("expr: " + expr);
 
         expr = expr.replace(" ", "");
 
@@ -29,20 +32,18 @@ public class Parser {
                 // get all inputs of the function, can be multiple seperated by commas or single input
                 String[] inputs = split(expr.substring(inputStart, inputEnd));
 
-                if(isVerbose)
-                    LOGGER.info("function: " + func + ", inputs: " + expr.substring(inputStart, inputEnd));
+                LOGGER.debug("function: " + func + ", inputs: " + expr.substring(inputStart, inputEnd));
 
                 for (int i = 0; i < inputs.length; ++i) {
                     if (isComplexExpr(inputs[i])) {
                         // if an input of the function is an expression, recursively eval
                         // and replace expression with evaluated expression
-                        if(isVerbose)
-                            LOGGER.info("complex expr: " + inputs[i]);
+                        LOGGER.debug("complex expr: " + inputs[i]);
 
                         inputs[i] = evaluateFunctions(inputs[i]);
 
                         // Solve any complex expressions with basic operations
-                        inputs[i] = Double.toString(engine.evaluate(inputs[i]));
+                        inputs[i] = engine.evaluate(inputs[i]).toString();
                     }
                 }
 
@@ -59,11 +60,12 @@ public class Parser {
                 }
                 expr = expr.substring(0, funcStart) + res + expr.substring(inputEnd + 1);
 
-                if(isVerbose)
-                    LOGGER.info(func + "(" + Arrays.toString(inputs) + ") = " + res);
+
+                LOGGER.debug(func + "(" + Arrays.toString(inputs) + ") = " + res);
             }
         }
-        return Double.toString(engine.evaluate(expr));
+
+        return engine.evaluate(expr).toString();
     }
     static String[] split(String expr) {
         expr += ",";
