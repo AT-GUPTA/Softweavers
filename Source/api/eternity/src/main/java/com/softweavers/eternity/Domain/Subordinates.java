@@ -122,6 +122,32 @@ public class Subordinates {
         }
         return result;
     }
+    
+    // Method to calculate sqrt of a number
+	public static BigDecimal sqrt(BigDecimal x) {
+		BigDecimal i = BigDecimal.ONE;
+		while (true) {
+			if (i.multiply(i) == x)
+				return i;
+			else if (i.multiply(i).compareTo(x) > 0)
+				return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
+			i = i.add(BigDecimal.ONE);
+		}
+	}
+
+	// Method to calculate decimal sqrt of a number
+	private static BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
+		BigDecimal midvalue = i.add(j).divide(BigDecimal.TWO);
+		BigDecimal square = midvalue.multiply(midvalue);
+		BigDecimal error = square.subtract(number).abs();
+		if (square == number || error.compareTo(THRESHOLD) < 0)
+			return midvalue;
+		else if (square.compareTo(number) > 0)
+			return decimalSqrt(number, i, midvalue);
+		else
+			return decimalSqrt(number, midvalue, j);
+	}
+   
 }
 /*    
 public static void main(String[] args)   
