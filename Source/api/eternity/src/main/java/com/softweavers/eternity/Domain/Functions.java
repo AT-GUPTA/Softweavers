@@ -66,26 +66,26 @@ public class Functions {
     
     public BigDecimal sinh(double x) {
 		
-		double pow1 = pow(Math.E,x);
-		//get the x^y
-		double pow2 = 1/pow1;
-		//since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
-		double result = (pow1-pow2)/2;
-		//find the result by sinh(x) = (e^x  - e^-x) / 2
-		BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
-		return bigDecimalValue; 
-	}
+        double pow1 = pow(Math.E,x);
+        //get the x^y
+        double pow2 = 1/pow1;
+        //since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
+        double result = (pow1-pow2)/2;
+        //find the result by sinh(x) = (e^x  - e^-x) / 2
+        BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
+        return bigDecimalValue; 
+    }
 	
-	public BigDecimal cosh(double x) {
-		
-		double pow1 = pow(Math.E,x);
-		//get the x^y
-		double pow2 = 1/pow1;
-		//since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
-		double result = (pow1+pow2)/2;
-		//find the result by sinh(x) = (e^x  + e^-x) / 2
-		BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
-		return bigDecimalValue; 
-	}
+    public BigDecimal cosh(double x) {
+
+    	double pow1 = pow(Math.E,x);
+	//get the x^y
+	double pow2 = 1/pow1;
+	//since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
+	double result = (pow1+pow2)/2;
+	//find the result by sinh(x) = (e^x  + e^-x) / 2
+        BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
+        return bigDecimalValue; 
+    }
 
 }
