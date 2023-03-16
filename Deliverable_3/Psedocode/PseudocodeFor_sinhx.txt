@@ -1,0 +1,16 @@
+Function sinh(x)
+	pow1 ← pow(Math.E, x)
+	pow2 ← 1/pow1
+	result ← (pow1 - pow2)/2
+	bigDecimalValue ← create BigDecimal object using Double.toString(result)
+	Return bigDecimalValue
+End function
+
+
+//
+
+
+Function sinh(x)
+	Call pow(E,x) to recrieve e^x 
+	Return ( pow(E,x) - (1/pow(E,x))  ) / 2
+End function
