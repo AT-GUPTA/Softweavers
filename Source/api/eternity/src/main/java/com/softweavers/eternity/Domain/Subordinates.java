@@ -107,6 +107,21 @@ public class Subordinates {
         }
         return x2;
     }
+
+    public double logHelper(double x) {
+        if (x <= 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        double result = 0;
+        double term = (x - 1) / x;
+        int denominator = 2;
+        while (term != 0) {
+            result -= term;
+            term = Math.pow((x - 1) / x, denominator) / denominator;
+            denominator++;
+        }
+        return result;
+    }
 }
 /*    
 public static void main(String[] args)   

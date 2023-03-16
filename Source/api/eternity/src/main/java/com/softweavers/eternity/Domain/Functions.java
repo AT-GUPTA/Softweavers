@@ -2,6 +2,7 @@ package com.softweavers.eternity.Domain;
 
 public class Functions {
     private final Subordinates subordinates = new Subordinates();
+
     
      /*
     taylor series for arccos = pi/2 - taylor series for sin
@@ -30,4 +31,37 @@ public class Functions {
             return result;
         }
     }
+
+    public double logarithm(double val, double base) {
+        if (val <= 0 || base <= 0 || base == 1) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        int sign = 1;
+        if (val < 1) {
+            val = 1 / val;
+            sign = -1;
+        }
+
+        double result = 0;
+        while (val >= base * base) {
+            double temp = subordinates.logHelper(base);
+            int power = (int) (subordinates.logHelper(val) / temp);
+            result += power;
+            val /= subordinates.pow(base, power);
+        }
+
+        double term = (val - 1) / base;
+        double numerator = -1;
+        int denominator = 2;
+        while (term != 0) {
+            result += term;
+            numerator *= -1 * (val - 1);
+            term = numerator / (denominator * subordinates.pow(base, denominator - 1));
+            denominator++;
+        }
+
+        return sign * result;
+    }
+
 }
