@@ -2,7 +2,9 @@ package com.softweavers.eternity.Domain;
 
 public class Functions {
     private final Subordinates subordinates = new Subordinates();
-
+    final static int NDIGITS = 10;
+    final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS));
+    final static BigDecimal NEGATIVE_ONE = BigDecimal.ZERO.subtract(BigDecimal.ONE);
     
      /*
     taylor series for arccos = pi/2 - taylor series for sin
@@ -87,5 +89,57 @@ public class Functions {
         BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
         return bigDecimalValue; 
     }
+	
+	public static BigDecimal pow(BigDecimal base, BigDecimal exp) {
+		// Handle case of negative base
+		if (base.compareTo(BigDecimal.ZERO) < 0) {
+			try {
+		        BigInteger expInt = exp.toBigIntegerExact();
+		        // Negative base, even integer exponent case
+		        if (expInt.mod(BigInteger.TWO) == BigInteger.ZERO)
+		        	return pow(NEGATIVE_ONE.multiply(base), exp);
+		        // Negative base, odd exponent case
+		        else
+		        	return NEGATIVE_ONE.multiply(pow(NEGATIVE_ONE.multiply(base), exp));
+		    } catch (ArithmeticException ex) {
+		    	// Negative base, noninteger exponent case
+		        Main.LOGGER.info("Error: Unreal solution");
+		        return null;
+		    }
+		}
+		// Handle case of negative exponent
+		else if (exp.compareTo(BigDecimal.ZERO) < 0) {
+			BigDecimal result = pow(base, NEGATIVE_ONE.multiply(exp)).round(new MathContext(NDIGITS));
+			return new BigDecimal(1/result.doubleValue()).round(new MathContext(NDIGITS));
+		}
+		
+		// Covers prior to decimal point using the property x^y = x^(y/2)^2
+		BigDecimal temp = new BigDecimal(0);
+		if (exp.compareTo(BigDecimal.ONE) >= 0) {
+			temp = pow(base, exp.divide(BigDecimal.TWO));
+			return temp.multiply(temp).round(new MathContext(NDIGITS));
+		} else {
+			//now deal with the fractional part 
+			BigDecimal low = BigDecimal.ZERO;
+			BigDecimal high = BigDecimal.ONE;
+			BigDecimal sqr = sqrt(base);
+			BigDecimal acc = sqr;
+			BigDecimal mid = high.divide(BigDecimal.TWO);
+			BigDecimal error = mid.subtract(exp).abs();
+			while (error.compareTo(THRESHOLD) > 0) {
+				sqr = sqrt(sqr);
+				if (mid.compareTo(exp) <= 0) {
+					low = mid;
+					acc = acc.multiply(sqr);
+				} else {
+					high = mid;
+					acc = acc.multiply(new BigDecimal(1/sqr.doubleValue()));
+				}
+				mid = low.add(high).divide(BigDecimal.TWO);
+				error = mid.subtract(exp).abs();
+			}
+			return acc.round(new MathContext(NDIGITS));
+		}
+	}    
 
 }
