@@ -1,0 +1,21 @@
+Function arccos(double x) 
+  If x > 1 or x<-1
+      Error – out of domain
+  Else if x = 1
+      Return 0
+  Else if x = -1
+      Return pi
+  Else 
+      Variable fraction1, fraction2
+      Loop Result := 0
+      End := 30
+      For int 1 := 0 to end 
+        Set fraction1 to factorial(2n)/(pow(2, 2n) * pow(factorial(n),2))
+        Set fraction2 to pow(x, (2n+1))/(2n+1)
+        Set loop result to loop result + (fraction1 * fraction 2)
+      End For
+      Result := pi/2 - loop result
+      Convert result into big decimal
+      Return result
+  End If
+End function
