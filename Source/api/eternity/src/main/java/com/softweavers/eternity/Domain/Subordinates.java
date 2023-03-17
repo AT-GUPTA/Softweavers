@@ -2,22 +2,26 @@ package com.softweavers.eternity.Domain;
 
 public class Subordinates {
 
-    public int abs(int a) {
+    public BigInteger abs(BigInteger a) {
         if (a >= 0)
             return a;
         else
             return -a;
     }
 
-    public double abs(double a) {
+    public BigDecimal abs(BigDecimal a) {
         if (a >= 0)
             return a;
         else
             return -a;
     }
 
-    public int factorial(int f) {
-        int i, fct = 1;
+    public BigInteger factorial(BigInteger f) {
+        if (f<0){
+	   Main.LOGGER.info("Error: Invalid input");
+	   return null;
+	}
+	int i, fct = 1;
         for (i = 1; i <= f; i++) {
             fct = fct * i;
         }
@@ -88,7 +92,7 @@ public class Subordinates {
     }
 
     // nth root of x = x^(1/n)
-    public double nthroot(double n, double x) {
+    public BigDecimal nthroot(BigDecimal n, BigDecimal x) {
         // if x is negative, returns error message
         if (x < 0) {
             System.err.println("Negative!");
@@ -96,9 +100,9 @@ public class Subordinates {
         }
         if (x == 0)
             return 0;
-        double x1 = x;
-        double x2 = x / n;
-        double x3 = x1 - x2;
+        BigDecimal x1 = x;
+        BigDecimal x2 = x / n;
+        BigDecimal x3 = x1 - x2;
         if (x3 < 0)
             x3 = x3 * -1;
         while (x3 > 0.0000000001) {
