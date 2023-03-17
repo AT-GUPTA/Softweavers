@@ -1,6 +1,6 @@
 package com.softweavers.eternity.Service;
 
-import com.softweavers.eternity.Controller.CalculatorController;
+import com.softweavers.eternity.Domain.FunctionParser;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,18 @@ public class CalculatorService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorService.class);
 
     public BigDecimal calculate(JSONObject json) {
-        //int precision = json.getInt("precision");
-        return null;
+        String evaluatedFunctionExpr = "";
+        try {
+            String expr = json.optString("formula");
+            LOGGER.info("Recieved: " + expr);
+
+            FunctionParser parse = new FunctionParser();
+            evaluatedFunctionExpr = parse.evaluateFunctions(expr);
+
+            LOGGER.info("Result: " + evaluatedFunctionExpr);
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+        return new BigDecimal(evaluatedFunctionExpr);
     }
 }
