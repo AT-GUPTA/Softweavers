@@ -147,4 +147,11 @@ public class Functions {
 		}
 	}    
 
+	public BigDecimal XtoY(BigDecimal y){
+        	BigDecimal x = 0;
+      	 	// if (previousResult != null)
+       		// x = previousResult;
+       		BigDecimal result = pow(x,y);
+       		return result;
+   	}
 }
