@@ -7,8 +7,6 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static com.softweavers.eternity.Domain.Functions.StandardDeviation.standardDeviation;
-
 public class FunctionParser {
 
     String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };

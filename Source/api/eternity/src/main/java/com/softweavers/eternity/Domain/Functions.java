@@ -2,6 +2,9 @@ package com.softweavers.eternity.Domain;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
+import java.util.Arrays;
+
+import static com.softweavers.eternity.Domain.FunctionParser.mc;
 
 public class Functions {
     private final Subordinates subordinates = new Subordinates();
@@ -29,7 +32,7 @@ public class Functions {
             int end = 30;
             for (int n = 0; n <= end; n++) {
                 fraction1 = factorial(BigInt.valueOf(2*n)) /
-                    (pow(BigInt.valueOf(2), BigInt.valueOf(2 * n)) * pow(factorial(BigInt.valueOf(n)), BigInt.valueOf(2));
+                    (pow(BigInt.valueOf(2), BigInt.valueOf(2 * n)) * pow(factorial(BigInt.valueOf(n)), BigInt.valueOf(2)));
                 fraction2 = pow(BigDecimal.valueOf(x), BigInt.valueOf((2 * n) + 1))/
                  BigInt.valueOf((2 * n) + 1);
                 loop_result = loop_result.add(fraction1.multiply(fraction2));
@@ -199,5 +202,33 @@ public class Functions {
             y = new BigDecimal(as);
         }
         return y;
+    }
+
+
+    public static String standardDeviation(String[] input){
+        BigDecimal[] values = Arrays.stream(input)
+                .map(BigDecimal::new)
+                .toArray(BigDecimal[]::new);
+
+        BigDecimal mean = calculateMean(values);
+
+        //TODO:: Change these values to BigDecimal once all functions have been implemented
+        double standardDev = 0;
+        for (BigDecimal value : values){
+            double mu = value.subtract(mean).doubleValue();
+            standardDev += Math.pow(mu, 2);
+        }
+
+        standardDev /= values.length;
+        standardDev = Math.pow(standardDev, .5);
+        return Double.toString(standardDev);
+    }
+    private static BigDecimal calculateMean(BigDecimal[] values){
+        BigDecimal sum = new BigDecimal(0);
+        for (BigDecimal value : values){
+            sum = sum.add(value);
+        }
+
+        return sum.divide(BigDecimal.valueOf(values.length), mc);
     }
 }
