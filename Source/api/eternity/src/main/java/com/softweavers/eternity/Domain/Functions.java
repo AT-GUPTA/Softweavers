@@ -154,4 +154,50 @@ public class Functions {
        		BigDecimal result = pow(x,y);
        		return result;
    	}
+	
+    private static final MathContext PRECISION = MathContext.DECIMAL128;
+
+    private static BigDecimal sin(BigDecimal x) {
+        BigDecimal sum = new BigDecimal(0);
+        BigDecimal fact = new BigDecimal(1);
+        BigDecimal pow = new BigDecimal(x.toString());
+        int count = 1;
+        for (int i = 0; i < 15; ++i) {
+            sum.add(pow.divide(fact));
+            pow = x.multiply(x).multiply(pow).multiply(new BigDecimal(-1));
+            fact = fact.multiply(new BigDecimal((count + 1) * count + 2));
+            count += 2;
+        }
+        return sum;
+    }
+
+    private static BigDecimal[] lanczos = { new BigDecimal("676.5203681218851"),
+            new BigDecimal("-1259.1392167224028"), new BigDecimal("771.32342877765313"),
+            new BigDecimal("-176.61502916214059"), new BigDecimal("12.507343278686905"),
+            new BigDecimal("-0.13857109526572012"), new BigDecimal("9.9843695780195716e-6"), new BigDecimal(
+                    "1.5056327351493116e-7") };
+
+    // Calculate the Gamma function for a given input value
+    public static BigDecimal gamma(BigDecimal z) {
+        if (z.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Input must be positive");
+        }
+        BigDecimal y = null;
+        if (z.compareTo(new BigDecimal(0.5)) == -1) {
+            BigDecimal a = z.multiply(new BigDecimal(Math.PI));
+            BigDecimal b = new BigDecimal(1).subtract(z);
+            y = new BigDecimal(Math.PI).divide(sin(a)).multiply(gamma(b), PRECISION);
+        } else {
+            z = z.subtract(new BigDecimal(1));
+            BigDecimal x = new BigDecimal("0.99999999999980993");
+            for (int i = 0; i < lanczos.length; ++i) {
+                x = x.add(lanczos[i].divide(z.add(new BigDecimal(i + 1)), PRECISION));
+            }
+            BigDecimal t = z.add(new BigDecimal(lanczos.length - 0.5));
+            double as = Math.pow(2 * Math.PI, 0.5) * Math.pow(t.doubleValue(), z.doubleValue() + 0.5)
+                    * Math.pow(Math.E, t.doubleValue() * -1) * x.doubleValue();
+            y = new BigDecimal(as);
+        }
+        return y;
+    }
 }
