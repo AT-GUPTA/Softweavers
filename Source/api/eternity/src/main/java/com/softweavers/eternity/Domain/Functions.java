@@ -16,23 +16,25 @@ public class Functions {
     final result will be pi/2 - result from for loop
     return result converted to big decimal
      */
-    public static BigDecimal arccos(double x) {
-        if (x > 1 || x < -1)
+    public static BigDecimal arccos(BigDecimal x) {
+        if (x.compareTo(BigDecimal.valueOf(1)) == 1 || x.compareTo(BigDecimal.valueOf(-1)) == -1)
             throw new IllegalArgumentException("Input for arccos(x) out of domain.");
-        else if (x == 1)
+        else if (x.compareTo(BigDecimal.valueOf(1)) == 0)
             return (BigDecimal.valueOf(0.0));
-        else if (x == -1)
+        else if (x.compareTo(BigDecimal.valueOf(0)) == 0)
             return (BigDecimal.valueOf(Math.PI));
         else {
-            double loop_result = 0;
-            double fraction1, fraction2.
+            BigDecimal loop_result = new BigDecimal(0);
+            BigDecimal fraction1, fraction2;
             int end = 30;
             for (int n = 0; n <= end; n++) {
-                fraction1 = factorial(2 * n) / (pow(2, 2 * n) * pow(factorial(n), 2));
-                fraction2 = (pow(x, ((2 * n) + 1))) / ((2 * n) + 1);
-                loop_result = loop_result + (fraction1 * fraction2);
+                fraction1 = factorial(BigInt.valueOf(2*n)) /
+                    (pow(BigInt.valueOf(2), BigInt.valueOf(2 * n)) * pow(factorial(BigInt.valueOf(n)), BigInt.valueOf(2));
+                fraction2 = pow(BigDecimal.valueOf(x), BigInt.valueOf((2 * n) + 1))/
+                 BigInt.valueOf((2 * n) + 1);
+                loop_result = loop_result.add(fraction1.multiply(fraction2));
             }
-            BigDecimal result = BigDecimal.valueOf((Math.PI / 2) - loop_result);
+            BigDecimal result = BigDecimal.valueOf(Math.PI).divide(loop_result);
             return result;
         }
     }
