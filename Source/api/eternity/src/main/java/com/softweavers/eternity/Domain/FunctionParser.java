@@ -2,17 +2,17 @@ package com.softweavers.eternity.Domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class FunctionParser {
 
     String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
     private static final Logger LOGGER = LoggerFactory.getLogger(FunctionParser.class);
     private static final ExpressionEvaluator engine = new ExpressionEvaluator();
-    public static final MathContext mc = new MathContext(20, RoundingMode.HALF_EVEN);
+
+    private static final Functions functionCalculator = new Functions();
 
 
     public String evaluateFunctions(String expr){
@@ -48,7 +48,7 @@ public class FunctionParser {
                 String res = "";
                 switch (func) {
                     case "logbx" -> res = "1";
-                    case "sd" -> res = standardDeviation(inputs);
+                    case "sd" -> res = functionCalculator.standardDeviation(inputs).toString();
                     case "ab^x" -> res = "3";
                     case "arccos" -> res = "4";
                     case "sinh" -> res = "5";

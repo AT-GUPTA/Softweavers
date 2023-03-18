@@ -2,7 +2,7 @@ package com.softweavers.eternity.Domain;
 
 import java.math.BigDecimal;
 
-import static com.softweavers.eternity.Domain.FunctionParser.mc;
+import static com.softweavers.eternity.Common.Precision.MATH_CONTEXT;
 
 public class ExpressionEvaluator {
     private int index = 0;
@@ -54,7 +54,7 @@ public class ExpressionEvaluator {
                 if (operator == '*') {
                     result = result.multiply(factor);
                 } else {
-                    result = result.divide(factor, mc);
+                    result = result.divide(factor, MATH_CONTEXT);
                 }
             } else {
                 break;
