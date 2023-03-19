@@ -79,27 +79,23 @@ public class Functions {
         return BigDecimal.valueOf(sign).multiply(result);
     }
 
-    public BigDecimal sinh(double x) {
-		
-        double pow1 = pow(Math.e,x);
-        //get the x^y
-        double pow2 = 1/pow1;
-        //since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
-        double result = (pow1-pow2)/2;
-        //find the result by sinh(x) = (e^x  - e^-x) / 2
-        return new BigDecimal(Double.toString(result));
-    }
-	
-    public BigDecimal cosh(double x) {
+    public static BigDecimal sinh(BigDecimal x) {
+        BigDecimal e = BigDecimal.valueOf(Math.E);
+        BigDecimal pow1 = pow(e, x);
+        BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
+        //Decima1128 for accurity of 34 decimal places.
+        BigDecimal result = (pow1.subtract(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
 
-    	double pow1 = pow(Math.E,x);
-	//get the x^y
-	double pow2 = 1/pow1;
-	//since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
-	double result = (pow1+pow2)/2;
-	//find the result by sinh(x) = (e^x  + e^-x) / 2
-        BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
-        return bigDecimalValue;
+        return result;
+    }
+
+    public static BigDecimal cosh(BigDecimal x) {
+        BigDecimal e = BigDecimal.valueOf(Math.E);
+        BigDecimal pow1 = pow(e, x);
+        BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
+        BigDecimal result = (pow1.add(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
+
+        return result;
     }
 	
 	public static BigDecimal pow(BigDecimal base, BigDecimal exp) {
