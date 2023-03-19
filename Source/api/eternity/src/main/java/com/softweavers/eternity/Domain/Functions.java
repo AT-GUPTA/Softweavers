@@ -1,101 +1,97 @@
 package com.softweavers.eternity.Domain;
+import com.softweavers.eternity.Service.CalculatorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
-import java.util.Arrays;
-
-import static com.softweavers.eternity.Domain.FunctionParser.mc;
+import java.math.RoundingMode;
 
 public class Functions {
     private final Subordinates subordinates = new Subordinates();
     final static int NDIGITS = 10;
     final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS));
     final static BigDecimal NEGATIVE_ONE = BigDecimal.ZERO.subtract(BigDecimal.ONE);
-    
-     /*
-    taylor series for arccos = pi/2 - taylor series for sin
-    for loop will calculate taylor series for sin
-    trial and error to find right number of n
-    final result will be pi/2 - result from for loop
-    return result converted to big decimal
-     */
-    public static BigDecimal arccos(BigDecimal x) {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorService.class);
+
+
+    public BigDecimal arccos(BigDecimal x) {
         if (x.compareTo(BigDecimal.valueOf(1)) == 1 || x.compareTo(BigDecimal.valueOf(-1)) == -1)
             throw new IllegalArgumentException("Input for arccos(x) out of domain.");
         else if (x.compareTo(BigDecimal.valueOf(1)) == 0)
             return (BigDecimal.valueOf(0.0));
-        else if (x.compareTo(BigDecimal.valueOf(0)) == 0)
+        else if (x.compareTo(BigDecimal.valueOf(-1)) == 0)
             return (BigDecimal.valueOf(Math.PI));
         else {
             BigDecimal loop_result = new BigDecimal(0);
             BigDecimal fraction1, fraction2;
             int end = 30;
             for (int n = 0; n <= end; n++) {
-                fraction1 = factorial(BigInt.valueOf(2*n)) /
-                    (pow(BigInt.valueOf(2), BigInt.valueOf(2 * n)) * pow(factorial(BigInt.valueOf(n)), BigInt.valueOf(2)));
-                fraction2 = pow(BigDecimal.valueOf(x), BigInt.valueOf((2 * n) + 1))/
-                 BigInt.valueOf((2 * n) + 1);
+                //for use in power function in denominator for fraction1
+                BigDecimal bdFactorial = new BigDecimal(factorial(BigInteger.valueOf(n)));
+                //numerator of fraction 1 in Big Decimal
+                BigDecimal fraction1Numerator = new BigDecimal(factorial(BigInteger.valueOf(2*n)));
+                fraction1 = fraction1Numerator.divide(
+                        (pow(BigDecimal.valueOf(2), BigDecimal.valueOf(2 * n)).multiply(pow(bdFactorial, BigDecimal.valueOf(2)))));
+                fraction2 = pow(x, BigDecimal.valueOf((2 * n) + 1)).divide(BigDecimal.valueOf((2 * n) + 1));
                 loop_result = loop_result.add(fraction1.multiply(fraction2));
             }
             BigDecimal result = BigDecimal.valueOf(Math.PI).divide(loop_result);
             return result;
         }
-    }
+    }	
 
-    public double logarithm(double val, double base) {
-        if (val <= 0 || base <= 0 || base == 1) {
+    public BigDecimal logarithm(BigDecimal val, BigDecimal base) {
+        if (val.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ONE) == 0) {
             throw new IllegalArgumentException("Invalid input");
         }
 
         int sign = 1;
-        if (val < 1) {
-            val = 1 / val;
+        if (val.compareTo(BigDecimal.ONE) < 0) {
+            val = BigDecimal.ONE.divide(val, MathContext.DECIMAL128);
             sign = -1;
         }
 
-        double result = 0;
-        while (val >= base * base) {
-            double temp = subordinates.logHelper(base);
-            int power = (int) (subordinates.logHelper(val) / temp);
-            result += power;
-            val /= subordinates.pow(base, power);
+        BigDecimal result = BigDecimal.ZERO;
+        while (val.compareTo(base.multiply(base)) >= 0) {
+            BigDecimal temp = subordinates.logHelper(base);
+            int power = (subordinates.logHelper(val)).divide(temp, RoundingMode.DOWN).intValue();
+            result = result.add(BigDecimal.valueOf(power));
+            val = val.divide(base.pow(power), MathContext.DECIMAL128);
         }
 
-        double term = (val - 1) / base;
-        double numerator = -1;
+        BigDecimal term = val.subtract(BigDecimal.ONE).divide(base, MathContext.DECIMAL128);
+        BigDecimal numerator = BigDecimal.valueOf(-1);
         int denominator = 2;
-        while (term != 0) {
-            result += term;
-            numerator *= -1 * (val - 1);
-            term = numerator / (denominator * subordinates.pow(base, denominator - 1));
+        while (term.compareTo(BigDecimal.ZERO) != 0) {
+            result = result.add(term);
+            numerator = numerator.multiply(val.subtract(BigDecimal.ONE));
+            term = numerator.divide(BigDecimal.valueOf(denominator).multiply(base.pow(denominator - 1)), MathContext.DECIMAL128);
             denominator++;
         }
 
-        return sign * result;
+        return BigDecimal.valueOf(sign).multiply(result);
     }
-    
-    public BigDecimal sinh(double x) {
-		
-        double pow1 = pow(Math.E,x);
-        //get the x^y
-        double pow2 = 1/pow1;
-        //since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
-        double result = (pow1-pow2)/2;
-        //find the result by sinh(x) = (e^x  - e^-x) / 2
-        BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
-        return bigDecimalValue; 
-    }
-	
-    public BigDecimal cosh(double x) {
 
-    	double pow1 = pow(Math.E,x);
-	//get the x^y
-	double pow2 = 1/pow1;
-	//since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
-	double result = (pow1+pow2)/2;
-	//find the result by sinh(x) = (e^x  + e^-x) / 2
-        BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
-        return bigDecimalValue; 
+    public static BigDecimal sinh(BigDecimal x) {
+        BigDecimal e = BigDecimal.valueOf(Math.E);
+        BigDecimal pow1 = pow(e, x);
+        BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
+        //Decima1128 for accurity of 34 decimal places.
+        BigDecimal result = (pow1.subtract(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
+
+        return result;
+    }
+
+    public static BigDecimal cosh(BigDecimal x) {
+        BigDecimal e = BigDecimal.valueOf(Math.E);
+        BigDecimal pow1 = pow(e, x);
+        BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
+        BigDecimal result = (pow1.add(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
+
+        return result;
     }
 	
 	public static BigDecimal pow(BigDecimal base, BigDecimal exp) {
@@ -111,7 +107,7 @@ public class Functions {
 		        	return NEGATIVE_ONE.multiply(pow(NEGATIVE_ONE.multiply(base), exp));
 		    } catch (ArithmeticException ex) {
 		    	// Negative base, noninteger exponent case
-		        Main.LOGGER.info("Error: Unreal solution");
+		        LOGGER.info("Error: Unreal solution");
 		        return null;
 		    }
 		}
@@ -202,33 +198,5 @@ public class Functions {
             y = new BigDecimal(as);
         }
         return y;
-    }
-
-
-    public static String standardDeviation(String[] input){
-        BigDecimal[] values = Arrays.stream(input)
-                .map(BigDecimal::new)
-                .toArray(BigDecimal[]::new);
-
-        BigDecimal mean = calculateMean(values);
-
-        //TODO:: Change these values to BigDecimal once all functions have been implemented
-        double standardDev = 0;
-        for (BigDecimal value : values){
-            double mu = value.subtract(mean).doubleValue();
-            standardDev += Math.pow(mu, 2);
-        }
-
-        standardDev /= values.length;
-        standardDev = Math.pow(standardDev, .5);
-        return Double.toString(standardDev);
-    }
-    private static BigDecimal calculateMean(BigDecimal[] values){
-        BigDecimal sum = new BigDecimal(0);
-        for (BigDecimal value : values){
-            sum = sum.add(value);
-        }
-
-        return sum.divide(BigDecimal.valueOf(values.length), mc);
     }
 }
