@@ -1,6 +1,35 @@
 package com.softweavers.eternity.Domain;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.MathContext;
+
 public class Subordinates {
+
+    // Method to calculate sqrt of a number
+    public static BigDecimal sqrt(BigDecimal x) {
+        BigDecimal i = BigDecimal.ONE;
+        while (true) {
+            if (i.multiply(i) == x)
+                return i;
+            else if (i.multiply(i).compareTo(x) > 0)
+                return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
+            i = i.add(BigDecimal.ONE);
+        }
+    }
+
+    // Method to calculate decimal sqrt of a number
+    private static BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
+        BigDecimal midvalue = i.add(j).divide(BigDecimal.TWO);
+        BigDecimal square = midvalue.multiply(midvalue);
+        BigDecimal error = square.subtract(number).abs();
+        if (square == number || error.compareTo(THRESHOLD) < 0)
+            return midvalue;
+        else if (square.compareTo(number) > 0)
+            return decimalSqrt(number, i, midvalue);
+        else
+            return decimalSqrt(number, midvalue, j);
+    }
 
     public BigInteger abs(BigInteger a) {
         if (a >= 0)
@@ -17,11 +46,11 @@ public class Subordinates {
     }
 
     public BigInteger factorial(BigInteger f) {
-        if (f<0){
-	   Main.LOGGER.info("Error: Invalid input");
-	   return null;
-	}
-	int i, fct = 1;
+        if (f < 0) {
+            Main.LOGGER.info("Error: Invalid input");
+            return null;
+        }
+        int i, fct = 1;
         for (i = 1; i <= f; i++) {
             fct = fct * i;
         }
@@ -42,12 +71,12 @@ public class Subordinates {
         }
     }
 
-    // recursive method to find the square root of a number up to n decimal places    
+    // recursive method to find the square root of a number up to n decimal places
     private double decimalSqrt(double number, double i, double j) {
         // using Newton's method to find a value close to the real value
         double midvalue = (i + j) / 2;
         double square = midvalue * midvalue;
-        //compares the midvalue with square. Accuracy is set to 10 decimal places.   
+        //compares the midvalue with square. Accuracy is set to 10 decimal places.
         if (square == number || abs(square - number) < 0.0000000001)
             return midvalue;
             //if the square root belongs to second half
@@ -66,7 +95,7 @@ public class Subordinates {
             temp = pow(base, exp / 2);
             return temp * temp;
         }
-        //now deal with the fractional part    
+        //now deal with the fractional part
         else {
             double low = 0;
             double high = 1.0;
@@ -112,46 +141,22 @@ public class Subordinates {
         return x2;
     }
 
-    public double logHelper(double x) {
-        if (x <= 0) {
+    public BigDecimal logHelper(BigDecimal x) {
+        if (x.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Invalid input");
         }
-        double result = 0;
-        double term = (x - 1) / x;
+        BigDecimal result = BigDecimal.ZERO;
+        BigDecimal temp = (x.subtract(BigDecimal.ONE)).divide(x, MathContext.DECIMAL128);
+        BigDecimal term = temp;
         int denominator = 2;
-        while (term != 0) {
-            result -= term;
-            term = Math.pow((x - 1) / x, denominator) / denominator;
+        while (term.compareTo(BigDecimal.ZERO) != 0) {
+            result = result.subtract(term);
+            term = BigDecimal.valueOf(pow(temp.doubleValue(), denominator)).divide(BigDecimal.valueOf(denominator), MathContext.DECIMAL128);
             denominator++;
         }
         return result;
     }
-    
-    // Method to calculate sqrt of a number
-	public static BigDecimal sqrt(BigDecimal x) {
-		BigDecimal i = BigDecimal.ONE;
-		while (true) {
-			if (i.multiply(i) == x)
-				return i;
-			else if (i.multiply(i).compareTo(x) > 0)
-				return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
-			i = i.add(BigDecimal.ONE);
-		}
-	}
 
-	// Method to calculate decimal sqrt of a number
-	private static BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
-		BigDecimal midvalue = i.add(j).divide(BigDecimal.TWO);
-		BigDecimal square = midvalue.multiply(midvalue);
-		BigDecimal error = square.subtract(number).abs();
-		if (square == number || error.compareTo(THRESHOLD) < 0)
-			return midvalue;
-		else if (square.compareTo(number) > 0)
-			return decimalSqrt(number, i, midvalue);
-		else
-			return decimalSqrt(number, midvalue, j);
-	}
-   
 }
 /*    
 public static void main(String[] args)   

@@ -1,15 +1,23 @@
 package com.softweavers.eternity.Domain;
+import com.softweavers.eternity.Service.CalculatorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 public class Functions {
     private final Subordinates subordinates = new Subordinates();
     final static int NDIGITS = 10;
     final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS));
     final static BigDecimal NEGATIVE_ONE = BigDecimal.ZERO.subtract(BigDecimal.ONE);
-    
-     /*
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorService.class);
+
+
+    /*
     taylor series for arccos = pi/2 - taylor series for sin
     for loop will calculate taylor series for sin
     trial and error to find right number of n
@@ -39,48 +47,47 @@ public class Functions {
         }
     }
 
-    public double logarithm(double val, double base) {
-        if (val <= 0 || base <= 0 || base == 1) {
+    public BigDecimal logarithm(BigDecimal val, BigDecimal base) {
+        if (val.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ONE) == 0) {
             throw new IllegalArgumentException("Invalid input");
         }
 
         int sign = 1;
-        if (val < 1) {
-            val = 1 / val;
+        if (val.compareTo(BigDecimal.ONE) < 0) {
+            val = BigDecimal.ONE.divide(val, MathContext.DECIMAL128);
             sign = -1;
         }
 
-        double result = 0;
-        while (val >= base * base) {
-            double temp = subordinates.logHelper(base);
-            int power = (int) (subordinates.logHelper(val) / temp);
-            result += power;
-            val /= subordinates.pow(base, power);
+        BigDecimal result = BigDecimal.ZERO;
+        while (val.compareTo(base.multiply(base)) >= 0) {
+            BigDecimal temp = subordinates.logHelper(base);
+            int power = (subordinates.logHelper(val)).divide(temp, RoundingMode.DOWN).intValue();
+            result = result.add(BigDecimal.valueOf(power));
+            val = val.divide(base.pow(power), MathContext.DECIMAL128);
         }
 
-        double term = (val - 1) / base;
-        double numerator = -1;
+        BigDecimal term = val.subtract(BigDecimal.ONE).divide(base, MathContext.DECIMAL128);
+        BigDecimal numerator = BigDecimal.valueOf(-1);
         int denominator = 2;
-        while (term != 0) {
-            result += term;
-            numerator *= -1 * (val - 1);
-            term = numerator / (denominator * subordinates.pow(base, denominator - 1));
+        while (term.compareTo(BigDecimal.ZERO) != 0) {
+            result = result.add(term);
+            numerator = numerator.multiply(val.subtract(BigDecimal.ONE));
+            term = numerator.divide(BigDecimal.valueOf(denominator).multiply(base.pow(denominator - 1)), MathContext.DECIMAL128);
             denominator++;
         }
 
-        return sign * result;
+        return BigDecimal.valueOf(sign).multiply(result);
     }
-    
+
     public BigDecimal sinh(double x) {
 		
-        double pow1 = pow(Math.E,x);
+        double pow1 = pow(Math.e,x);
         //get the x^y
         double pow2 = 1/pow1;
         //since x^-y  = 1/ (x^y) , we can get e^-x by 1/(e^x)  
         double result = (pow1-pow2)/2;
         //find the result by sinh(x) = (e^x  - e^-x) / 2
-        BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
-        return bigDecimalValue; 
+        return new BigDecimal(Double.toString(result));
     }
 	
     public BigDecimal cosh(double x) {
@@ -92,7 +99,7 @@ public class Functions {
 	double result = (pow1+pow2)/2;
 	//find the result by sinh(x) = (e^x  + e^-x) / 2
         BigDecimal bigDecimalValue = new BigDecimal(Double.toString(result));
-        return bigDecimalValue; 
+        return bigDecimalValue;
     }
 	
 	public static BigDecimal pow(BigDecimal base, BigDecimal exp) {
@@ -108,7 +115,7 @@ public class Functions {
 		        	return NEGATIVE_ONE.multiply(pow(NEGATIVE_ONE.multiply(base), exp));
 		    } catch (ArithmeticException ex) {
 		    	// Negative base, noninteger exponent case
-		        Main.LOGGER.info("Error: Unreal solution");
+		        LOGGER.info("Error: Unreal solution");
 		        return null;
 		    }
 		}
