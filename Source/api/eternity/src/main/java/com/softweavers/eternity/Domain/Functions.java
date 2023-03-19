@@ -14,6 +14,7 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 
 import static com.softweavers.eternity.Common.Precision.MATH_CONTEXT;
+import static com.softweavers.eternity.Domain.Subordinates.sqrt;
 
 public class Functions {
     private final Subordinates subordinates = new Subordinates();
@@ -24,63 +25,63 @@ public class Functions {
     private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorService.class);
 
 
-    public BigDecimal arccos(BigDecimal x) {
-        if (x.compareTo(BigDecimal.valueOf(1)) == 1 || x.compareTo(BigDecimal.valueOf(-1)) == -1)
-            throw new IllegalArgumentException("Input for arccos(x) out of domain.");
-        else if (x.compareTo(BigDecimal.valueOf(1)) == 0)
-            return (BigDecimal.valueOf(0.0));
-        else if (x.compareTo(BigDecimal.valueOf(-1)) == 0)
-            return (BigDecimal.valueOf(Math.PI));
-        else {
-            BigDecimal loop_result = new BigDecimal(0);
-            BigDecimal fraction1, fraction2;
-            int end = 30;
-            for (int n = 0; n <= end; n++) {
-                //for use in power function in denominator for fraction1
-                BigDecimal bdFactorial = new BigDecimal(factorial(BigInteger.valueOf(n)));
-                //numerator of fraction 1 in Big Decimal
-                BigDecimal fraction1Numerator = new BigDecimal(factorial(BigInteger.valueOf(2*n)));
-                fraction1 = fraction1Numerator.divide(
-                        (pow(BigDecimal.valueOf(2), BigDecimal.valueOf(2 * n)).multiply(pow(bdFactorial, BigDecimal.valueOf(2)))));
-                fraction2 = pow(x, BigDecimal.valueOf((2 * n) + 1)).divide(BigDecimal.valueOf((2 * n) + 1));
-                loop_result = loop_result.add(fraction1.multiply(fraction2));
-            }
-            BigDecimal result = BigDecimal.valueOf(Math.PI).divide(loop_result);
-            return result;
-        }
-    }
+//    public BigDecimal arccos(BigDecimal x) {
+//        if (x.compareTo(BigDecimal.valueOf(1)) == 1 || x.compareTo(BigDecimal.valueOf(-1)) == -1)
+//            throw new IllegalArgumentException("Input for arccos(x) out of domain.");
+//        else if (x.compareTo(BigDecimal.valueOf(1)) == 0)
+//            return (BigDecimal.valueOf(0.0));
+//        else if (x.compareTo(BigDecimal.valueOf(-1)) == 0)
+//            return (BigDecimal.valueOf(Math.PI));
+//        else {
+//            BigDecimal loop_result = new BigDecimal(0);
+//            BigDecimal fraction1, fraction2;
+//            int end = 30;
+//            for (int n = 0; n <= end; n++) {
+//                //for use in power function in denominator for fraction1
+//                BigDecimal bdFactorial = new BigDecimal(subordinates.factorial(BigInteger.valueOf(n)));
+//                //numerator of fraction 1 in Big Decimal
+//                BigDecimal fraction1Numerator = new BigDecimal(subordinates.factorial(BigInteger.valueOf(2*n)));
+//                fraction1 = fraction1Numerator.divide(
+//                        (pow(BigDecimal.valueOf(2), BigDecimal.valueOf(2 * n)).multiply(pow(bdFactorial, BigDecimal.valueOf(2)))));
+//                fraction2 = pow(x, BigDecimal.valueOf((2 * n) + 1)).divide(BigDecimal.valueOf((2 * n) + 1));
+//                loop_result = loop_result.add(fraction1.multiply(fraction2));
+//            }
+//            BigDecimal result = BigDecimal.valueOf(Math.PI).divide(loop_result);
+//            return result;
+//        }
+//    }
 
-    public BigDecimal logarithm(BigDecimal val, BigDecimal base) {
-        if (val.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ONE) == 0) {
-            throw new IllegalArgumentException("Invalid input");
-        }
-
-        int sign = 1;
-        if (val.compareTo(BigDecimal.ONE) < 0) {
-            val = BigDecimal.ONE.divide(val, MathContext.DECIMAL128);
-            sign = -1;
-        }
-
-        BigDecimal result = BigDecimal.ZERO;
-        while (val.compareTo(base.multiply(base)) >= 0) {
-            BigDecimal temp = subordinates.logHelper(base);
-            int power = (subordinates.logHelper(val)).divide(temp, RoundingMode.DOWN).intValue();
-            result = result.add(BigDecimal.valueOf(power));
-            val = val.divide(base.pow(power), MathContext.DECIMAL128);
-        }
-
-        BigDecimal term = val.subtract(BigDecimal.ONE).divide(base, MathContext.DECIMAL128);
-        BigDecimal numerator = BigDecimal.valueOf(-1);
-        int denominator = 2;
-        while (term.compareTo(BigDecimal.ZERO) != 0) {
-            result = result.add(term);
-            numerator = numerator.multiply(val.subtract(BigDecimal.ONE));
-            term = numerator.divide(BigDecimal.valueOf(denominator).multiply(base.pow(denominator - 1)), MathContext.DECIMAL128);
-            denominator++;
-        }
-
-        return BigDecimal.valueOf(sign).multiply(result);
-    }
+//    public BigDecimal logarithm(BigDecimal val, BigDecimal base) {
+//        if (val.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ONE) == 0) {
+//            throw new IllegalArgumentException("Invalid input");
+//        }
+//
+//        int sign = 1;
+//        if (val.compareTo(BigDecimal.ONE) < 0) {
+//            val = BigDecimal.ONE.divide(val, MathContext.DECIMAL128);
+//            sign = -1;
+//        }
+//
+//        BigDecimal result = BigDecimal.ZERO;
+//        while (val.compareTo(base.multiply(base)) >= 0) {
+//            BigDecimal temp = subordinates.logHelper(base);
+//            int power = (subordinates.logHelper(val)).divide(temp, RoundingMode.DOWN).intValue();
+//            result = result.add(BigDecimal.valueOf(power));
+//            val = val.divide(base.pow(power), MathContext.DECIMAL128);
+//        }
+//
+//        BigDecimal term = val.subtract(BigDecimal.ONE).divide(base, MathContext.DECIMAL128);
+//        BigDecimal numerator = BigDecimal.valueOf(-1);
+//        int denominator = 2;
+//        while (term.compareTo(BigDecimal.ZERO) != 0) {
+//            result = result.add(term);
+//            numerator = numerator.multiply(val.subtract(BigDecimal.ONE));
+//            term = numerator.divide(BigDecimal.valueOf(denominator).multiply(base.pow(denominator - 1)), MathContext.DECIMAL128);
+//            denominator++;
+//        }
+//
+//        return BigDecimal.valueOf(sign).multiply(result);
+//    }
 
     public static BigDecimal sinh(BigDecimal x) {
         BigDecimal e = BigDecimal.valueOf(Math.E);
@@ -153,13 +154,13 @@ public class Functions {
 		}
 	}    
 
-	public BigDecimal XtoY(BigDecimal y){
-        	BigDecimal x = 0;
-      	 	// if (previousResult != null)
-       		// x = previousResult;
-       		BigDecimal result = pow(x,y);
-       		return result;
-   	}
+//	public BigDecimal XtoY(BigDecimal y){
+//        	BigDecimal x = 0;
+//      	 	// if (previousResult != null)
+//       		// x = previousResult;
+//       		BigDecimal result = pow(x,y);
+//       		return result;
+//   	}
 	
     private static final MathContext PRECISION = MathContext.DECIMAL128;
 
