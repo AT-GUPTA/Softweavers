@@ -17,35 +17,31 @@ public class Functions {
     private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorService.class);
 
 
-    /*
-    taylor series for arccos = pi/2 - taylor series for sin
-    for loop will calculate taylor series for sin
-    trial and error to find right number of n
-    final result will be pi/2 - result from for loop
-    return result converted to big decimal
-     */
-    public static BigDecimal arccos(BigDecimal x) {
+    public BigDecimal arccos(BigDecimal x) {
         if (x.compareTo(BigDecimal.valueOf(1)) == 1 || x.compareTo(BigDecimal.valueOf(-1)) == -1)
             throw new IllegalArgumentException("Input for arccos(x) out of domain.");
         else if (x.compareTo(BigDecimal.valueOf(1)) == 0)
             return (BigDecimal.valueOf(0.0));
-        else if (x.compareTo(BigDecimal.valueOf(0)) == 0)
+        else if (x.compareTo(BigDecimal.valueOf(-1)) == 0)
             return (BigDecimal.valueOf(Math.PI));
         else {
             BigDecimal loop_result = new BigDecimal(0);
             BigDecimal fraction1, fraction2;
             int end = 30;
             for (int n = 0; n <= end; n++) {
-                fraction1 = factorial(BigInt.valueOf(2*n)) /
-                    (pow(BigInt.valueOf(2), BigInt.valueOf(2 * n)) * pow(factorial(BigInt.valueOf(n)), BigInt.valueOf(2));
-                fraction2 = pow(BigDecimal.valueOf(x), BigInt.valueOf((2 * n) + 1))/
-                 BigInt.valueOf((2 * n) + 1);
+                //for use in power function in denominator for fraction1
+                BigDecimal bdFactorial = new BigDecimal(factorial(BigInteger.valueOf(n)));
+                //numerator of fraction 1 in Big Decimal
+                BigDecimal fraction1Numerator = new BigDecimal(factorial(BigInteger.valueOf(2*n)));
+                fraction1 = fraction1Numerator.divide(
+                        (pow(BigDecimal.valueOf(2), BigDecimal.valueOf(2 * n)).multiply(pow(bdFactorial, BigDecimal.valueOf(2)))));
+                fraction2 = pow(x, BigDecimal.valueOf((2 * n) + 1)).divide(BigDecimal.valueOf((2 * n) + 1));
                 loop_result = loop_result.add(fraction1.multiply(fraction2));
             }
             BigDecimal result = BigDecimal.valueOf(Math.PI).divide(loop_result);
             return result;
         }
-    }
+    }	
 
     public BigDecimal logarithm(BigDecimal val, BigDecimal base) {
         if (val.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ONE) == 0) {
