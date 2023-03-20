@@ -4,10 +4,12 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 
+import static com.softweavers.eternity.Domain.Functions.THRESHOLD;
+
 public class Subordinates {
 
     // Method to calculate sqrt of a number
-    public static BigDecimal sqrt(BigDecimal x) {
+    public BigDecimal sqrt(BigDecimal x) {
         BigDecimal i = BigDecimal.ONE;
         while (true) {
             if (i.multiply(i) == x)
@@ -19,8 +21,8 @@ public class Subordinates {
     }
 
     // Method to calculate decimal sqrt of a number
-    private static BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
-        BigDecimal midvalue = i.add(j).divide(BigDecimal.TWO);
+    private BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
+        BigDecimal midvalue = i.add(j).divide(BigDecimal.valueOf(2));
         BigDecimal square = midvalue.multiply(midvalue);
         BigDecimal error = square.subtract(number).abs();
         if (square == number || error.compareTo(THRESHOLD) < 0)
@@ -77,7 +79,7 @@ public class Subordinates {
         double midvalue = (i + j) / 2;
         double square = midvalue * midvalue;
         //compares the midvalue with square. Accuracy is set to 10 decimal places.
-        if (square == number || abs(square - number) < 0.0000000001)
+        if (square == number || abs(BigInteger.valueOf(square - number)) < 0.0000000001)
             return midvalue;
             //if the square root belongs to second half
         else if (square > number)

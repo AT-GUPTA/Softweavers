@@ -13,7 +13,6 @@ public class Functions {
     final static int NDIGITS = 10;
     final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS));
     final static BigDecimal NEGATIVE_ONE = BigDecimal.ZERO.subtract(BigDecimal.ONE);
-
     private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorService.class);
 
 
@@ -30,9 +29,9 @@ public class Functions {
             int end = 30;
             for (int n = 0; n <= end; n++) {
                 //for use in power function in denominator for fraction1
-                BigDecimal bdFactorial = new BigDecimal(factorial(BigInteger.valueOf(n)));
+                BigDecimal bdFactorial = new BigDecimal(subordinates.factorial(BigInteger.valueOf(n)));
                 //numerator of fraction 1 in Big Decimal
-                BigDecimal fraction1Numerator = new BigDecimal(factorial(BigInteger.valueOf(2*n)));
+                BigDecimal fraction1Numerator = new BigDecimal(subordinates.factorial(BigInteger.valueOf(2*n)));
                 fraction1 = fraction1Numerator.divide(
                         (pow(BigDecimal.valueOf(2), BigDecimal.valueOf(2 * n)).multiply(pow(bdFactorial, BigDecimal.valueOf(2)))));
                 fraction2 = pow(x, BigDecimal.valueOf((2 * n) + 1)).divide(BigDecimal.valueOf((2 * n) + 1));
@@ -75,7 +74,7 @@ public class Functions {
         return BigDecimal.valueOf(sign).multiply(result);
     }
 
-    public static BigDecimal sinh(BigDecimal x) {
+    public BigDecimal sinh(BigDecimal x) {
         BigDecimal e = BigDecimal.valueOf(Math.E);
         BigDecimal pow1 = pow(e, x);
         BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
@@ -85,7 +84,7 @@ public class Functions {
         return result;
     }
 
-    public static BigDecimal cosh(BigDecimal x) {
+    public BigDecimal cosh(BigDecimal x) {
         BigDecimal e = BigDecimal.valueOf(Math.E);
         BigDecimal pow1 = pow(e, x);
         BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
@@ -94,13 +93,13 @@ public class Functions {
         return result;
     }
 	
-	public static BigDecimal pow(BigDecimal base, BigDecimal exp) {
+	public BigDecimal pow(BigDecimal base, BigDecimal exp) {
 		// Handle case of negative base
 		if (base.compareTo(BigDecimal.ZERO) < 0) {
 			try {
 		        BigInteger expInt = exp.toBigIntegerExact();
 		        // Negative base, even integer exponent case
-		        if (expInt.mod(BigInteger.TWO) == BigInteger.ZERO)
+		        if (expInt.mod(BigInteger.valueOf(2)) == BigInteger.ZERO)
 		        	return pow(NEGATIVE_ONE.multiply(base), exp);
 		        // Negative base, odd exponent case
 		        else
@@ -120,18 +119,18 @@ public class Functions {
 		// Covers prior to decimal point using the property x^y = x^(y/2)^2
 		BigDecimal temp = new BigDecimal(0);
 		if (exp.compareTo(BigDecimal.ONE) >= 0) {
-			temp = pow(base, exp.divide(BigDecimal.TWO));
+			temp = pow(base, exp.divide(BigDecimal.valueOf(2)));
 			return temp.multiply(temp).round(new MathContext(NDIGITS));
 		} else {
 			//now deal with the fractional part 
 			BigDecimal low = BigDecimal.ZERO;
 			BigDecimal high = BigDecimal.ONE;
-			BigDecimal sqr = sqrt(base);
+			BigDecimal sqr = subordinates.sqrt(base);
 			BigDecimal acc = sqr;
-			BigDecimal mid = high.divide(BigDecimal.TWO);
+			BigDecimal mid = high.divide(BigDecimal.ONE);
 			BigDecimal error = mid.subtract(exp).abs();
 			while (error.compareTo(THRESHOLD) > 0) {
-				sqr = sqrt(sqr);
+				sqr = subordinates.sqrt(sqr);
 				if (mid.compareTo(exp) <= 0) {
 					low = mid;
 					acc = acc.multiply(sqr);
@@ -139,7 +138,7 @@ public class Functions {
 					high = mid;
 					acc = acc.multiply(new BigDecimal(1/sqr.doubleValue()));
 				}
-				mid = low.add(high).divide(BigDecimal.TWO);
+				mid = low.add(high).divide(BigDecimal.valueOf(2));
 				error = mid.subtract(exp).abs();
 			}
 			return acc.round(new MathContext(NDIGITS));
@@ -147,7 +146,7 @@ public class Functions {
 	}    
 
 	public BigDecimal XtoY(BigDecimal y){
-        	BigDecimal x = 0;
+        	BigDecimal x = BigDecimal.valueOf(0);
       	 	// if (previousResult != null)
        		// x = previousResult;
        		BigDecimal result = pow(x,y);
@@ -156,7 +155,7 @@ public class Functions {
 	
     private static final MathContext PRECISION = MathContext.DECIMAL128;
 
-    private static BigDecimal sin(BigDecimal x) {
+    private BigDecimal sin(BigDecimal x) {
         BigDecimal sum = new BigDecimal(0);
         BigDecimal fact = new BigDecimal(1);
         BigDecimal pow = new BigDecimal(x.toString());
@@ -170,14 +169,14 @@ public class Functions {
         return sum;
     }
 
-    private static BigDecimal[] lanczos = { new BigDecimal("676.5203681218851"),
+    private BigDecimal[] lanczos = { new BigDecimal("676.5203681218851"),
             new BigDecimal("-1259.1392167224028"), new BigDecimal("771.32342877765313"),
             new BigDecimal("-176.61502916214059"), new BigDecimal("12.507343278686905"),
             new BigDecimal("-0.13857109526572012"), new BigDecimal("9.9843695780195716e-6"), new BigDecimal(
                     "1.5056327351493116e-7") };
 
     // Calculate the Gamma function for a given input value
-    public static BigDecimal gamma(BigDecimal z) {
+    public BigDecimal gamma(BigDecimal z) {
         if (z.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Input must be positive");
         }
@@ -189,7 +188,7 @@ public class Functions {
         } else {
             z = z.subtract(new BigDecimal(1));
             BigDecimal x = new BigDecimal("0.99999999999980993");
-            for (int i = 0; i < lanczos.length; ++i) {
+            for (int i = 0; i <  lanczos.length; ++i) {
                 x = x.add(lanczos[i].divide(z.add(new BigDecimal(i + 1)), PRECISION));
             }
             BigDecimal t = z.add(new BigDecimal(lanczos.length - 0.5));
