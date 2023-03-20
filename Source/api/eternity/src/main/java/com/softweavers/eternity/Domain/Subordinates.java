@@ -4,19 +4,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 
-public class Subordinates {
+import static com.softweavers.eternity.Domain.Functions.THRESHOLD;
 
-    // Method to calculate sqrt of a number
-    public static BigDecimal sqrt(BigDecimal x) {
-        BigDecimal i = BigDecimal.ONE;
-        while (true) {
-            if (i.multiply(i) == x)
-                return i;
-            else if (i.multiply(i).compareTo(x) > 0)
-                return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
-            i = i.add(BigDecimal.ONE);
-        }
-    }
+public class Subordinates {
 
     // Method to calculate decimal sqrt of a number
     private static BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
@@ -29,6 +19,18 @@ public class Subordinates {
             return decimalSqrt(number, i, midvalue);
         else
             return decimalSqrt(number, midvalue, j);
+    }
+
+    // Method to calculate sqrt of a number
+    public BigDecimal sqrt(BigDecimal x) {
+        BigDecimal i = BigDecimal.ONE;
+        while (true) {
+            if (i.multiply(i) == x)
+                return i;
+            else if (i.multiply(i).compareTo(x) > 0)
+                return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
+            i = i.add(BigDecimal.ONE);
+        }
     }
 
     public BigInteger abs(BigInteger a) {
