@@ -67,7 +67,7 @@ public class Functions {
         // Covers prior to decimal point using the property x^y = x^(y/2)^2
         BigDecimal temp = new BigDecimal(0);
         if (exp.compareTo(BigDecimal.ONE) >= 0) {
-            temp = pow(base, exp.divide(BigDecimal.TWO));
+            temp = pow(base, exp.divide(BigDecimal.valueOf(2)));
             return temp.multiply(temp).round(new MathContext(NDIGITS));
         } else {
             //now deal with the fractional part
@@ -75,7 +75,7 @@ public class Functions {
             BigDecimal high = BigDecimal.ONE;
             BigDecimal sqr = subordinates.sqrt(base);
             BigDecimal acc = sqr;
-            BigDecimal mid = high.divide(BigDecimal.TWO);
+            BigDecimal mid = high.divide(BigDecimal.valueOf(2));
             BigDecimal error = mid.subtract(exp).abs();
             while (error.compareTo(THRESHOLD) > 0) {
                 sqr = subordinates.sqrt(sqr);
@@ -86,7 +86,7 @@ public class Functions {
                     high = mid;
                     acc = acc.multiply(new BigDecimal(1 / sqr.doubleValue()));
                 }
-                mid = low.add(high).divide(BigDecimal.TWO);
+                mid = low.add(high).divide(BigDecimal.valueOf(2));
                 error = mid.subtract(exp).abs();
             }
             return acc.round(new MathContext(NDIGITS));
