@@ -8,18 +8,6 @@ import static com.softweavers.eternity.Domain.Functions.THRESHOLD;
 
 public class Subordinates {
 
-    // Method to calculate sqrt of a number
-    public BigDecimal sqrt(BigDecimal x) {
-        BigDecimal i = BigDecimal.ONE;
-        while (true) {
-            if (i.multiply(i) == x)
-                return i;
-            else if (i.multiply(i).compareTo(x) > 0)
-                return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
-            i = i.add(BigDecimal.ONE);
-        }
-    }
-
     // Method to calculate decimal sqrt of a number
     private BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
         BigDecimal midvalue = i.add(j).divide(BigDecimal.valueOf(2));
@@ -31,6 +19,18 @@ public class Subordinates {
             return decimalSqrt(number, i, midvalue);
         else
             return decimalSqrt(number, midvalue, j);
+    }
+
+    // Method to calculate sqrt of a number
+    public BigDecimal sqrt(BigDecimal x) {
+        BigDecimal i = BigDecimal.ONE;
+        while (true) {
+            if (i.multiply(i) == x)
+                return i;
+            else if (i.multiply(i).compareTo(x) > 0)
+                return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
+            i = i.add(BigDecimal.ONE);
+        }
     }
 
     public BigInteger abs(BigInteger a) {
