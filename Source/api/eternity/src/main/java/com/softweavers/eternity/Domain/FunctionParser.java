@@ -2,6 +2,7 @@ package com.softweavers.eternity.Domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,13 +12,13 @@ public class FunctionParser {
     String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
     private static final Logger LOGGER = LoggerFactory.getLogger(FunctionParser.class);
     private static final ExpressionEvaluator engine = new ExpressionEvaluator();
-
-    private static final Functions functionCalculator = new Functions();
+    private static final FunctionHandler functionCalculator = new FunctionsImpl();
 
 
     public String evaluateFunctions(String expr){
 
-        LOGGER.debug("expr: " + expr);
+
+        LOGGER.info("expr: " + expr);
 
         expr = expr.replace(" ", "");
 
@@ -30,13 +31,13 @@ public class FunctionParser {
                 // get all inputs of the function, can be multiple seperated by commas or single input
                 String[] inputs = split(expr.substring(inputStart, inputEnd));
 
-                LOGGER.debug("function: " + func + ", inputs: " + expr.substring(inputStart, inputEnd));
+                LOGGER.info("function: " + func + ", inputs: " + expr.substring(inputStart, inputEnd));
 
                 for (int i = 0; i < inputs.length; ++i) {
                     if (isComplexExpr(inputs[i])) {
                         // if an input of the function is an expression, recursively eval
                         // and replace expression with evaluated expression
-                        LOGGER.debug("complex expr: " + inputs[i]);
+                        LOGGER.info("complex expr: " + inputs[i]);
 
                         inputs[i] = evaluateFunctions(inputs[i]);
 
@@ -46,20 +47,24 @@ public class FunctionParser {
                 }
 
                 String res = "";
+                BigDecimal[] values = Arrays.stream(inputs)
+                        .map(BigDecimal::new)
+                        .toArray(BigDecimal[]::new);
+
                 switch (func) {
-                    case "logbx" -> res = "1";
-                    case "sd" -> res = functionCalculator.standardDeviation(inputs).toString();
-                    case "ab^x" -> res = "3";
-                    case "arccos" -> res = "4";
-                    case "sinh" -> res = "5";
-                    case "gamma" -> res = "6";
-                    case "pow" -> res = "7";
+                    case "logbx" -> res = String.valueOf(functionCalculator.log(values[0], values[1]));
+                    case "sd" -> res = String.valueOf(functionCalculator.standardDeviation(values));
+                    case "ab^x" -> res = String.valueOf(functionCalculator.xToY(values[0]));
+                    case "arccos" -> res = String.valueOf(functionCalculator.arccos(values[0]));
+                    case "sinh" -> res = String.valueOf(functionCalculator.sinh(values[0]));
+                    case "gamma" -> res = String.valueOf(functionCalculator.gamma(values[0]));
+                    case "pow" -> res = String.valueOf(functionCalculator.pow(values[0], values[1]));
 
                 }
                 expr = expr.substring(0, funcStart) + res + expr.substring(inputEnd + 1);
 
 
-                LOGGER.debug(func + "(" + Arrays.toString(inputs) + ") = " + res);
+                LOGGER.info(func + "(" + Arrays.toString(inputs) + ") = " + res);
             }
         }
 

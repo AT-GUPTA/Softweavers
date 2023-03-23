@@ -7,6 +7,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Arrays;
+
+import static com.softweavers.eternity.Common.Precision.MATH_CONTEXT;
 
 public class FunctionsImpl implements FunctionHandler {
 
@@ -125,5 +128,26 @@ public class FunctionsImpl implements FunctionHandler {
     public BigDecimal xToY(BigDecimal y) {
         BigDecimal x = BigDecimal.valueOf(0);
         return subordinates.power(x, y);
+    }
+
+    public BigDecimal standardDeviation(BigDecimal[] values){
+        BigDecimal mean = calculateMean(values);
+
+        BigDecimal standardDev = BigDecimal.valueOf(0);
+        for (BigDecimal value : values){
+            standardDev = standardDev.add(pow(value.subtract(mean), BigDecimal.valueOf(2)));
+        }
+
+        standardDev = standardDev.divide(new BigDecimal(values.length), MATH_CONTEXT);
+        standardDev = pow(standardDev, BigDecimal.valueOf(.5));
+        return standardDev;
+    }
+    private BigDecimal calculateMean(BigDecimal[] values){
+        BigDecimal sum = new BigDecimal(0);
+        for (BigDecimal value : values){
+            sum = sum.add(value);
+        }
+
+        return sum.divide(BigDecimal.valueOf(values.length), MATH_CONTEXT);
     }
 }

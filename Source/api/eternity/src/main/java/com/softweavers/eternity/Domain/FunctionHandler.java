@@ -14,4 +14,6 @@ public interface FunctionHandler {
     BigDecimal sinh(BigDecimal x);
 
     BigDecimal xToY(BigDecimal y);
+
+    BigDecimal standardDeviation(BigDecimal[] input);
 }
