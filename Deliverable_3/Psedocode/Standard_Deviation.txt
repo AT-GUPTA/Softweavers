@@ -1,0 +1,21 @@
+Function standardDeviation(input)
+    values ← convert input to Big Decimal
+    mean ← calculateMean(values)
+
+    standardDev ← 0
+    For each value in values
+        standardDev ← standardDev + (value - mean)^2
+
+    standardDev ← standardDev/values.length
+    standardDev ← standardDev^(1/2)
+
+    Return standardDev
+End function
+
+Function calculateMean(values)
+    sum ← 0
+    For each value in values
+        sum ← sum + value
+
+    Return sum/values.length
+End function
