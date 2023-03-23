@@ -12,6 +12,8 @@ public class Subordinates {
     private final static BigDecimal NEGATIVE_ONE = BigDecimal.ZERO.subtract(BigDecimal.ONE);
     private static final Logger LOGGER = LoggerFactory.getLogger(Subordinates.class);
     private static final MathContext PRECISION = MathContext.DECIMAL128;
+
+    //todo cannot use pow function here. Maybe write the hard value.
     private final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS), PRECISION);
 
     // Method to calculate decimal sqrt of a number
