@@ -51,6 +51,8 @@ public class ExpressionEvaluator {
                 // Recursively get the right value
                 BigDecimal factor = evaluateParentheses();
 
+                // Handles multiplication and division first, then
+                // Continues recursive call to calculate any remaining terms.
                 if (operator == '*') {
                     result = result.multiply(factor);
                 } else {
@@ -60,7 +62,6 @@ public class ExpressionEvaluator {
                 break;
             }
         }
-
         return result;
     }
 
@@ -76,6 +77,8 @@ public class ExpressionEvaluator {
             index++; // consume closing parentheses
         } else if (Character.isDigit(c) || c == '.') {
             int start = index;
+
+            // Crawl to the next term, consider decimal numbers
             while (Character.isDigit(c) || c == '.') {
                 index++;
                 if (index >= expression.length()) {
@@ -85,8 +88,8 @@ public class ExpressionEvaluator {
             }
             result = new BigDecimal(expression.substring(start, index));
         } else if (c == '-') {
-            index++;
             // handle negative number
+            index++;
             result = evaluateParentheses().negate();
         } else {
             throw new IllegalArgumentException("Invalid character: " + c);

@@ -16,8 +16,6 @@ public class FunctionParser implements ParserHandler{
 
 
     public String evaluateFunctions(String expr){
-
-
         LOGGER.info("expr: " + expr);
 
         expr = expr.replace(" ", "");
@@ -47,10 +45,13 @@ public class FunctionParser implements ParserHandler{
                 }
 
                 String res = "";
+
+                // Convert the values to BigDecimal
                 BigDecimal[] values = Arrays.stream(inputs)
                         .map(BigDecimal::new)
                         .toArray(BigDecimal[]::new);
 
+                // Handle each special function
                 switch (func) {
                     case "logbx" -> res = String.valueOf(functionCalculator.log(values[0], values[1]));
                     case "sd" -> res = String.valueOf(functionCalculator.standardDeviation(values));
