@@ -9,12 +9,11 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Arrays;
 
-import static com.softweavers.eternity.Common.Precision.MATH_CONTEXT;
 
 public class FunctionsImpl implements FunctionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FunctionsImpl.class);
-    private static final MathContext PRECISION = MathContext.DECIMAL128;
+    public static final MathContext PRECISION = MathContext.DECIMAL128;
 
     //todo what is lanczos?
     private static final BigDecimal[] lanczos = {new BigDecimal("676.5203681218851"),
@@ -138,7 +137,7 @@ public class FunctionsImpl implements FunctionHandler {
             standardDev = standardDev.add(pow(value.subtract(mean), BigDecimal.valueOf(2)));
         }
 
-        standardDev = standardDev.divide(new BigDecimal(values.length), MATH_CONTEXT);
+        standardDev = standardDev.divide(new BigDecimal(values.length), PRECISION);
         standardDev = pow(standardDev, BigDecimal.valueOf(.5));
         return standardDev;
     }
@@ -148,6 +147,6 @@ public class FunctionsImpl implements FunctionHandler {
             sum = sum.add(value);
         }
 
-        return sum.divide(BigDecimal.valueOf(values.length), MATH_CONTEXT);
+        return sum.divide(BigDecimal.valueOf(values.length), PRECISION);
     }
 }

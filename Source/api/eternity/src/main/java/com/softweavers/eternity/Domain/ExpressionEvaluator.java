@@ -1,8 +1,9 @@
 package com.softweavers.eternity.Domain;
 
 import java.math.BigDecimal;
+import com.softweavers.eternity.Domain.FunctionsImpl;
 
-import static com.softweavers.eternity.Common.Precision.MATH_CONTEXT;
+import static com.softweavers.eternity.Domain.FunctionsImpl.PRECISION;
 
 public class ExpressionEvaluator {
     private int index = 0;
@@ -54,7 +55,7 @@ public class ExpressionEvaluator {
                 if (operator == '*') {
                     result = result.multiply(factor);
                 } else {
-                    result = result.divide(factor, MATH_CONTEXT);
+                    result = result.divide(factor, PRECISION);
                 }
             } else {
                 break;
