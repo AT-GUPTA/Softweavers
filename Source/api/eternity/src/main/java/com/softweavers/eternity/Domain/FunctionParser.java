@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class FunctionParser {
+public class FunctionParser implements ParserHandler{
 
     String[] functions = { "logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow" };
     private static final Logger LOGGER = LoggerFactory.getLogger(FunctionParser.class);

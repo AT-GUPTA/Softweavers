@@ -1,7 +1,6 @@
 package com.softweavers.eternity.Domain;
 
 import java.math.BigDecimal;
-import com.softweavers.eternity.Domain.FunctionsImpl;
 
 import static com.softweavers.eternity.Domain.FunctionsImpl.PRECISION;
 
