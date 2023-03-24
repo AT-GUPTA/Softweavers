@@ -69,6 +69,11 @@ public class FunctionsImpl implements FunctionHandler {
         return y;
     }
 
+        /**
+     * A method to compute the function arccos(x) using Taylor's Series for up to n = 16
+     * @param x a BigDecimal value between -1 and 1
+     * @return
+     */
     @Override
     public BigDecimal arccos(BigDecimal x) {
         if (x.compareTo(BigDecimal.valueOf(1)) > 0 || x.compareTo(BigDecimal.valueOf(-1)) < 0)
@@ -80,20 +85,19 @@ public class FunctionsImpl implements FunctionHandler {
         else {
             BigDecimal loop_result = new BigDecimal(0);
             BigDecimal fraction1, fraction2;
-            int end = 30;
+            int end = 16;
             for (int n = 0; n <= end; n++) {
                 //for use in power function in denominator for fraction1
                 BigDecimal bdFactorial = new BigDecimal(subordinates.factorial(BigInteger.valueOf(n)));
                 //numerator of fraction 1 in Big Decimal
                 BigDecimal fraction1Numerator = new BigDecimal(subordinates.factorial(BigInteger.valueOf(2L * n)));
                 fraction1 = fraction1Numerator.divide(
-                        (subordinates.power(BigDecimal.valueOf(2), BigDecimal.valueOf(2L * n)).multiply(subordinates.power(bdFactorial, BigDecimal.valueOf(2)))), MathContext.DECIMAL128);
+                        (subordinates.power(BigDecimal.valueOf(2), BigDecimal.valueOf(2 * n)).multiply(subordinates.power(bdFactorial, BigDecimal.valueOf(2)))), MathContext.DECIMAL128);
                 fraction2 = subordinates.power(x, BigDecimal.valueOf((2L * n) + 1)).divide(BigDecimal.valueOf((2L * n) + 1), MathContext.DECIMAL128);
                 loop_result = loop_result.add(fraction1.multiply(fraction2));
             }
-            return BigDecimal.valueOf(Math.PI).divide(loop_result, MathContext.DECIMAL128);
+            return BigDecimal.valueOf(Math.PI/2).subtract(loop_result, MathContext.DECIMAL128);
         }
-    }
 
     @Override
     public BigDecimal log(BigDecimal[] values) {
