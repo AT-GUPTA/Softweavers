@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public interface FunctionHandler {
     BigDecimal arccos(BigDecimal x);
 
-    BigDecimal pow(BigDecimal base, BigDecimal exp);
+    BigDecimal pow(BigDecimal[] input);
 
-    BigDecimal log(BigDecimal val, BigDecimal base);
+    BigDecimal log(BigDecimal[] input);
 
     BigDecimal gamma(BigDecimal z);
 

@@ -35,7 +35,12 @@ public class FunctionsImpl implements FunctionHandler {
     }
 
     @Override
-    public BigDecimal pow(BigDecimal base, BigDecimal exp) {
+    public BigDecimal pow(BigDecimal[] values) {
+        if (values.length != 2)
+            throw new IllegalArgumentException("Power function requires 2 inputs.");
+        BigDecimal base = values[0];
+        BigDecimal exp = values[1];
+
         return subordinates.power(base, exp);
     }
 
@@ -91,7 +96,13 @@ public class FunctionsImpl implements FunctionHandler {
     }
 
     @Override
-    public BigDecimal log(BigDecimal val, BigDecimal base) {
+    public BigDecimal log(BigDecimal[] values) {
+        if (values.length != 2)
+            throw new IllegalArgumentException("Log function requires 2 inputs.");
+
+        BigDecimal val = values[0];
+        BigDecimal base = values[1];
+
         if (val.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ONE) == 0) {
             throw new IllegalArgumentException("Invalid input");
         }
@@ -130,15 +141,18 @@ public class FunctionsImpl implements FunctionHandler {
     }
 
     public BigDecimal standardDeviation(BigDecimal[] values){
+        if (values.length < 2)
+            throw new IllegalArgumentException("Standard Deviation requires more than 2 inputs");
+
         BigDecimal mean = calculateMean(values);
 
         BigDecimal standardDev = BigDecimal.valueOf(0);
         for (BigDecimal value : values){
-            standardDev = standardDev.add(pow(value.subtract(mean), BigDecimal.valueOf(2)));
+            standardDev = standardDev.add(subordinates.power(value.subtract(mean), BigDecimal.valueOf(2)));
         }
 
         standardDev = standardDev.divide(new BigDecimal(values.length), PRECISION);
-        standardDev = pow(standardDev, BigDecimal.valueOf(.5));
+        standardDev = subordinates.power(standardDev, BigDecimal.valueOf(.5));
         return standardDev;
     }
     private BigDecimal calculateMean(BigDecimal[] values){

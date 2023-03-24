@@ -1,5 +1,7 @@
-Function standardDeviation(input)
-    values ← convert input to Big Decimal
+Function standardDeviation(values)
+    If values.length < 2:
+        throw exception
+
     mean ← calculateMean(values)
 
     standardDev ← 0
