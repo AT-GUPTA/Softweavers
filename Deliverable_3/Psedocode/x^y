@@ -1,0 +1,26 @@
+x^y(a) Function
+	If previous result != null:
+    x = previous result
+  Else
+    x = 0
+    
+  Call Function pow(a, x)
+		If a is negative:
+			If x is integer:
+				If x is even:
+					Return pow(-a, x)
+				Else x is odd:
+					Return -1 * pow(-a, x)
+				End if
+			Else x is not integer:
+				Log error: unreal solution
+			End if
+		Else if x is negative:
+			Return 1 / pow(a, -x)
+		End if
+		If exponent is greater than 1:
+			Return (pow(a, x/2))^2
+		Else:
+			Apply Newton’s method to solve fractional exponent
+      (precision can be set separately)
+	End function
