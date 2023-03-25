@@ -24,7 +24,7 @@ public interface FunctionHandler {
     /**
      * computes the function gamma(z) using lanczos approximation
      * 
-     * @param z input to the gamma function
+     * @param z input to the gamma function from zero to infinity
      * @return gamma of z
      */
     BigDecimal gamma(BigDecimal z);
