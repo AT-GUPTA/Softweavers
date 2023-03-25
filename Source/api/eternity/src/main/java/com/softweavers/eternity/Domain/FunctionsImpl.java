@@ -42,6 +42,10 @@ public class FunctionsImpl implements FunctionHandler {
         return subordinates.power(base, exp);
     }
 
+    private BigDecimal bd(double x) {
+        return new BigDecimal(x);
+    }
+
     // Calculate the Gamma function for a given input value
     @Override
     public BigDecimal gamma(BigDecimal z) {
@@ -59,10 +63,15 @@ public class FunctionsImpl implements FunctionHandler {
             for (int i = 0; i < lanczos.length; ++i) {
                 x = x.add(lanczos[i].divide(z.add(new BigDecimal(i + 1)), PRECISION));
             }
+          
             BigDecimal t = z.add(new BigDecimal(lanczos.length - 0.5));
-            double as = Math.pow(2 * Math.PI, 0.5) * Math.pow(t.doubleValue(), z.doubleValue() + 0.5)
-                    * Math.pow(Math.E, t.doubleValue() * -1) * x.doubleValue();
-            y = new BigDecimal(as);
+            BigDecimal[] args = new BigDecimal[2];
+            args[0] = t;
+            args[1] = z.add(new BigDecimal(0.5));
+            y = bd(Math.pow(2 * Math.PI, 0.5))
+             .multiply(pow(args))
+             .multiply(bd(Math.pow(Math.E, t.doubleValue() * -1)))
+             .multiply(x);
         }
         return y;
     }

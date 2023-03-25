@@ -95,6 +95,7 @@ public class FunctionTest {
         }
         
 
+        System.out.println(f.gamma(new BigDecimal(3887.499999)));
 
 
 
