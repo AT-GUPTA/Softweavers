@@ -71,7 +71,7 @@ public class FunctionsImpl implements FunctionHandler {
      * A method to compute the function arccos(x) using Taylor's Series for up to n = 16
      *
      * @param x a BigDecimal value between -1 and 1
-     * @return
+     * @return a Bigdecimal value, arccos of the function in degrees.
      */
     @Override
     public BigDecimal arccos(BigDecimal x) {
