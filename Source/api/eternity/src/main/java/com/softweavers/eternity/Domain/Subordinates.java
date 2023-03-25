@@ -65,19 +65,28 @@ public class Subordinates {
         return BigInteger.valueOf(fct);
     }
 
-    public BigDecimal logHelper(BigDecimal x) {
+    public BigDecimal ln(BigDecimal x) {
+
         if (x.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("Invalid input");
+            throw new IllegalArgumentException("ln(x): x must be positive");
         }
-        BigDecimal result = BigDecimal.ZERO;
-        BigDecimal temp = (x.subtract(BigDecimal.ONE)).divide(x, PRECISION);
-        BigDecimal term = temp;
-        int denominator = 2;
-        while (term.compareTo(BigDecimal.ZERO) != 0) {
-            result = result.subtract(term);
-            term = power(temp, BigDecimal.valueOf(denominator)).divide(BigDecimal.valueOf(denominator), PRECISION);
-            denominator++;
+
+        int scale = x.precision() + 2;
+        BigDecimal y = x.subtract(BigDecimal.ONE);
+        BigDecimal z = y.divide(x, PRECISION);
+        BigDecimal result = z;
+        BigDecimal zPower = z;
+
+        for (int i = 2; i <= 100000; i++) {
+            zPower = zPower.multiply(z, PRECISION);
+            BigDecimal term = zPower.divide(new BigDecimal(i), PRECISION);
+            result = result.add(term, PRECISION);
+
+            if (term.abs().compareTo(new BigDecimal("1E-1000")) < 0) {
+                break;
+            }
         }
+
         return result;
     }
 

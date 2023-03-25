@@ -1,0 +1,27 @@
+Function Name:
+Written By:
+Reviewed By: 
+------------------------------------------------------------------------------------------------------------------------------------------------
+JAVADOCS 
+Is the javadoc present?
+Does it explain the parameters?
+Is there a brief explanation of the function?
+------------------------------------------------------------------------------------------------------------------------------------------------
+CODE CHECKS
+Are comments helpful?
+Is there domain validation and error handling for incorrect input?
+Does it have the correct types (BigDecimal and BigInteger) for parameters and return type?
+Are variables descriptively named and follow naming conventions?
+Is the code readable and easy to understand or follow?
+Is it redundant? 
+Is the code overcomplicated or too clever?
+Is it possible to reduce the complexity of the code?
+------------------------------------------------------------------------------------------------------------------------------------------------
+Extra Notes (optional): 
+
+
+NOTES FOR REPORT WRITING 
+We are making sure the code is logically correct before peer code review.
+I think there was a bit of over-the-shoulder review for the parser - Alexander went over the code and Atul was reviewing during a meeting? (If i remember correctly)
+Need to know if there was code review during development of parser, backend, front end.
+Review for functions is following Email-pass-around process - not sure if its pre check-in or post check-in 

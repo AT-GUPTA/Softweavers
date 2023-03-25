@@ -11,7 +11,6 @@ import org.springframework.core.io.Resource;
 @SpringBootApplication
 public class EternityApplication {
 
-
 	public static void main(String[] args) {
 		final Logger LOGGER = LoggerFactory.getLogger(EternityApplication.class);
 		SpringApplication.run(EternityApplication.class, args);
