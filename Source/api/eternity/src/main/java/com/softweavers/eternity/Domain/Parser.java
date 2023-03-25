@@ -10,6 +10,7 @@ public class Parser {
 
     public static void main(String[] args) {
         try {
+            new FunctionTest().executeTests();
             String expr = "(5 + mad(5 , mad(3,5), 6)) + sinh(pow(sd(1,2,3), 2))";
             String evaluatedFunctionExpr = evaluateFunctions(expr);
             System.out.println(evaluatedFunctionExpr);

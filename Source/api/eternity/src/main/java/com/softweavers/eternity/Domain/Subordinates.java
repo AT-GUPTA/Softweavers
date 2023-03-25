@@ -140,7 +140,7 @@ public class Subordinates {
         int count = 1;
         for (int i = 0; i < 15; ++i) {
             // todo should this be sum = sum.add?
-            sum.add(pow.divide(fact, PRECISION));
+            sum = sum.add(pow.divide(fact, PRECISION));
             pow = x.multiply(x).multiply(pow).multiply(new BigDecimal(-1));
             fact = fact.multiply(new BigDecimal((count + 1) * count + 2));
             count += 2;
