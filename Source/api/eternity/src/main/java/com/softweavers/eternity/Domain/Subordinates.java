@@ -91,40 +91,46 @@ public class Subordinates {
     }
 
     public BigDecimal power(BigDecimal base, BigDecimal exp) {
-        // Handle case of negative base
-        if (base.compareTo(BigDecimal.ZERO) < 0) {
+        // handle case of 0^0
+        if (base.compareTo(BigDecimal.ZERO) == 0 && exp.compareTo(BigDecimal.ZERO) == 0) {
+            return BigDecimal.ONE;
+        }
+        // handle case of 0^x
+        else if (base.compareTo(BigDecimal.ZERO) == 0 && exp.compareTo(BigDecimal.ZERO) != 0)
+            return BigDecimal.ZERO;
+            // Handle case of negative base
+        else if (base.compareTo(BigDecimal.ZERO) < 0) {
             try {
-                BigInteger expInt = exp.toBigIntegerExact();
-                // Negative base, even integer exponent case
-                if (expInt.mod(BigInteger.TWO).equals(BigInteger.ZERO))
+                BigDecimal test = exp.remainder(BigDecimal.valueOf(2));
+                if (exp.remainder(BigDecimal.valueOf(2)).compareTo(BigDecimal.ZERO) == 0)
                     return power(NEGATIVE_ONE.multiply(base), exp);
                     // Negative base, odd exponent case
                 else
                     return NEGATIVE_ONE.multiply(power(NEGATIVE_ONE.multiply(base), exp));
             } catch (ArithmeticException ex) {
                 // Negative base, noninteger exponent case
-                LOGGER.info("Error: Unreal solution");
+                 LOGGER.info("Error: Unreal solution");
                 return null;
             }
         }
         // Handle case of negative exponent
         else if (exp.compareTo(BigDecimal.ZERO) < 0) {
-            BigDecimal result = power(base, NEGATIVE_ONE.multiply(exp)).round(new MathContext(NDIGITS));
-            return BigDecimal.valueOf(1 / result.doubleValue()).round(new MathContext(NDIGITS));
+            BigDecimal result = power(base, NEGATIVE_ONE.multiply(exp));
+            return new BigDecimal(1/result.doubleValue());
         }
 
         // Covers prior to decimal point using the property x^y = x^(y/2)^2
         BigDecimal temp = new BigDecimal(0);
         if (exp.compareTo(BigDecimal.ONE) >= 0) {
-            temp = power(base, exp.divide(BigDecimal.valueOf(2), PRECISION));
-            return temp.multiply(temp).round(new MathContext(NDIGITS));
+            temp = power(base, exp.divide(BigDecimal.valueOf(2)));
+            return temp.multiply(temp);
         } else {
             //now deal with the fractional part
             BigDecimal low = BigDecimal.ZERO;
             BigDecimal high = BigDecimal.ONE;
             BigDecimal sqr = sqrt(base);
             BigDecimal acc = sqr;
-            BigDecimal mid = high.divide(BigDecimal.valueOf(2), PRECISION);
+            BigDecimal mid = high.divide(BigDecimal.valueOf(2));
             BigDecimal error = mid.subtract(exp).abs();
             while (error.compareTo(THRESHOLD) > 0) {
                 sqr = sqrt(sqr);
@@ -133,12 +139,12 @@ public class Subordinates {
                     acc = acc.multiply(sqr);
                 } else {
                     high = mid;
-                    acc = acc.multiply(BigDecimal.valueOf(1 / sqr.doubleValue()));
+                    acc = acc.multiply(new BigDecimal(1/sqr.doubleValue()));
                 }
-                mid = low.add(high).divide(BigDecimal.valueOf(2), PRECISION);
+                mid = low.add(high).divide(BigDecimal.valueOf(2));
                 error = mid.subtract(exp).abs();
             }
-            return acc.round(new MathContext(NDIGITS));
+            return acc;
         }
     }
 
