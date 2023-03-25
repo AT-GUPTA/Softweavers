@@ -1,0 +1,28 @@
+Function logarithm(Base: BigDecimal, Value: BigDecimal) → BigDecimal:
+    If (Base ≤ 1 or Value ≤ 1) Then
+        Throw IllegalArgumentException
+    EndIf
+    Decimal ← ln(Value) ÷ ln(Base)
+    Return Round(Decimal)
+EndFunction
+
+Function ln(X: BigDecimal) → BigDecimal:
+    If (X ≤ 0) Then
+        Throw IllegalArgumentException
+    EndIf
+    Scale ← Precision(X) + 2
+    Y ← X - 1
+    Z ← Y ÷ X
+    Result ← Z
+    ZPower ← Z
+    Threshold ← 1E-1000
+    For i = 2 To 100000
+        ZPower ← ZPower × Z
+        Term ← ZPower ÷ i
+        Result ← Result + Term
+        If (Abs(Term) ≤ Threshold) Then
+            Break
+        EndIf
+    EndFor
+    Return Result
+EndFunction

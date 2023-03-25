@@ -2,7 +2,6 @@ package com.softweavers.eternity.Controller;
 
 import com.softweavers.eternity.Common.URI;
 import com.softweavers.eternity.Service.CalculatorService;
-
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +21,7 @@ public class CalculatorController {
 
     /**
      * Method to calculate the value of input equation
+     *
      * @param equationJson json object containing validated input equation and other params
      * @return calculated string value
      */
@@ -36,7 +36,7 @@ public class CalculatorController {
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             LOGGER.error("CalculatorController: calculate -- Error");
-            return ResponseEntity.badRequest().body("FAILURE");
+            return ResponseEntity.badRequest().body("FAILURE: " + e.getMessage());
         }
     }
 }

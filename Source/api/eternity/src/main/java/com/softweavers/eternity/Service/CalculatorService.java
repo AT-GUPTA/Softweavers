@@ -26,6 +26,7 @@ public class CalculatorService {
             LOGGER.info("Result: " + evaluatedFunctionExpr);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
+            throw e;
         }
         return new BigDecimal(evaluatedFunctionExpr);
     }
