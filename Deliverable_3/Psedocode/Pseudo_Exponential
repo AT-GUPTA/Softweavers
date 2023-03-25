@@ -2,7 +2,11 @@ Exponential Function:
 
 Exponential pow() Function
 	Function pow(b, x)
-		If b is negative:
+		If b and x is 0:
+			return 1
+		Else if b is 0 and x is not 0
+			return 0
+		Else If b is negative:
 			If x is integer:
 				If x is even:
 					Return pow(-b, x)
