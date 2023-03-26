@@ -130,6 +130,11 @@ public class FunctionsImpl implements FunctionHandler {
         return subordinates.power(x, y);
     }
 
+    @Override
+    public BigDecimal abx(BigDecimal a, BigDecimal b, BigDecimal x) {
+        return  a.multiply(subordinates.power(b, x));
+    }
+
     public BigDecimal standardDeviation(BigDecimal[] values) {
         if (values.length < 2)
             throw new IllegalArgumentException("Standard Deviation requires more than 2 inputs");

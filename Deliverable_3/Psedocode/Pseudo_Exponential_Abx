@@ -24,3 +24,8 @@ Exponential pow() Function
 		Else:
 			Apply Newton’s method to solve fractional exponent
 	End function
+
+Exponential abx() Function
+	Function abx(a, b, x)
+		return a * power(b, x)
+	End function

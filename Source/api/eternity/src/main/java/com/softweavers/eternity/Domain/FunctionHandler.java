@@ -34,6 +34,14 @@ public interface FunctionHandler {
     BigDecimal xToY(BigDecimal y);
 
     /**
+     * Returns the result of a(b^x)
+     * @param a the multiplier
+     * @param b the base
+     * @param x the exponential coefficient
+     */
+    BigDecimal abx(BigDecimal a, BigDecimal b, BigDecimal x);
+
+    /**
      * First calculates the mean of the given inputs. (Sums each number and divides by total operations)
      * For each value, subtracts the mean and squares that number.
      * Then divides by the total number of inputs and finishes by
