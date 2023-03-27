@@ -1,0 +1,102 @@
+
+.title-bar {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  /*to be formatted*/
+}
+/* Divide the screen into two columns */
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Style the first column to take up 70% of the width */
+.first-column {
+  width: 70%;
+}
+
+/* Style the second column to take up 30% of the height in the first row */
+.second-column {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+#calculator {
+  width: 90%;
+  height: 100%;
+  margin: 10px auto;
+  background-color: #212121;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #666;
+}
+
+#display {
+  width: 100%;
+  height: 50%;
+  background-color: #333;
+  color: #fff;
+  font-size: 2em;
+  text-align: right;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#keys {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#keys button {
+  width: 25%;
+  height: 60px;
+  font-size: 1.5em;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.operator {
+  background-color: #ff5722;
+}
+
+.function {
+  background-color: #2196f3;
+}
+
+#clear, #equals {
+  background-color: #f44336;
+}
+
+#pi, #decimal {
+  background-color: #4caf50;
+}
+
+#keys button:hover {
+  background-color: #555;
+}
+
+/* Style the "Settings" header and the line items */
+.header {
+  font-weight: bold;
+}
+
+/* Style the on/off switch */
+.switch {
+  margin-left: 10px;
+}
+
+/* Style the dropdown */
+.dropdown {
+  margin-left: 10px;
+}
+
+/* Style the "History" header */
+.history {
+  font-weight: bold;
+  margin-top: 10px;
+}
