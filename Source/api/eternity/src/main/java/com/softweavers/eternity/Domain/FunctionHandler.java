@@ -20,10 +20,11 @@ public interface FunctionHandler {
      * @return logarithm value of the value with respect to base provided
      */
     BigDecimal log(BigDecimal[] input);
+    
     /**
      * computes the function gamma(z) using lanczos approximation
      * 
-     * @param z input to the gamma function
+     * @param z input to the gamma function from zero to infinity
      * @return gamma of z
      */
     BigDecimal gamma(BigDecimal z);
@@ -31,6 +32,14 @@ public interface FunctionHandler {
     BigDecimal sinh(BigDecimal x);
 
     BigDecimal xToY(BigDecimal y);
+
+    /**
+     * Returns the result of a(b^x)
+     * @param a the multiplier
+     * @param b the base
+     * @param x the exponential coefficient
+     */
+    BigDecimal abx(BigDecimal a, BigDecimal b, BigDecimal x);
 
     /**
      * First calculates the mean of the given inputs. (Sums each number and divides by total operations)
