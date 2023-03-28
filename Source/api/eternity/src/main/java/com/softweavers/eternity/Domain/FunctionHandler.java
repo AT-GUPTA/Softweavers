@@ -20,9 +20,14 @@ public interface FunctionHandler {
      * @return logarithm value of the value with respect to base provided
      */
     BigDecimal log(BigDecimal[] input);
-
+    /**
+     * computes the function gamma(z) using lanczos approximation
+     * 
+     * @param z input to the gamma function
+     * @return gamma of z
+     */
     BigDecimal gamma(BigDecimal z);
-
+    
     BigDecimal sinh(BigDecimal x);
 
     BigDecimal xToY(BigDecimal y);
