@@ -1,12 +1,12 @@
 import './Scientific.css';
 import {useEffect} from 'react';
 
-function Scientific({clearFunction, execute}) {
+function Scientific({execute}) {
     useEffect(() => {
         const display = document.getElementById("display");
 
-        // Hnadle the function buttons
-        const function_buttons = Array.from(document.querySelectorAll(".function"));
+        // Handle the function buttons
+        const function_buttons = document.querySelectorAll(".function");
         function_buttons.forEach(function (button) {
             // Add a click event listener
             button.addEventListener("click", () => {
@@ -14,7 +14,22 @@ function Scientific({clearFunction, execute}) {
                 display.value += button.textContent + "(";
             })
         })
+
+        // Handle the extra scientific buttons
+        const other_buttons = document.querySelectorAll(".constant, .punctuation, .operator, .number");
+        other_buttons.forEach(function (button) {
+            // Add a click event listener
+            button.addEventListener("click", () => {
+                // Append the button's value to the display
+                display.value += button.textContent;
+            })
+        })
     }, []);
+
+    function clearDisplay() {
+        const display = document.getElementById("display");
+        display.value = "";
+    }
 
 
     return (
@@ -46,14 +61,14 @@ function Scientific({clearFunction, execute}) {
                         <button className="number">2</button>
                         <button className="number">3</button>
                         <button className="number">0</button>
-                        <button id="decimal">.</button>
-                        <button id="clear" onClick={clearFunction}>C</button>
-                        <button id="euler">e</button>
-                        <button id="pi">π</button>
-                        <button id="exp">e^x</button>
-                        <button id="comma">,</button>
-                        <button id="open">(</button>
-                        <button id="close">)</button>
+                        <button className="punctuation" id="decimal">.</button>
+                        <button id="clear" onClick={clearDisplay}>C</button>
+                        <button className="constant" id="euler">e</button>
+                        <button className="constant" id="pi">π</button>
+                        <button className="function" id="exp">e^x</button>
+                        <button className="punctuation" id="comma">,</button>
+                        <button className="punctuation" id="open">(</button>
+                        <button className="punctuation" id="close">)</button>
                         <button id="equals" onClick={execute}>=</button>
                     </div>
                 </div>
