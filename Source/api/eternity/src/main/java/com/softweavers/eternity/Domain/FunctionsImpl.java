@@ -73,7 +73,7 @@ public class FunctionsImpl implements FunctionHandler {
              .multiply(bd(Math.pow(Math.E, t.doubleValue() * -1)))
              .multiply(x);
         }
-        return y;
+        return y.round(PRECISION);
     }
 
     /**

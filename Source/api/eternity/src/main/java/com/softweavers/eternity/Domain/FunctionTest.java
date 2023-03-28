@@ -61,29 +61,32 @@ public class FunctionTest {
         }
 
         // test arccos negative above limit input
-        System.out.println("arccos function: -2 should be approx equal to 0");
-        if (almostEqual(f.arccos(new BigDecimal(-2)), new BigDecimal(0))) {
-            System.out.println("Passed medium input test");
-        } else {
+        System.out.println("arccos function: -2 should throw error");
+        try {
+            f.arccos(new BigDecimal(-2));
             System.out.println("Input for arccos(x) out of domain.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Passed medium input test");
+        }
+        
+
+        // test arccos positive above limit input
+        System.out.println("arccos function: 2 should throw error");
+        try {
+            f.arccos(new BigDecimal(2));
+            System.out.println("Input for arccos(x) out of domain.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Passed medium input test");
         }
 
         // test arccos positive above limit input
-        System.out.println("arccos function: 2 should be approx equal to 0");
-        if (almostEqual(f.arccos(new BigDecimal(2)), new BigDecimal(0))) {
-            System.out.println("Passed medium input test");
-        } else {
+        System.out.println("arccos function: 1.41421356237 should throw error");
+        try {
+            f.arccos(new BigDecimal(1.41421356237));
             System.out.println("Input for arccos(x) out of domain.");
-        }
-
-        // test arccos algebraic input
-        System.out.println("arccos function: 1.41421356237 should be approx equal to 0");
-        if (almostEqual(f.arccos(new BigDecimal(1.41421356237)), new BigDecimal(0))) {
+        } catch (IllegalArgumentException e) {
             System.out.println("Passed medium input test");
-        } else {
-            System.out.println("Input for arccos(x) out of domain.");
         }
-        
          
         // test sinh small input ()
         System.out.println("sinh function: 1 should be approx equal to 1.175201193644");
@@ -111,6 +114,7 @@ public class FunctionTest {
 
         // test sinh big input
         System.out.println("sinh function: 85 should be approx equal to 4.1115063573115E+36");
+        System.out.println(f.sinh(new BigDecimal(85)));
         if (almostEqual(f.sinh(new BigDecimal(85)), new BigDecimal(4.1115063573115E+36))) {
             System.out.println("Passed big input test");
         } else {
@@ -136,6 +140,7 @@ public class FunctionTest {
 
         //test gamma small input (BigDecimal value > 0)
         System.out.println("gamma function: 0.0006 should be approx equal to 1666.09");
+        System.out.println(f.gamma(new BigDecimal(0.0006)));
         if (almostEqual(f.gamma(new BigDecimal(0.0006)), new BigDecimal(1666.09))) {
             System.out.println("Passed small input test");
         } else {
@@ -143,32 +148,35 @@ public class FunctionTest {
         }
 
         // test gamma medium input
-        System.out.println("gamma function: 15.789 should be approx equal to 0.9422148003");
-        if (almostEqual(f.gamma(new BigDecimal(15.789)), new BigDecimal(7.344295e+11))) {
+        System.out.println("gamma function: 15.789 should be approx equal to 734429500849.9");
+        System.out.println(f.gamma(new BigDecimal(15.789)));
+        if (almostEqual(f.gamma(new BigDecimal(15.789)), new BigDecimal(734429500849.9))) {
             System.out.println("Passed medium input test");
         } else {
             System.out.println("Failed medium input test");
         }
 
         // test gamma negative above limit input
-        System.out.println("gamma function: -2 should be approx equal to 0");
-        if (almostEqual(f.gamma(new BigDecimal(-2)), new BigDecimal(0))) {
-            System.out.println("Passed medium input test");
-        } else {
+        try {
+            f.gamma(new BigDecimal(-2));
             System.out.println("Input for gamma(z) out of domain.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Passed out of domain test");
         }
 
         // test gamma large input
-        System.out.println("gamma function: 10589.4578 should be approx equal to 6.783356e+3801");
-        if (almostEqual(f.gamma(new BigDecimal(10589)), new BigDecimal(6.783356e+3801))) {
-            System.out.println("Passed medium input test");
+        System.out.println("gamma function: 105 should be approx equal to 1.0299016745146E+166");
+        System.out.println(f.gamma(new BigDecimal(105)));
+        if (almostEqual(f.gamma(new BigDecimal(105)), new BigDecimal(1.0299016745146E+166))) {
+            System.out.println("Passed large input test");
         } else {
-            System.out.println("Failed medium input test.");
+            System.out.println("Failed large input test.");
         }
 
-        // test arccos algebraic input
-        System.out.println("arccos function: 1.41421356237 should be approx equal to 0.886582");
-        if (almostEqual(f.arccos(new BigDecimal(1.41421356237)), new BigDecimal(0.886582))) {
+        // test gamma large input
+        System.out.println("gamma function: 1.41421356237 should be approx equal to 0.8866");
+        System.out.println(f.gamma(new BigDecimal(1.41421356237)));
+        if (almostEqual(f.gamma(new BigDecimal(1.41421356237)), new BigDecimal(0.8866))) {
             System.out.println("Passed algebraic input test");
         } else {
             System.out.println("Failed algebraic input test.");
