@@ -11,7 +11,21 @@ function Scientific({execute}) {
             // Add a click event listener
             button.addEventListener("click", () => {
                 // Append the button's value to the display
-                display.value += button.textContent + "(";
+                let cursorStartPosition = display.selectionStart;
+                let cursorEndPosition = display.selectionEnd;
+
+                // Handle when we want to insert in a particular location
+                if ((cursorEndPosition - cursorStartPosition) === 0){
+                    let textBeforeCursorPosition = display.value.substring(0, cursorStartPosition)
+                    let textAfterCursorPosition = display.value.substring(cursorStartPosition, display.value.length)
+                    display.value = textBeforeCursorPosition + button.value + textAfterCursorPosition;
+                }
+                // Handle when we select a part of the display to replace with something else
+                else {
+                    let toReplace = display.value.substring(cursorStartPosition, cursorEndPosition);
+                    display.value = display.value.replace(toReplace, button.value);
+                }
+
                 display.focus();
             })
         })
@@ -40,6 +54,7 @@ function Scientific({execute}) {
     function clearDisplay() {
         const display = document.getElementById("display");
         display.value = "";
+        display.focus();
     }
 
 
@@ -49,15 +64,14 @@ function Scientific({execute}) {
                 <div id="calculator">
                     <label htmlFor="display"></label><textarea id="display" autoFocus></textarea>
                     <div id="keys">
-                        <button className="function" id="sin">sinh</button>
-                        <button className="function" id="arccos">arccos</button>
-                        <button className="function" id="mad">mad</button>
-                        <button className="function" id="gamma">gamma</button>
-                        <button className="function" id="log">log</button>
-                        <button className="function" id="sqrt">sqrt</button>
-                        <button className="function" id="inv">1/x</button>
-                        <button className="function" id="pow">x^y</button>
-                        <button className="function" id="sd">sd</button>
+                        <button className="function" id="sin" value="sin(">sinh</button>
+                        <button className="function" id="arccos" value="arccos(">arccos</button>
+                        <button className="function" id="mad" value="mad(">mad</button>
+                        <button className="function" id="gamma" value="gamma(">gamma</button>
+                        <button className="function" id="log" value="log(">log</button>
+                        <button className="function" id="sqrt" value="pow(,1/2)">sqrt</button>
+                        <button className="function" id="pow" value="pow(">x^y</button>
+                        <button className="function" id="sd" value="sd(">sd</button>
                         <button className="operator">+</button>
                         <button className="operator">-</button>
                         <button className="operator">*</button>
@@ -76,7 +90,7 @@ function Scientific({execute}) {
                         <button id="clear" onClick={clearDisplay}>C</button>
                         <button className="constant" id="euler">e</button>
                         <button className="constant" id="pi">π</button>
-                        <button className="function" id="exp">e^x</button>
+                        <button className="function" id="exp" value="pow(e,)">e^x</button>
                         <button className="punctuation" id="comma">,</button>
                         <button className="punctuation" id="open">(</button>
                         <button className="punctuation" id="close">)</button>

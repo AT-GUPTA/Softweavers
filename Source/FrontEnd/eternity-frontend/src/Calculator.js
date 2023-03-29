@@ -72,7 +72,6 @@ function Calculator() {
         }
 
     }
-
     return (
         <div className="columns">
             <Scientific execute={execute}/>
