@@ -5,7 +5,7 @@ function Settings({handleCheckbox}) {
     function createSelectItems() {
         let items = [];
         for (let i = 1; i <= 12; i++) {
-            items.push(<option key={i} value={i}>{"Accuracy of ".concat(i)}</option>);
+            items.push(<option key={i} value={i}>{"Precision of ".concat(i)}</option>);
         }
         return items;
     }
@@ -18,15 +18,15 @@ function Settings({handleCheckbox}) {
             <div>
                 <label>
                     <input type="checkbox" className="switch" onChange={handleCheckbox}/>
-                    Basic/Scientific
+                    Scientific notation
                 </label>
             </div>
             <div>
                 <label>
-                    Accuracy adjustment:
+                    Precision adjustment:
                     <select className="dropdown">
-                        {createSelectItems().map((accuracy) =>
-                            accuracy)}
+                        {createSelectItems().map((precision) =>
+                            precision)}
                     </select>
                 </label>
 

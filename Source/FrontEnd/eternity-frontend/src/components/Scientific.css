@@ -100,3 +100,7 @@
   font-weight: bold;
   margin-top: 10px;
 }
+
+#errorMsg, #errorMsgArea {
+  width: 100%;
+}

@@ -12,6 +12,7 @@ function Scientific({execute}) {
             button.addEventListener("click", () => {
                 // Append the button's value to the display
                 display.value += button.textContent + "(";
+                display.focus();
             })
         })
 
@@ -22,8 +23,18 @@ function Scientific({execute}) {
             button.addEventListener("click", () => {
                 // Append the button's value to the display
                 display.value += button.textContent;
+                display.focus();
             })
         })
+
+        const keyDownHandler = event => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                execute();
+            }
+        };
+        document.addEventListener('keydown', keyDownHandler);
+
     }, []);
 
     function clearDisplay() {
@@ -36,10 +47,10 @@ function Scientific({execute}) {
         <div className="columns">
             <div className="first-column">
                 <div id="calculator">
-                    <label htmlFor="display"></label><textarea id="display"></textarea>
+                    <label htmlFor="display"></label><textarea id="display" autoFocus></textarea>
                     <div id="keys">
                         <button className="function" id="sin">sinh</button>
-                        <button className="function" id="arcos">arcos</button>
+                        <button className="function" id="arccos">arccos</button>
                         <button className="function" id="mad">mad</button>
                         <button className="function" id="gamma">gamma</button>
                         <button className="function" id="log">log</button>
@@ -70,6 +81,9 @@ function Scientific({execute}) {
                         <button className="punctuation" id="open">(</button>
                         <button className="punctuation" id="close">)</button>
                         <button id="equals" onClick={execute}>=</button>
+                        <div id="errorMsgArea">
+                            <textarea id="errorMsg" disabled></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
