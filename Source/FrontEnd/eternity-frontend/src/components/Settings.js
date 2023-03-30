@@ -1,7 +1,7 @@
 import './Settings.css';
 
 
-function Settings({handleCheckbox}) {
+function Settings() {
     function createSelectItems() {
         let items = [];
         for (let i = 1; i <= 12; i++) {
@@ -17,7 +17,7 @@ function Settings({handleCheckbox}) {
             </div>
             <div>
                 <label>
-                    <input type="checkbox" className="switch" onChange={handleCheckbox}/>
+                    <input type="checkbox" className="switch"/>
                     Scientific notation
                 </label>
             </div>

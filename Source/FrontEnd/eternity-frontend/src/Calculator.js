@@ -6,12 +6,7 @@ import Scientific from "./components/Scientific";
 import History from "./components/History";
 
 function Calculator() {
-    const [isChecked, setIsChecked] = useState(false);
     const [histories, setHistories] = useState([]);
-
-    const handleCheckboxChange = (event) => {
-        setIsChecked(event.target.checked);
-    };
 
     const handleChangeHistory = (display) => {
         setHistories(histories => ([...histories,
@@ -85,7 +80,7 @@ function Calculator() {
                     <Scientific execute={execute}/>
                 </div>
                 <div className="second-column">
-                    <Settings handleCheckbox={handleCheckboxChange}/>
+                    <Settings/>
                     <History histories={histories}/>
                 </div>
             </div>
