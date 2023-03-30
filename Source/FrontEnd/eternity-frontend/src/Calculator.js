@@ -15,7 +15,8 @@ function Calculator() {
 
     const handleChangeHistory = (display) => {
         setHistories(histories => ([...histories,
-            <option key={histories.length + 1} value={display.value.split('=')[0]}>{display.value.split('=')[0]}</option>]))
+            <option key={histories.length + 1}
+                    value={display.value.split('=')[0]}>{display.value.split('=')[0]}</option>]))
     };
 
     function isValid(str) {
@@ -25,18 +26,18 @@ function Calculator() {
         var openCount = (str.match(/\(/g) || []).length;
         var closeCount = (str.match(/\)/g) || []).length;
 
-        if(closeCount !== openCount) {
+        if (closeCount !== openCount) {
             errorTextArea.value = "For each '(' there must be a corresponding ')'";
             return false;
         }
 
         // fix for preventing functions not starting with '('
-        const functions = ["log", "mad", "sd", "sqrt", "arccos", "sinh", "gamma", "x^y", "x", "e", ""]
-        for (let i = 0; i < functions.length-2; i++){
+        const functions = ["log", "mad", "sd", "sqrt", "arccos", "sinh", "gamma", "pow", "abx", "e", ""]
+        for (let i = 0; i < functions.length - 2; i++) {
             // loop until we find which function we are processing
-            if(str.includes(functions[i])){
+            if (str.includes(functions[i])) {
                 //Check for the proper form
-                if(!str.includes(functions[i] + "(")){
+                if (!str.includes(functions[i] + "(")) {
                     errorTextArea.value = "Functions must start with '('";
                     return false
                 }
@@ -44,7 +45,7 @@ function Calculator() {
         }
 
         // Remove everything but the characters for the functions
-        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|π|\)/g, '').toLowerCase().split('(');
+        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|π|\)|\s/g, '').toLowerCase().split('(');
         console.log(words)
 
         // Loop through each word and check if it's in the predetermined array
@@ -65,21 +66,29 @@ function Calculator() {
     function execute() {
         const display = document.getElementById("display");
 
-        if(isValid(display.value)){
+        if (isValid(display.value)) {
             handleChangeHistory(display);
-            if(display.value.includes('=') === false)
+            if (display.value.includes('=') === false)
                 display.value += "=";
         }
 
     }
-    return (
-        <div className="columns">
-            <Scientific execute={execute}/>
-            <div className="second-column">
-                <Settings handleCheckbox={handleCheckboxChange}/>
-                <History histories={histories}/>
-            </div>
 
+    return (
+        <div>
+            <div className="title-bar">
+                <h1>Eternity</h1>
+                <h2>The Scientific Calculator</h2>
+            </div>
+            <div className="columns">
+                <div className="first-column">
+                    <Scientific execute={execute}/>
+                </div>
+                <div className="second-column">
+                    <Settings handleCheckbox={handleCheckboxChange}/>
+                    <History histories={histories}/>
+                </div>
+            </div>
         </div>
     );
 }

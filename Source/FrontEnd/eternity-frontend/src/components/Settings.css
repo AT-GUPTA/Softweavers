@@ -1,6 +1,11 @@
 /* Style the "Settings" header and the line items */
 .header {
   font-weight: bold;
+  margin-top: 10px;
+}
+
+.flushOption {
+  margin-left: 12px;
 }
 
 /* Style the on/off switch */

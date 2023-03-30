@@ -11,7 +11,7 @@ function History({histories}) {
     return (
         <div>
             <div className="history">
-                History
+                History:
             </div>
             <div>
                 <select className="history_input" size={20} onChange={(e) => updateDisplay(e)}

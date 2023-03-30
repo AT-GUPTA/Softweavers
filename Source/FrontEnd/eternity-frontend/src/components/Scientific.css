@@ -1,20 +1,3 @@
-/* Divide the screen into two columns */
-.columns {
-  display: flex;
-  flex-direction: row;
-}
-
-/* Style the first column to take up 70% of the width */
-.first-column {
-  width: 70%;
-}
-
-/* Style the second column to take up 30% of the height in the first row */
-.second-column {
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-}
 
 #calculator {
   width: 90%;
@@ -68,6 +51,7 @@
 #pi, #decimal {
   background-color: #4caf50;
 }
+
 
 #keys button:hover {
   background-color: #555;

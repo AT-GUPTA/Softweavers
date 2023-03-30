@@ -5,7 +5,7 @@ function Settings({handleCheckbox}) {
     function createSelectItems() {
         let items = [];
         for (let i = 1; i <= 12; i++) {
-            items.push(<option key={i} value={i}>{"Precision of ".concat(i)}</option>);
+            items.push(<option key={i} value={i}>{i}</option>);
         }
         return items;
     }
@@ -13,7 +13,7 @@ function Settings({handleCheckbox}) {
     return (
         <div>
             <div className="header">
-                Settings
+                Settings:
             </div>
             <div>
                 <label>
@@ -22,8 +22,11 @@ function Settings({handleCheckbox}) {
                 </label>
             </div>
             <div>
-                <label>
+                <div className="header">
                     Precision adjustment:
+                </div>
+                <label className="flushOption">
+                    Precision of:
                     <select className="dropdown">
                         {createSelectItems().map((precision) =>
                             precision)}
