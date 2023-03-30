@@ -15,8 +15,8 @@ function Calculator() {
 
     const handleChangeHistory = (display) => {
         setHistories(histories => ([...histories,
-            <option key={histories.length + 1}
-                    value={display.value.split('=')[0]}>{display.value.split('=')[0]}</option>]))
+            {eventKey: histories.length + 1, label: display.value.split('=')[0]}
+            ]))
     };
 
     function isValid(str) {
