@@ -63,15 +63,15 @@ public class FunctionsImpl implements FunctionHandler {
             for (int i = 0; i < lanczos.length; ++i) {
                 x = x.add(lanczos[i].divide(z.add(new BigDecimal(i + 1)), PRECISION));
             }
-          
+
             BigDecimal t = z.add(new BigDecimal(lanczos.length - 0.5));
             BigDecimal[] args = new BigDecimal[2];
             args[0] = t;
             args[1] = z.add(new BigDecimal(0.5));
             y = bd(Math.pow(2 * Math.PI, 0.5))
-             .multiply(pow(args))
-             .multiply(bd(Math.pow(Math.E, t.doubleValue() * -1)))
-             .multiply(x);
+                    .multiply(pow(args))
+                    .multiply(bd(Math.pow(Math.E, t.doubleValue() * -1)))
+                    .multiply(x);
         }
         return y.round(PRECISION);
     }
@@ -116,7 +116,7 @@ public class FunctionsImpl implements FunctionHandler {
         BigDecimal value = values[0];
         BigDecimal base = values[1];
 
-        if (base.compareTo(BigDecimal.ONE) <= 0 || value.compareTo(BigDecimal.ONE) <= 0) {
+        if (base.compareTo(BigDecimal.ONE) == 0 || value.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Base and value must be greater than 1");
         }
         BigDecimal decimal = subordinates.ln(value).divide(subordinates.ln(base), PRECISION);
@@ -132,7 +132,7 @@ public class FunctionsImpl implements FunctionHandler {
 
     @Override
     public BigDecimal abx(BigDecimal a, BigDecimal b, BigDecimal x) {
-        return  a.multiply(subordinates.power(b, x));
+        return a.multiply(subordinates.power(b, x));
     }
 
     public BigDecimal standardDeviation(BigDecimal[] values) {
