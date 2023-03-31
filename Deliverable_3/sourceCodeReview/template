@@ -16,6 +16,7 @@ Is the code readable and easy to understand or follow?
 Is it redundant? 
 Is the code overcomplicated or too clever?
 Is it possible to reduce the complexity of the code?
+Does the method use any prebuilt functions?
 ------------------------------------------------------------------------------------------------------------------------------------------------
 Extra Notes (optional): 
 
