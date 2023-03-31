@@ -9,10 +9,9 @@ function Calculator() {
     const [histories, setHistories] = useState([]);
 
     const handleChangeHistory = (display) => {
-        setHistories(histories => ([...histories,
-            {eventKey: histories.length + 1, label: display.value.split('=')[0]}
-            ]))
-    };
+        const inputSplit = display.value.split('=');
+        setHistories(prevState => [...prevState, {label: inputSplit[0], value: inputSplit[1]}]);
+    }
 
     function isValid(str) {
         const errorTextArea = document.getElementById("errorMsg");
@@ -27,12 +26,12 @@ function Calculator() {
         }
 
         // fix for preventing functions not starting with '('
-        const functions = ["log", "mad", "sd", "sqrt", "arccos", "sinh", "gamma", "pow", "abx", "e", ""]
-        for (let i = 0; i < functions.length - 2; i++) {
-            // loop until we find which function we are processing
+        const functions = ["log", "mad", "sd", "sqrt", "arccos", "sinh", "gamma", "^", "abx", "e^", ""]
+        for (let i = 0; i < functions.length - 1; i++) {
+            // look for each function we are processing
             if (str.includes(functions[i])) {
-                //Check for the proper form
-                if (!str.includes(functions[i] + "(")) {
+                // Check for the proper form. Ignoring this condition for certain functions
+                if (!(functions[i] === "^" || functions[i] === "e^") && !str.includes(functions[i] + "(")) {
                     errorTextArea.value = "Functions must start with '('";
                     return false
                 }
@@ -40,14 +39,12 @@ function Calculator() {
         }
 
         // Remove everything but the characters for the functions
-        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|π|\)|\s/g, '').toLowerCase().split('(');
-        console.log(words)
+        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|π|\)|\s|^/g, '').toLowerCase().split('(');
 
         // Loop through each word and check if it's in the predetermined array
         for (let i = 0; i < words.length; i++) {
             if (!functions.includes(words[i])) {
                 // If a word isn't in the array, return false
-                // const word = words.filter(e => e.length);
                 errorTextArea.value = "Unknown function: " + words[i];
                 return false;
             }
@@ -62,11 +59,11 @@ function Calculator() {
         const display = document.getElementById("display");
 
         if (isValid(display.value)) {
-            handleChangeHistory(display);
-            if (display.value.includes('=') === false)
-                display.value += "=";
-        }
+            // Send display.value to the server and append its response
+            display.value += "=17";
 
+            handleChangeHistory(display);
+        }
     }
 
     return (

@@ -27,10 +27,6 @@ function Scientific({execute}) {
                 }
 
                 // Handle leaving the cursor in the correct location for inserting variable
-                if (button.id === "sqrt")
-                    display.selectionEnd = display.selectionStart - 5;
-                if (button.id === "exp")
-                    display.selectionEnd = display.selectionStart - 1;
                 if (button.id === "abx")
                     display.selectionEnd = display.selectionStart - 4;
 
@@ -66,21 +62,27 @@ function Scientific({execute}) {
         display.focus();
     }
 
+    function submitPrep() {
+        const display = document.getElementById("display");
+        if(display.value.includes('=')){
+            display.value = display.value.split('=')[0];
+        }
+    }
 
     return (
         <div id="calculator">
-            <label htmlFor="display"></label><textarea id="display" autoFocus></textarea>
+            <label htmlFor="display"></label><textarea id="display" onChange={submitPrep} autoFocus></textarea>
             <div id="keys">
                 <button className="function" id="sinh" value="sinh(">sinh</button>
                 <button className="function" id="arccos" value="arccos(">arccos</button>
                 <button className="function" id="mad" value="mad(">mad</button>
                 <button className="function" id="gamma" value="gamma(">gamma</button>
                 <button className="function" id="log" value="log(">log</button>
-                <button className="function" id="sqrt" value="pow(,1/2)">sqrt</button>
-                <button className="function" id="pow" value="pow(">x^y</button>
+                <button className="function" id="sqrt" value="^(1/2)">sqrt</button>
+                <button className="function" id="pow" value="^">x<sup>y</sup></button>
                 <button className="function" id="sd" value="sd(">sd</button>
-                <button className="function" id="abx" value="abx(, ,)">ab^x</button>
-                <button className="function" id="exp" value="pow(e,)">e^x</button>
+                <button className="function" id="abx" value="abx(, ,)">ab<sup>x</sup></button>
+                <button className="function" id="exp" value="e^">e<sup>x</sup></button>
                 <button className="constant" id="euler">e</button>
                 <button className="constant" id="pi">π</button>
                 <button className="number">7</button>
