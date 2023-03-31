@@ -2,11 +2,6 @@ Function Name:
 Written By:
 Reviewed By: 
 ------------------------------------------------------------------------------------------------------------------------------------------------
-JAVADOCS 
-Is the javadoc present?
-Does it explain the parameters?
-Is there a brief explanation of the function?
-------------------------------------------------------------------------------------------------------------------------------------------------
 CODE CHECKS
 Are comments helpful?
 Is there domain validation and error handling for incorrect input?
