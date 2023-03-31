@@ -132,9 +132,22 @@ public class FunctionsImpl implements FunctionHandler {
     }
 
     @Override
-    public BigDecimal xToY(BigDecimal y) {
-        BigDecimal x = BigDecimal.valueOf(0);
-        return subordinates.power(x, y);
+    public BigDecimal xToY(BigDecimal[] values) {
+        BigDecimal base = values[0];
+        BigDecimal exp = values[1];
+        
+        if (base.compareTo(BigDecimal.ZERO) < 0)
+            try {
+                BigDecimal test = exp.remainder(BigDecimal.valueOf(2));
+                if (exp.remainder(BigDecimal.valueOf(2)).compareTo(BigDecimal.ZERO) == 0)
+                    return subordinates.power(NEGATIVE_ONE.multiply(base), exp);
+                else
+                    return NEGATIVE_ONE.multiply(subordinates.power(NEGATIVE_ONE.multiply(base), exp));
+            } catch (ArithmeticException ex) {
+                LOGGER.info("Error: Unreal solution");
+                return null;
+            }
+        return subordinates.power(base, exp);
     }
 
     @Override
