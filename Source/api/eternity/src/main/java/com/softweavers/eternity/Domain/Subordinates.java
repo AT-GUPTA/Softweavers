@@ -13,6 +13,7 @@ public class Subordinates {
     private static final Logger LOGGER = LoggerFactory.getLogger(Subordinates.class);
     private static final MathContext PRECISION = MathContext.DECIMAL128;
     private final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS), PRECISION);
+    private static final BigDecimal ln1000 = BigDecimal.valueOf(6.907755278982137650156515175517786);
 
     // Method to calculate decimal sqrt of a number
     private BigDecimal decimalSqrt(BigDecimal number, BigDecimal i, BigDecimal j) {
@@ -70,6 +71,10 @@ public class Subordinates {
         if (x.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("ln(x): x must be positive");
         }
+        //recursion to maintain small value of x.
+        if (x.compareTo(BigDecimal.valueOf(10_000)) > 0) {
+            return ln(x.divide((BigDecimal.valueOf(1_000)), PRECISION)).add(ln1000);
+        }
 
         int scale = x.precision() + 2;
         BigDecimal y = x.subtract(BigDecimal.ONE);
@@ -109,14 +114,14 @@ public class Subordinates {
                     return NEGATIVE_ONE.multiply(power(NEGATIVE_ONE.multiply(base), exp));
             } catch (ArithmeticException ex) {
                 // Negative base, noninteger exponent case
-                 LOGGER.info("Error: Unreal solution");
+                LOGGER.info("Error: Unreal solution");
                 return null;
             }
         }
         // Handle case of negative exponent
         else if (exp.compareTo(BigDecimal.ZERO) < 0) {
             BigDecimal result = power(base, NEGATIVE_ONE.multiply(exp));
-            return new BigDecimal(1/result.doubleValue());
+            return new BigDecimal(1 / result.doubleValue());
         }
 
         // Covers prior to decimal point using the property x^y = x^(y/2)^2
@@ -139,7 +144,7 @@ public class Subordinates {
                     acc = acc.multiply(sqr);
                 } else {
                     high = mid;
-                    acc = acc.multiply(new BigDecimal(1/sqr.doubleValue()));
+                    acc = acc.multiply(new BigDecimal(1 / sqr.doubleValue()));
                 }
                 mid = low.add(high).divide(BigDecimal.valueOf(2));
                 error = mid.subtract(exp).abs();
