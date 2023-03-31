@@ -133,14 +133,12 @@ public class FunctionsImpl implements FunctionHandler {
 
     @Override
     public BigDecimal xToY(BigDecimal[] values) {
-        if (values.length == 1){
-            BigDecimal base = BigDecimal.valueOf(BigDecimal.ZERO);
-            BigDecimal exp = values[0];
-        }
-        else {
+        if (values.length != 2)
+            throw new IllegalArgumentException("Requires 2 inputs");
+        
         BigDecimal base = values[0];
         BigDecimal exp = values[1];
-        }
+        
         if (base.compareTo(BigDecimal.ZERO) < 0)
             try {
                 BigDecimal test = exp.remainder(BigDecimal.valueOf(2));
