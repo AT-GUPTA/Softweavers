@@ -110,7 +110,7 @@ public class FunctionParser implements ParserHandler {
                 switch (func) {
                     case "logbx" -> res = String.valueOf(functionCalculator.log(values));
                     case "sd" -> res = String.valueOf(functionCalculator.standardDeviation(values));
-                    case "ab^x" -> res = String.valueOf(functionCalculator.xToY(values[0]));
+                    case "ab^x" -> res = String.valueOf(functionCalculator.abx(values));
                     case "arccos" -> res = String.valueOf(functionCalculator.arccos(values[0]));
                     case "sinh" -> res = String.valueOf(functionCalculator.sinh(values[0]));
                     case "gamma" -> res = String.valueOf(functionCalculator.gamma(values[0]));

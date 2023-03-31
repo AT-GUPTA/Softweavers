@@ -138,7 +138,14 @@ public class FunctionsImpl implements FunctionHandler {
     }
 
     @Override
-    public BigDecimal abx(BigDecimal a, BigDecimal b, BigDecimal x) {
+    public BigDecimal abx(BigDecimal[] values) {
+        if (values.length != 3)
+            throw new IllegalArgumentException("abx function requires 3 inputs.");
+
+        BigDecimal a = values[0];
+        BigDecimal b = values[1];
+        BigDecimal x = values[2];
+
         return a.multiply(subordinates.power(b, x));
     }
 

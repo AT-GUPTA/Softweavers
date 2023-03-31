@@ -35,11 +35,12 @@ public interface FunctionHandler {
 
     /**
      * Returns the result of a(b^x)
-     * @param a the multiplier
-     * @param b the base
-     * @param x the exponential coefficient
+     * @param values array consisting of the following indexes:
+     *               values[0] = 'a' the multiplier,
+     *               values[1] = 'b' the base,
+     *               values[2] = 'x' the exponential coefficient
      */
-    BigDecimal abx(BigDecimal a, BigDecimal b, BigDecimal x);
+    BigDecimal abx(BigDecimal[] values);
 
     /**
      * First calculates the mean of the given inputs. (Sums each number and divides by total operations)
