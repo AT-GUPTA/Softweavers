@@ -99,7 +99,7 @@ public class FunctionParser implements ParserHandler {
                     }
                 }
 
-                String res = "";
+                BigDecimal res = BigDecimal.valueOf(0);
 
                 // Convert the values to BigDecimal
                 BigDecimal[] values = Arrays.stream(inputs)
@@ -108,14 +108,15 @@ public class FunctionParser implements ParserHandler {
 
                 // Handle each special function
                 switch (func) {
-                    case "logbx" -> res = String.valueOf(functionCalculator.log(values));
-                    case "sd" -> res = String.valueOf(functionCalculator.standardDeviation(values));
-                    case "ab^x" -> res = String.valueOf(functionCalculator.abx(values));
-                    case "arccos" -> res = String.valueOf(functionCalculator.arccos(values[0]));
-                    case "sinh" -> res = String.valueOf(functionCalculator.sinh(values[0]));
-                    case "gamma" -> res = String.valueOf(functionCalculator.gamma(values[0]));
-                    case "pow" -> res = String.valueOf(functionCalculator.pow(values));
+                    case "logbx" -> res = functionCalculator.log(values);
+                    case "sd" -> res = functionCalculator.standardDeviation(values);
+                    case "ab^x" -> res = functionCalculator.abx(values);
+                    case "arccos" -> res = functionCalculator.arccos(values[0]);
+                    case "sinh" -> res = functionCalculator.sinh(values[0]);
+                    case "gamma" -> res = functionCalculator.gamma(values[0]);
+                    case "pow" -> res = functionCalculator.pow(values);
                 }
+
                 expr = expr.substring(0, funcStart) + res + expr.substring(inputEnd + 1);
 
 
