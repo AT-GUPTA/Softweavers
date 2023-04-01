@@ -31,10 +31,10 @@ public interface FunctionHandler {
 
     /**
      * computes the function x^y using binary approximation.
-     * 
-     * @param x any real number
-     * @param y any real number for x > 0 and for x being an integer value.
-     *        y any integer value for x <0 and is not an integer.   
+     * @param input array of BigDecimal containing:
+     *        [0] - x any real number
+     *        [1] - y any real number for x > 0 and for x being an integer value.
+     *              y any integer value for x <0 and is not an integer.
      * @return the result of x^y
      */
     BigDecimal xToY(BigDecimal[] input);
