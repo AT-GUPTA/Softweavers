@@ -39,16 +39,6 @@ public class FunctionsImpl implements FunctionHandler {
         return (pow1.subtract(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
     }
 
-    @Override
-    public BigDecimal pow(BigDecimal[] values) {
-        if (values.length != 2)
-            throw new IllegalArgumentException("Power function requires 2 inputs.");
-        BigDecimal base = values[0];
-        BigDecimal exp = values[1];
-
-        return subordinates.power(base, exp);
-    }
-
     private BigDecimal bd(double x) {
         return new BigDecimal(x);
     }
@@ -76,7 +66,7 @@ public class FunctionsImpl implements FunctionHandler {
             args[0] = t;
             args[1] = z.add(new BigDecimal(0.5));
             y = bd(Math.pow(2 * Math.PI, 0.5))
-                    .multiply(pow(args))
+                    .multiply(xToY(args))
                     .multiply(bd(Math.pow(Math.E, t.doubleValue() * -1)))
                     .multiply(x);
         }

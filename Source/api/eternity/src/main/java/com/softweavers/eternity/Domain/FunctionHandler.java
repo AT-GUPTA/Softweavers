@@ -11,8 +11,6 @@ public interface FunctionHandler {
      */
     BigDecimal arccos(BigDecimal x);
 
-    BigDecimal pow(BigDecimal[] input);
-
     /**
      * Computes the function logarithm(value, base) using natural log expansion and general logarithmic identities.
      *

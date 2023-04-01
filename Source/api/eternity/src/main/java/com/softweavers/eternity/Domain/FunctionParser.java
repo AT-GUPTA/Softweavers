@@ -114,7 +114,7 @@ public class FunctionParser implements ParserHandler {
                     case "arccos" -> res = functionCalculator.arccos(values[0]);
                     case "sinh" -> res = functionCalculator.sinh(values[0]);
                     case "gamma" -> res = functionCalculator.gamma(values[0]);
-                    case "pow" -> res = functionCalculator.pow(values);
+                    case "pow" -> res = functionCalculator.xToY(values);
                 }
 
                 expr = expr.substring(0, funcStart) + res + expr.substring(inputEnd + 1);
