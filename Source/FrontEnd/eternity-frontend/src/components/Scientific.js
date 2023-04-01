@@ -54,7 +54,7 @@ function Scientific({execute}) {
         };
         document.addEventListener('keydown', keyDownHandler);
 
-    }, []);
+    }, [execute]);
 
     function clearDisplay() {
         const display = document.getElementById("display");

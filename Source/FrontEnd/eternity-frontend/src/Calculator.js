@@ -39,7 +39,7 @@ function Calculator() {
         }
 
         // Remove everything but the characters for the functions
-        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|π|\)|\s|^/g, '').toLowerCase().split('(');
+        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|π|\)|\s|\^/g, '').toLowerCase().split('(');
 
         // Loop through each word and check if it's in the predetermined array
         for (let i = 0; i < words.length; i++) {
@@ -55,14 +55,22 @@ function Calculator() {
         return true;
     }
 
+    function handlePow(input) {
+        return input
+    }
+
     function execute() {
         const display = document.getElementById("display");
 
         if (isValid(display.value)) {
             // Send display.value to the server and append its response
-            display.value += "=17";
+            let request = handlePow(display.value);
+            let response = 17;
+            display.value += "=" + response;
 
             handleChangeHistory(display);
+            console.log("REQUEST: " + request)
+            // prepare the string before sending it to the server
         }
     }
 

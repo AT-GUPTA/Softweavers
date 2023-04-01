@@ -1,11 +1,10 @@
-
-.history {
+.title {
     font-weight: bold;
     margin-top: 10px;
 }
-
 .history_input {
     width: 200px;
     height: 200px;
-    overflow:scroll;
+    overflow: auto;
 }
+
