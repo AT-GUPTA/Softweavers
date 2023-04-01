@@ -1,0 +1,15 @@
+Function Name:logarithm
+Written By: Atul	
+Reviewed By: Kiana
+------------------------------------------------------------------------------------------------------------------------------------------------
+CODE CHECKS
+Are comments helpful? No comments present
+Is there domain validation and error handling for incorrect input? yes
+Does it have the correct types (BigDecimal and BigInteger) for parameters and return type? yes
+Are variables descriptively named and follow naming conventions? yes
+Is the code readable and easy to understand or follow? yes
+Is it redundant? no
+Is the code overcomplicated or too clever? no
+Is it possible to reduce the complexity of the code? no
+------------------------------------------------------------------------------------------------------------------------------------------------
+Extra Notes (optional): 

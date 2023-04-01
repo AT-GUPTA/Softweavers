@@ -39,7 +39,7 @@ public interface FunctionHandler {
      *        y any integer value for x <0 and is not an integer.   
      * @return the result of x^y
      */
-    BigDecimal xToY(BigDecimal y);
+    BigDecimal xToY(BigDecimal[] input);
 
     /**
      * Returns the result of a(b^x)
