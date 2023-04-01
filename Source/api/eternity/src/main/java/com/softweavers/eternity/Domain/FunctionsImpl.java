@@ -13,7 +13,6 @@ public class FunctionsImpl implements FunctionHandler {
 
     public static final MathContext PRECISION = MathContext.DECIMAL128;
     private static final Logger LOGGER = LoggerFactory.getLogger(FunctionsImpl.class);
-    //todo what is lanczos?
     private static final BigDecimal[] lanczos = {new BigDecimal("676.5203681218851"),
             new BigDecimal("-1259.1392167224028"), new BigDecimal("771.32342877765313"),
             new BigDecimal("-176.61502916214059"), new BigDecimal("12.507343278686905"),
@@ -39,10 +38,6 @@ public class FunctionsImpl implements FunctionHandler {
         return (pow1.subtract(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
     }
 
-    private BigDecimal bd(double x) {
-        return new BigDecimal(x);
-    }
-
     // Calculate the Gamma function for a given input value
     @Override
     public BigDecimal gamma(BigDecimal z) {
@@ -65,9 +60,9 @@ public class FunctionsImpl implements FunctionHandler {
             BigDecimal[] args = new BigDecimal[2];
             args[0] = t;
             args[1] = z.add(new BigDecimal(0.5));
-            y = bd(Math.pow(2 * Math.PI, 0.5))
-                    .multiply(xToY(args))
-                    .multiply(bd(Math.pow(Math.E, t.doubleValue() * -1)))
+            y = subordinates.power(new BigDecimal(2 * Math.PI), new BigDecimal("0.5"))
+                    .multiply(subordinates.power(args[0], args[1]))
+                    .multiply(subordinates.power(new BigDecimal(Math.E), t.multiply(new BigDecimal(-1))))
                     .multiply(x);
         }
         return y.round(PRECISION);
