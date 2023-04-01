@@ -1,0 +1,41 @@
+Function Name: Gamma Function
+Written By: Khavish
+Reviewed By: Ruksmita
+------------------------------------------------------------------------------------------------------------------------------------------------
+CODE CHECKS
+Q : Are the comments helpful?
+A : There are no comments explaining the logic of the function. Since the function is not a straightforward 
+    read, it could be helpful to have an explanation of the different parts. Also, multiline comments should 
+    be used to describe the function and its parameter & return value.
+
+Q : Is there domain validation and error handling for incorrect input?
+A : Yes. The function checks for zero-negative inputs and throws an appropriate exception.
+
+Q : Does it have the correct types (BigDecimal and BigInteger) for parameters and return type?
+A : Yes.
+
+Q : Are variables descriptively named and follow naming conventions?
+A : No. Some of the variables are named using single letters, which, makes it hard to understand the 
+    purpose of the variable.
+
+Q : Is the code readable and easy to understand or follow?
+A : In general, yes. However, some sections could be improved.
+Example: In FunctionImpl.java, line 71, there are multiple adds and divide within the same line. This line 
+         could be decomposed in 3 distinct operations,making the code easier to understand.
+
+Q : Is it redundant? 
+A : No.
+
+Q : Is the code overcomplicated or too clever?
+A : No. 
+
+Q : Is it possible to reduce the complexity of the code?
+A : Not easily.
+
+Q : Does the method use any prebuilt functions?
+A : Yes, the function uses Math.Pow. It should be replaced with the in-house pow function.
+------------------------------------------------------------------------------------------------------------------------------------------------
+Extra Notes (optional): 
+
+Not too sure why, at line 69, the number "0.99999999999980993" was used to initialize a BigDecimal. This could put in a constant.
+
