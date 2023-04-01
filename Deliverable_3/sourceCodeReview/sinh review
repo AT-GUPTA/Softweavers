@@ -1,0 +1,17 @@
+Function Name: Sinh(x)
+Written By: Jiaqi Gu
+Reviewed By: Khavish Gangalaramsamy
+------------------------------------------------------------------------------------------------------------------------------------------------
+CODE CHECKS
+Are comments helpful? No comments
+Is there domain validation and error handling for incorrect input? No
+Does it have the correct types (BigDecimal and BigInteger) for parameters and return type? Yes
+Are variables descriptively named and follow naming conventions? Yes
+Is the code readable and easy to understand or follow? Yes
+Is it redundant? No
+Is the code overcomplicated or too clever? No
+Is it possible to reduce the complexity of the code? No
+Does the method use any prebuilt functions? No
+------------------------------------------------------------------------------------------------------------------------------------------------
+Extra Notes (optional): 
+
