@@ -24,14 +24,14 @@ function Calculator() {
      * @returns {boolean|string}
      * When returning a string, the string will contain the error message of where it failed to conform.
      * If true is returned then the display has the correct form for the server.
-     * If false is returned then its because there is already and error message in the display.
+     * If false is returned then it's because there is already an error message in the display.
      */
     function isValid(display) {
         var str = display.value;
         console.log(str)
 
         // Remove everything but the characters for the functions
-        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|π|\)|\s|\^/g, '').toLowerCase().split('(');
+        const words = str.replace(/[0-9]|,|\.|\+|-|\*|\/|\)|\s|\^/g, '').toLowerCase().split('(');
 
         // Check if there was already an error message in the calculators display
         if (words[0].includes("unknown") || words[0].includes("foreach'") || words[0].includes("functionsmuststartwith"))
@@ -57,13 +57,14 @@ function Calculator() {
             }
         }
 
+
         // Loop through each word and check if it's in the predetermined array
         for (let i = 0; i < words.length; i++) {
-            if (!functions.includes(words[i])) {
-
+            // Strip constants
+            var constantLess = words[i].replace(/[e|π]/g, '')
+            if (!functions.includes(constantLess)) {
                 // If a word isn't in the array, return false
-                if (words[i] !== 'e')   //Allow e since it is just a constant
-                    return "Unknown function: " + words[i];
+                return "Unknown function: " + words[i];
             }
         }
 
@@ -73,18 +74,20 @@ function Calculator() {
 
     function execute() {
         const display = document.getElementById("display");
+        let request = display.value;
 
-        var validated = isValid(display);
-        if (validated === true) {
-            // Send display.value to the server and append its response
-            let request = display.value;
-            let response = 17;
-            display.value += "=" + response;
-            handleChangeHistory(display);
-        }
-        if (typeof (validated) === "string") {
-            handleChangeHistory(display);
-            display.value = validated;
+        if (request !== '') {
+            var validated = isValid(display);
+            if (validated === true) {
+                // Send request to the server and append its response
+                let response = 17;
+                display.value += "=" + response;
+                handleChangeHistory(display);
+            }
+            if (typeof (validated) === "string") {
+                handleChangeHistory(display);
+                display.value = validated;
+            }
         }
     }
 
