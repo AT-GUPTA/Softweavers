@@ -66,7 +66,8 @@ public class FunctionsImpl implements FunctionHandler {
                     .multiply(subordinates.power(new BigDecimal(Math.E), t.multiply(new BigDecimal(-1))))
                     .multiply(x);
         }
-        return y.round(PRECISION);
+        y = y.setScale(PRECISION.getPrecision(), RoundingMode.HALF_UP);
+        return y;
     }
 
     /**
