@@ -151,17 +151,23 @@ public class FunctionsImpl implements FunctionHandler {
     }
 
     public BigDecimal standardDeviation(BigDecimal[] values) {
+        // Check to see if there is a sufficient number of values
         if (values.length < 2)
             throw new IllegalArgumentException("Standard Deviation requires more than 2 inputs");
 
+        // Get the mean of the collection of input values
         BigDecimal mean = calculateMean(values);
 
+        // Compound (mean-value)^2
         BigDecimal standardDev = BigDecimal.valueOf(0);
         for (BigDecimal value : values) {
             standardDev = standardDev.add(subordinates.power(value.subtract(mean), BigDecimal.valueOf(2)));
         }
 
+        // Divide by the total number of inputs
         standardDev = standardDev.divide(new BigDecimal(values.length), PRECISION);
+
+        // Return the square root
         standardDev = subordinates.power(standardDev, BigDecimal.valueOf(.5));
         return standardDev;
     }
