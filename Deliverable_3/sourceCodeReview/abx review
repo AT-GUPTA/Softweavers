@@ -1,0 +1,48 @@
+Function Name: Exponent Function ab^x
+Written By: Ruksmita
+Reviewed By: Atul
+------------------------------------------------------------------------------------------------------------------------------------------------
+CODE CHECKS
+Are comments helpful?
+Yes
+
+Is there domain validation and error handling for incorrect input?
+Yes
+
+Does it have the correct types (BigDecimal and BigInteger) for parameters and return type?
+Yes
+
+Are variables descriptively named and follow naming conventions?
+Yes
+
+Is the code readable and easy to understand or follow?
+Yes
+
+Is it redundant?
+No
+
+Is the code overcomplicated or too clever?
+No
+
+Is it possible to reduce the complexity of the code?
+No
+
+Does the method use any prebuilt functions?
+Yes, only the standard basic-arithmetic prebuilt functions were used.
+BigDecimal.add()
+BigDecimal.subtract()
+BigDecimal.multiply()
+BigDecimal.divide()
+BigDecimal.remainder()
+BigDecimal.abs()
+BigDecimal.compareTo()
+BigDecimal.valueOf()
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Notes:
+-Variable test is initialized but never used in the subordinate function `power`
+-Precision is not supplied to BigDecimal.divide() method
+-Method call to create a new BigDecimal follows an old way. Instead of new BigDecimal(value), BigDecimal.valueOf(value) should be used.
+
+Extra Notes:
+-Function calls subordinate power function.
