@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Arrays;
 
 
 public class FunctionsImpl implements FunctionHandler {
@@ -102,28 +103,37 @@ public class FunctionsImpl implements FunctionHandler {
 
     @Override
     public BigDecimal log(BigDecimal[] values) {
-        if (values.length != 2)
+        LOGGER.debug("FunctionsImpl: log called on Object {}", Arrays.toString(values));
+        // Check if there are two input values
+        if (values.length != 2) {
+            LOGGER.error("FunctionImpl: log called with invalid input -- Failure");
             throw new IllegalArgumentException("Log function requires 2 inputs.");
-
+        }
+        // Get the input values
         BigDecimal value = values[0];
         BigDecimal base = values[1];
 
+        // Check if the input values are valid
         if (base.compareTo(BigDecimal.ONE) == 0 || value.compareTo(BigDecimal.ZERO) <= 0 || base.compareTo(BigDecimal.ZERO) <= 0) {
+            LOGGER.error("FunctionImpl: log called with invalid input -- Failure");
             throw new IllegalArgumentException("Base and value must be greater than 1");
         }
+        LOGGER.debug("FunctionImpl: log call inputs verified");
+        // Calculate the logarithm using natural logarithm and return the result. Used base change theorem log(b)x = (lnx)/(lnb)
         BigDecimal decimal = subordinates.ln(value).divide(subordinates.ln(base), PRECISION);
-
-        return decimal.setScale(10, RoundingMode.HALF_UP);
+        LOGGER.debug("FunctionImpl: log call for value {} and base {} completed -- Success", value, base);
+        // returning the result with 12 decimal places.
+        return decimal.setScale(12, RoundingMode.HALF_UP);
     }
 
     @Override
     public BigDecimal xToY(BigDecimal[] values) {
         if (values.length != 2)
             throw new IllegalArgumentException("Requires 2 inputs");
-        
+
         BigDecimal base = values[0];
         BigDecimal exp = values[1];
-       
+
         return subordinates.power(base, exp);
     }
 

@@ -1,22 +1,26 @@
-Function logarithm(Base: BigDecimal, Value: BigDecimal) → BigDecimal:
-    If (Base ≤ 1 or Value ≤ 1) Then
+Function logarithm(values: BigDecimal[value, base]) → BigDecimal:
+    If values.length != 2 Then
+        THROW new IllegalArgumentException("Log function requires 2 inputs.")
+    END IF
+    Value ← values[0]
+    Base ← values[1]
+    If (Base ≤ 0 or Base = 1 or Value ≤ 1) Then
         Throw IllegalArgumentException
     EndIf
     Decimal ← ln(Value) ÷ ln(Base)
-    Return Round(Decimal)
+    Return Round(Decimal,Scale:12)
 EndFunction
 
 Function ln(X: BigDecimal) → BigDecimal:
     If (X ≤ 0) Then
         Throw IllegalArgumentException
     EndIf
-    Scale ← Precision(X) + 2
     Y ← X - 1
     Z ← Y ÷ X
     Result ← Z
     ZPower ← Z
     Threshold ← 1E-1000
-    For i = 2 To 100000
+    For i = 2 To 100_000
         ZPower ← ZPower × Z
         Term ← ZPower ÷ i
         Result ← Result + Term

@@ -66,32 +66,45 @@ public class Subordinates {
         return BigInteger.valueOf(fct);
     }
 
+    /**
+     * This function calculates the natural logarithm of a given value
+     *
+     * @param x input value
+     * @return big decimal of natural log on x.
+     */
     public BigDecimal ln(BigDecimal x) {
 
+        LOGGER.debug("Subordinates: ln called on {}", x);
+
+        // Check if the input value is valid
         if (x.compareTo(BigDecimal.ZERO) <= 0) {
+            LOGGER.error("Subordinates: ln call on {} interrupted -- Failure", x);
             throw new IllegalArgumentException("ln(x): x must be positive");
         }
         //recursion to maintain small value of x.
         if (x.compareTo(BigDecimal.valueOf(10_000)) > 0) {
+            // Divide the big input value by 1000 and add the natural logarithm of 1000 to the result. Used logarithm property log(ab) = log(a) + log(b)
             return ln(x.divide((BigDecimal.valueOf(1_000)), PRECISION)).add(ln1000);
         }
-
-        int scale = x.precision() + 2;
+        // Initialize variables
         BigDecimal y = x.subtract(BigDecimal.ONE);
         BigDecimal z = y.divide(x, PRECISION);
         BigDecimal result = z;
         BigDecimal zPower = z;
+        BigDecimal threshHold = new BigDecimal("1E-1000");
 
-        for (int i = 2; i <= 100000; i++) {
+        // Calculate the natural logarithm using the Taylor series expansion
+        for (int i = 2; i <= 100_000; i++) {
             zPower = zPower.multiply(z, PRECISION);
             BigDecimal term = zPower.divide(new BigDecimal(i), PRECISION);
             result = result.add(term, PRECISION);
-
-            if (term.abs().compareTo(new BigDecimal("1E-1000")) < 0) {
+            // Break the loop if the next term is smaller than the given threshold
+            if (term.abs().compareTo(threshHold) < 0) {
                 break;
             }
+            //if the loop doesn't break, the for loop returns the value after completing 100_000 loops. The value returned in such case is not very accurate, but close.
         }
-
+        LOGGER.debug("Subordinates: ln call on {} completed -- Success", x);
         return result;
     }
 
