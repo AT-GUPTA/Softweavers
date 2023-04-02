@@ -2,6 +2,7 @@ import './Scientific.css';
 import {useEffect} from 'react';
 
 function Scientific({execute}) {
+
     useEffect(() => {
         const display = document.getElementById("display");
 
@@ -45,26 +46,28 @@ function Scientific({execute}) {
                 display.focus();
             })
         })
-
         const keyDownHandler = event => {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 execute();
             }
         };
-        document.addEventListener('keydown', keyDownHandler);
 
+        document.addEventListener('keydown', keyDownHandler);
+        return () => document.removeEventListener('keydown', keyDownHandler);
     }, [execute]);
 
     function clearDisplay() {
         const display = document.getElementById("display");
+
         display.value = "";
         display.focus();
     }
 
     function submitPrep() {
         const display = document.getElementById("display");
-        if(display.value.includes('=')){
+
+        if (display.value.includes('=')) {
             display.value = display.value.split('=')[0];
         }
     }
@@ -78,11 +81,11 @@ function Scientific({execute}) {
                 <button className="function" id="mad" value="mad(">mad</button>
                 <button className="function" id="gamma" value="gamma(">gamma</button>
                 <button className="function" id="log" value="log(">log</button>
-                <button className="function" id="sqrt" value="^(1/2)">sqrt</button>
-                <button className="function" id="pow" value="^">x<sup>y</sup></button>
+                <button className="function" id="sqrt" value="pow(, 1/2)">sqrt</button>
+                <button className="function" id="pow" value="pow(">x<sup>y</sup></button>
                 <button className="function" id="sd" value="sd(">sd</button>
                 <button className="function" id="abx" value="abx(, ,)">ab<sup>x</sup></button>
-                <button className="function" id="exp" value="e^">e<sup>x</sup></button>
+                <button className="function" id="exp" value="pow(e,)">e<sup>x</sup></button>
                 <button className="constant" id="euler">e</button>
                 <button className="constant" id="pi">π</button>
                 <button className="number">7</button>
@@ -105,9 +108,6 @@ function Scientific({execute}) {
                 <button className="punctuation" id="comma">,</button>
                 <button className="punctuation" id="close">)</button>
                 <button id="equals" onClick={execute}>=</button>
-                <div id="errorMsgArea">
-                    <textarea id="errorMsg" disabled></textarea>
-                </div>
             </div>
         </div>
     );

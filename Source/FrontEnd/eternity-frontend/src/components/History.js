@@ -8,7 +8,10 @@ function History({histories}) {
     const updateDisplay = (event) => {
         const display = document.getElementById("display");
         if (event.target.text !== undefined)
-            display.value = event.target.text + "=" + event.target.attributes.value.value;
+            if (event.target.attributes.value !== undefined)
+                display.value = event.target.text + "=" + event.target.attributes.value.value;
+            else
+                display.value = event.target.text;
         display.focus()
     }
 
@@ -22,13 +25,13 @@ function History({histories}) {
                 <Dropdown.Menu show id="history" className="history_input" onChange={(e) => updateDisplay(e)}
                                onClick={(e) => updateDisplay(e)}>
                     {histories.map((history) =>
-                        <Dropdown.Item key={histories.indexOf(history)}
+                        <Dropdown.Item className={"item"} key={histories.indexOf(history)}
                                        value={history.value}>{history.label}</Dropdown.Item>
                     )}
                 </Dropdown.Menu>
             </div>
             <div>
-                <Button id="save" variant="secondary">Save</Button>
+                <Button className="save" variant="secondary">Save</Button>
             </div>
 
 

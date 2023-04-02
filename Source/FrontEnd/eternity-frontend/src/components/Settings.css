@@ -1,19 +1,19 @@
 /* Style the "Settings" header and the line items */
 .header {
-  font-weight: bold;
-  margin-top: 10px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 .flushOption {
-  margin-left: 12px;
+    margin-left: 12px;
 }
 
 /* Style the on/off switch */
 .switch {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 /* Style the dropdown */
 .dropdown {
-  margin-left: 10px;
+    margin-left: 10px;
 }
