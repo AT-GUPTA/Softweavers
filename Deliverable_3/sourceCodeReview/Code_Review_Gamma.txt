@@ -40,6 +40,8 @@ Extra Notes (optional):
 Not too sure why, at line 69, the number "0.99999999999980993" was used to initialize a BigDecimal. This could put in a constant.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
+Response from Khavish:
+
 Comment: "There are no comments explaining the logic of the function. Since the function is not a straightforward read, it could be helpful to have an explanation of the different parts. Also, multiline comments should be used to describe the function and its parameter & return value."
 Response: The issue has been addressed and comments concerning the code are now available.
 
