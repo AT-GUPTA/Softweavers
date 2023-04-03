@@ -49,3 +49,4 @@ Extra Notes (optional):
 - In the case of 'Handle case of negative exponent' and 'now deal with the fractional part' it is preferred to use BigDecimal.valueOf()
 Here is the reasoning why: https://stackoverflow.com/questions/7186204/bigdecimal-to-use-new-or-valueof
 
+- Redundant codes removed, NEGATIVE_ONE replaced by BigDecimal.valueOf() and the static variable "NEGATIVE_ONE" removed as well by consequence.
