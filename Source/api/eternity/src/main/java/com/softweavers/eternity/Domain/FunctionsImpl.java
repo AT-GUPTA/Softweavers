@@ -21,52 +21,44 @@ public class FunctionsImpl implements FunctionHandler {
             "1.5056327351493116e-7")};
     private final Subordinates subordinates = new Subordinates();
 
-    /**
-     * Computes the hyperbolic sine of a given BigDecimal.
-     *
-     * @param x the argument for the hyperbolic sine function
-     * @return the hyperbolic sine of x
-     */
-    @Override
-    public BigDecimal sinh(BigDecimal x) {
-        // compute e^x and 1/e^x
-        BigDecimal e = BigDecimal.valueOf(Math.E);
-        BigDecimal pow1 = subordinates.power(e, x);
-        BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
-        //Decima1128 for accurity of 34 decimal places.
-
-        // compute sinh(x) = (e^x - 1/e^x) / 2
-        return (pow1.subtract(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
-    }
-
     // Calculate the Gamma function for a given input value
     @Override
     public BigDecimal gamma(BigDecimal z) {
+        // check if input value is positive
         if (z.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Input must be positive");
         }
         BigDecimal y = null;
+        // if input is less than 0.5, use Euler's reflection formula
         if (z.compareTo(new BigDecimal("0.5")) < 0) {
             BigDecimal a = z.multiply(new BigDecimal(Math.PI));
             BigDecimal b = new BigDecimal(1).subtract(z);
+            // using recursion to calculate gamma function
             y = new BigDecimal(Math.PI).divide(subordinates.sin(a), MathContext.DECIMAL128).multiply(gamma(b), PRECISION);
         } else {
+            // if the input value is greater than or equal to 0.5, use the Lanczos approximation
             z = z.subtract(new BigDecimal(1));
             BigDecimal x = new BigDecimal("0.99999999999980993");
+            // computing lanczos approximation by using a loop
             for (int i = 0; i < lanczos.length; ++i) {
+                // computing the next term in the Lanczos approximation
                 x = x.add(lanczos[i].divide(z.add(new BigDecimal(i + 1)), PRECISION));
             }
 
+            // computing the argument for the gamma function in the Lanczos approximation
             BigDecimal t = z.add(new BigDecimal(lanczos.length - 0.5));
             BigDecimal[] args = new BigDecimal[2];
             args[0] = t;
             args[1] = z.add(new BigDecimal(0.5));
+            // computing gamma function using the Lanczos approximation
             y = subordinates.power(new BigDecimal(2 * Math.PI), new BigDecimal("0.5"))
                     .multiply(subordinates.power(args[0], args[1]))
                     .multiply(subordinates.power(new BigDecimal(Math.E), t.multiply(new BigDecimal(-1))))
                     .multiply(x);
         }
+        // rounding result
         y = y.setScale(PRECISION.getPrecision(), RoundingMode.HALF_UP);
+        // returning result
         return y;
     }
 
