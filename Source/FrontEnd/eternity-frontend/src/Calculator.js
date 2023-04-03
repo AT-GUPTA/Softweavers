@@ -4,12 +4,17 @@ import {useState} from 'react';
 import Settings from "./components/Settings";
 import Scientific from "./components/Scientific";
 import History from "./components/History";
+import axios from 'axios';
+
+import { API_PORT, API_URL } from './api.config';
 
 function Calculator() {
     const [histories, setHistories] = useState([]);
+    const [precision, setPrecision] = useState(2);
 
     const handleChangeHistory = (display) => {
         const inputSplit = display.value.split('=');
+        console.log(inputSplit);
         if (inputSplit[1]) {
             setHistories(prevState => [...prevState, {label: inputSplit[0], value: inputSplit[1]}]);
         } else {
@@ -80,15 +85,59 @@ function Calculator() {
             var validated = isValid(display);
             if (validated === true) {
                 // Send request to the server and append its response
-                let response = 17;
-                display.value += "=" + response;
-                handleChangeHistory(display);
+                calculate(API_URL + API_PORT, request, precision)
+                    .then((response) => {
+                        display.value += "=" + response;
+                        handleChangeHistory(display);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+               
             }
             if (typeof (validated) === "string") {
                 handleChangeHistory(display);
                 display.value = validated;
             }
         }
+    }
+
+    /**
+     * Calls the /calculate endpoint for the given expression and precision, and parses the result.
+     * 
+     * @param {string} baseUrl base API url.
+     * @param {string} value string value of the mathematical equation.
+     * @param {number} precision digits of precision.
+     * @returns the result of the mathematical equation.
+     */
+    function calculate(baseUrl, value, precision) {
+        return new Promise((resolve, reject) => {
+            const data = {
+                value: value,
+                precision: precision
+            };
+
+            // Sends a POST request to the server
+            axios.post(baseUrl + "/calculate", data)
+                .then((response) => {
+                    // Upon receiving a response, resolves the promise with the response.
+                    resolve(response.data);
+                })
+                .catch((error) => {
+                     // Upon receiving a response, rejects the promise with an error.
+                    reject(error);
+                });
+        });
+    }
+
+    /**
+     * Handles the change of the precision by updating its value in the state.
+     * 
+     * @param {Event} event 
+     */
+    function onPrecisionChange(event) {
+        console.log(event.target.value);
+        setPrecision(event.target.value);
     }
 
     return (
@@ -99,10 +148,10 @@ function Calculator() {
             </div>
             <div className="columns">
                 <div className="first-column">
-                    <Scientific execute={execute}/>
+                    <Scientific execute={execute} />
                 </div>
                 <div className="second-column">
-                    <Settings/>
+                    <Settings onPrecisionChange={onPrecisionChange} />
                     <History histories={histories}/>
                 </div>
             </div>

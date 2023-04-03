@@ -1,9 +1,9 @@
 package com.softweavers.eternity.Controller;
 
+import com.softweavers.eternity.Common.EquationParam;
 import com.softweavers.eternity.Common.URI;
 import com.softweavers.eternity.Service.CalculatorService;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +22,20 @@ public class CalculatorController {
 
     /**
      * Method to calculate the value of input equation
-     * @param equationJson json object containing validated input equation and other params
+     *
+     * @param equation object containing validated input equation and other params
      * @return calculated string value
      */
     @CrossOrigin
-    @RequestMapping(value = URI.GET_CALCULATION_RESULT, method = RequestMethod.GET)
-    ResponseEntity<?> calculate(@RequestBody String equationJson) {
+    @RequestMapping(value = URI.GET_CALCULATION_RESULT, method = RequestMethod.POST)
+    ResponseEntity<?> calculate(@RequestBody EquationParam equation) {
         try {
             LOGGER.debug("CalculatorController: calculate -- Started");
-            JSONObject json = new JSONObject(equationJson);
-            BigDecimal result = calculatorService.calculate(json);
+
+            BigDecimal result = calculatorService.calculate(equation);
             LOGGER.debug("CalculatorController: calculate -- Success");
             return ResponseEntity.ok(result);
         } catch (Exception e) {
-            LOGGER.error("CalculatorController: calculate -- Error");
             return ResponseEntity.badRequest().body("FAILURE");
         }
     }

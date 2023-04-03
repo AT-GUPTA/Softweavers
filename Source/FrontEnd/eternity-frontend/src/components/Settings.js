@@ -1,7 +1,7 @@
 import './Settings.css';
 
 
-function Settings() {
+function Settings({onPrecisionChange}) {
     function createSelectItems() {
         let items = [];
         for (let i = 1; i <= 12; i++) {
@@ -27,7 +27,7 @@ function Settings() {
                 </div>
                 <label className="flushOption">
                     Precision of:
-                    <select className="dropdown">
+                    <select className="dropdown" onChange={onPrecisionChange} defaultValue={2}>
                         {createSelectItems().map((precision) =>
                             precision)}
                     </select>
