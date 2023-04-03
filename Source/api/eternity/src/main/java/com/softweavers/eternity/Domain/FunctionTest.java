@@ -470,11 +470,11 @@ public class FunctionTest {
         }
 
         // test gamma() for a small value
-        System.out.println("gamma function: small number input test. input: 0.045, expected output: 21.68776");
-        testBaseX = 0.045;
+        System.out.println("gamma function: small number input test. input: 0.601, expected output: 1.486902");
+        testBaseX = 0.601;
         try {
             BigDecimal result = f.gamma(new BigDecimal(testBaseX));
-            if (almostEqual(result, new BigDecimal(21.68776))) {
+            if (almostEqual(result, new BigDecimal(1.486902))) {
                 System.out.println("gamma: Passed small number input test.");
             } else {
                 System.out.println("gamma: Failed small number input test.");
@@ -486,14 +486,14 @@ public class FunctionTest {
         }
 
         // test gamma() for a large value
-        System.out.println("gamma function: large number input test. input: 9.78, expected output:221683.7 ");
+        System.out.println("gamma function: large number input test. input: 9.78, expected output:221683.678958 ");
         testBaseX = 9.78;
         try {
             BigDecimal result = f.gamma(new BigDecimal(testBaseX));
-            if (almostEqual(result, new BigDecimal(221683.7))) {
-                System.out.println("gamma: Passed big number input test.");
+            if (almostEqual(result, new BigDecimal(221683.678958))) {
+                System.out.println("gamma: Passed large number input test.");
             } else {
-                System.out.println("gamma: Failed big number input test.");
+                System.out.println("gamma: Failed large number input test.");
                 System.out.println("The actual output is: " + result);
             }
 
@@ -515,6 +515,22 @@ public class FunctionTest {
 
         } catch (IllegalArgumentException e) {
             System.out.println("Catched the error. Gamma input test successed.");
+        }
+
+        // test gamma() for a algebraic value
+        System.out.println("gamma function: small number input test. input: 1.41421356237, expected output: 0.8866");
+        testBaseX = 1.41421356237;
+        try {
+            BigDecimal result = f.gamma(new BigDecimal(testBaseX));
+            if (almostEqual(result, new BigDecimal(0.886581))) {
+                System.out.println("gamma: Passed algebraic number input test.");
+            } else {
+                System.out.println("gamma: Failed algebraic number input test.");
+                System.out.println("The actual output is: " + result);
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Catched the error. Gamma input test");
         }
 
         // test std for large number input
