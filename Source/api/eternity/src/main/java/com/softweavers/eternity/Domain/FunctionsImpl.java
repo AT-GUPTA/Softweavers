@@ -21,6 +21,24 @@ public class FunctionsImpl implements FunctionHandler {
             "1.5056327351493116e-7")};
     private final Subordinates subordinates = new Subordinates();
 
+    /**
+     * Computes the hyperbolic sine of a given BigDecimal.
+     *
+     * @param x the argument for the hyperbolic sine function
+     * @return the hyperbolic sine of x
+     */
+    @Override
+    public BigDecimal sinh(BigDecimal x) {
+        // compute e^x and 1/e^x
+        BigDecimal e = BigDecimal.valueOf(Math.E);
+        BigDecimal pow1 = subordinates.power(e, x);
+        BigDecimal pow2 = BigDecimal.ONE.divide(pow1, MathContext.DECIMAL128);
+        //Decima1128 for accurity of 34 decimal places.
+
+        // compute sinh(x) = (e^x - 1/e^x) / 2
+        return (pow1.subtract(pow2)).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
+    }
+
     // Calculate the Gamma function for a given input value
     @Override
     public BigDecimal gamma(BigDecimal z) {
