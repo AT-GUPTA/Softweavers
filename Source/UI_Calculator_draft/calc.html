@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<title>Calculator</title>
+    <body>
+    <!-- Title bar -->
+    <div class="title-bar">
+      Scientific Calculator
+    </div>
+    <!-- Two columns -->
+    <div class="columns">
+      <!-- First column -->
+      <div class="first-column">
+        <div id="calculator">
+          <label for="display"></label><textarea id="display"></textarea>
+          <div id="keys">
+            <button class="function" id="sin">sinh</button>
+            <button class="function" id="arcos">arcos</button>
+            <button class="function" id="mad">mad</button>
+            <button class="function" id="gamma">gamma</button>
+            <button class="function" id="log">log</button>
+            <button class="function" id="sqrt">sqrt</button>
+            <button class="function" id="inv">1/x</button>
+            <button class="function" id="pow">x^y</button>
+            <button class="operator">+</button>
+            <button class="operator">-</button>
+            <button class="operator">*</button>
+            <button class="operator">/</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>0</button>
+            <button id="decimal">.</button>
+            <button id="clear">C</button>
+            <button id="euler">e</button>
+            <button id="pi">π</button>
+            <button id="exp">e^x</button>
+            <button id="equals">=</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Second column -->
+      <div class="second-column">
+        <!-- "Settings" header and line items -->
+        <div class="header">
+          Settings
+        </div>
+        <div>
+          <label>
+            <input type="checkbox" class="switch">
+            On/Off
+          </label>
+        </div>
+        <div>
+          <select class="dropdown">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+        
+        <!-- "History" header -->
+        <div class="history">
+          History
+        </div>
+        <div>
+          <!-- Remaining space -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>          
+<script src="func.js"></script>
+    </body>
+</html>
+

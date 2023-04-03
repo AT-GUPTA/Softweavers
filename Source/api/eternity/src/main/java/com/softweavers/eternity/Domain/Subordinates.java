@@ -12,6 +12,8 @@ public class Subordinates {
    
     private static final Logger LOGGER = LoggerFactory.getLogger(Subordinates.class);
     private static final MathContext PRECISION = MathContext.DECIMAL128;
+
+    //todo cannot use pow function here. Maybe write the hard value.
     private final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS), PRECISION);
     private static final BigDecimal ln1000 = BigDecimal.valueOf(6.907755278982137650156515175517786);
 

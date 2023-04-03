@@ -1,0 +1,17 @@
+.title {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.history_input {
+    background-color: #505050 !important;
+    border-color: #fff !important;
+    width: 200px;
+    height: 500px;
+    overflow: auto;
+}
+
+.item {
+    color: #fff !important;
+}
+
