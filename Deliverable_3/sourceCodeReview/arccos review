@@ -1,0 +1,23 @@
+Written By: Kiana
+Reviewed By: Jong Hyung
+Function: arccos(x)
+------------------------------------------------------------------------------------------------------------------------------------------------
+JAVADOCS 
+Is the javadoc present? Y
+Does it explain the parameters? Y
+Is there a brief explanation of the function? Y
+------------------------------------------------------------------------------------------------------------------------------------------------
+CODE CHECKS
+Are comments helpful? Y
+Is there domain validation and error handling for incorrect input? Y
+Does it have the correct types (BigDecimal and BigInteger) for parameters and return type? Y
+Are variables descriptively named and follow naming conventions? Y
+Is the code readable and easy to understand or follow? Y
+Is it redundant? N
+Is the code overcomplicated or too clever? N
+Is it possible to reduce the complexity of the code? N
+Does the method use any prebuilt functions? Y
+------------------------------------------------------------------------------------------------------------------------------------------------
+Extra Notes (optional): 
+
+
