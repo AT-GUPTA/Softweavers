@@ -17,6 +17,15 @@ Is it redundant? N
 Is the code overcomplicated or too clever? N
 Is it possible to reduce the complexity of the code? N
 Does the method use any prebuilt functions? Y
+BigDecimal.compareTo()
+BigDecimal.valueOf()
+BigDecimal.divide()
+BigDecimal.add()
+BigDecimal.multiply()
+BigDecimal.subtract()
+MathContext.DECIMAL128
+Math.PI
+
 ------------------------------------------------------------------------------------------------------------------------------------------------
 Extra Notes (optional): 
 
