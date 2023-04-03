@@ -9,7 +9,7 @@ import java.math.MathContext;
 
 public class Subordinates {
     final static int NDIGITS = 10;
-    private final static BigDecimal NEGATIVE_ONE = BigDecimal.ZERO.subtract(BigDecimal.ONE);
+   
     private static final Logger LOGGER = LoggerFactory.getLogger(Subordinates.class);
     private static final MathContext PRECISION = MathContext.DECIMAL128;
     private final static BigDecimal THRESHOLD = BigDecimal.ONE.divide(BigDecimal.TEN.pow(2 * NDIGITS), PRECISION);
@@ -119,12 +119,12 @@ public class Subordinates {
             // Handle case of negative base
         else if (base.compareTo(BigDecimal.ZERO) < 0) {
             try {
-                BigDecimal test = exp.remainder(BigDecimal.valueOf(2));
+                
                 if (exp.remainder(BigDecimal.valueOf(2)).compareTo(BigDecimal.ZERO) == 0)
-                    return power(NEGATIVE_ONE.multiply(base), exp);
+                    return power(BigDecimal.valueOf(-1).multiply(base), exp);
                     // Negative base, odd exponent case
                 else
-                    return NEGATIVE_ONE.multiply(power(NEGATIVE_ONE.multiply(base), exp));
+                    return BigDecimal.valueOf(-1).multiply(power(BigDecimal.valueOf(-1).multiply(base), exp));
             } catch (ArithmeticException ex) {
                 // Negative base, noninteger exponent case
                 LOGGER.info("Error: Unreal solution");
@@ -133,14 +133,14 @@ public class Subordinates {
         }
         // Handle case of negative exponent
         else if (exp.compareTo(BigDecimal.ZERO) < 0) {
-            BigDecimal result = power(base, NEGATIVE_ONE.multiply(exp));
+            BigDecimal result = power(base, BigDecimal.valueOf(-1).multiply(exp));
             return new BigDecimal(1 / result.doubleValue());
         }
 
         // Covers prior to decimal point using the property x^y = x^(y/2)^2
-        BigDecimal temp = new BigDecimal(0);
+        
         if (exp.compareTo(BigDecimal.ONE) >= 0) {
-            temp = power(base, exp.divide(BigDecimal.valueOf(2)));
+            BigDecimal temp = power(base, exp.divide(BigDecimal.valueOf(2)));
             return temp.multiply(temp);
         } else {
             //now deal with the fractional part
