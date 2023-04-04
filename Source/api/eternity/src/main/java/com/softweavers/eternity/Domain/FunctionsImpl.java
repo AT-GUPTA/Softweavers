@@ -44,8 +44,10 @@ public class FunctionsImpl implements FunctionHandler {
     public BigDecimal gamma(BigDecimal z) {
         // check if input value is positive
         if (z.compareTo(BigDecimal.ZERO) <= 0) {
+            LOGGER.error("FunctionImpl: gamma called with invalid input -- Failure");
             throw new IllegalArgumentException("Input must be positive");
         }
+        LOGGER.debug("FunctionImpl: gamma call input verified");
         BigDecimal y = null;
         // if input is less than 0.5, use Euler's reflection formula
         if (z.compareTo(new BigDecimal("0.5")) < 0) {
@@ -75,7 +77,8 @@ public class FunctionsImpl implements FunctionHandler {
                     .multiply(x);
         }
         // rounding result
-        y = y.setScale(PRECISION.getPrecision(), RoundingMode.HALF_UP);
+        y = y.setScale(12, RoundingMode.HALF_UP);
+        LOGGER.debug("FunctionImpl: gamma function output: " + y);
         // returning result
         return y;
     }
