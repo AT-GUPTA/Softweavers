@@ -1,81 +1,92 @@
+import { useCallback } from 'react';
 import './Scientific.css';
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 
 function Scientific({execute}) {
+  const displayRef = useRef(null);
 
-    useEffect(() => {
-        const display = document.getElementById("display");
+  const onClickFunction = useCallback((button) => {
+    const display = displayRef.current;
 
-        // Handle the function buttons
-        const function_buttons = document.querySelectorAll(".function");
-        function_buttons.forEach(function (button) {
-            // Add a click event listener
-            button.addEventListener("click", () => {
-                // Append the button's value to the display
-                let cursorStartPosition = display.selectionStart;
-                let cursorEndPosition = display.selectionEnd;
+    // Append the button's value to the display
+    let cursorStartPosition = display.selectionStart;
+    let cursorEndPosition = display.selectionEnd;
 
-                // Handle when we want to insert in a particular location
-                if ((cursorEndPosition - cursorStartPosition) === 0) {
-                    let textBeforeCursorPosition = display.value.substring(0, cursorStartPosition)
-                    let textAfterCursorPosition = display.value.substring(cursorStartPosition, display.value.length)
-                    display.value = textBeforeCursorPosition + button.value + textAfterCursorPosition;
-                }
-                // Handle when we select a part of the display to replace with something else
-                else {
-                    let toReplace = display.value.substring(cursorStartPosition, cursorEndPosition);
-                    display.value = display.value.replace(toReplace, button.value);
-                }
-
-                // Handle leaving the cursor in the correct location for inserting variable
-                if (button.id === "abx")
-                    display.selectionEnd = display.selectionStart - 4;
-
-
-                display.focus();
-            })
-        })
-
-        // Handle the extra scientific buttons
-        const other_buttons = document.querySelectorAll(".constant, .punctuation, .operator, .number");
-        other_buttons.forEach(function (button) {
-            // Add a click event listener
-            button.addEventListener("click", () => {
-                // Append the button's value to the display
-                display.value += button.textContent;
-                display.focus();
-            })
-        })
-        const keyDownHandler = event => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                execute();
-            }
-        };
-
-        document.addEventListener('keydown', keyDownHandler);
-        return () => document.removeEventListener('keydown', keyDownHandler);
-    }, [execute]);
-
-    function clearDisplay() {
-        const display = document.getElementById("display");
-
-        display.value = "";
-        display.focus();
+    // Handle when we want to insert in a particular location
+    if ((cursorEndPosition - cursorStartPosition) === 0) {
+      let textBeforeCursorPosition = display.value.substring(0, cursorStartPosition)
+      let textAfterCursorPosition = display.value.substring(cursorStartPosition, display.value.length)
+      display.value = textBeforeCursorPosition + button.value + textAfterCursorPosition;
+    }
+    // Handle when we select a part of the display to replace with something else
+    else {
+      let toReplace = display.value.substring(cursorStartPosition, cursorEndPosition);
+      display.value = display.value.replace(toReplace, button.value);
     }
 
-    function submitPrep() {
-        const display = document.getElementById("display");
+    // Handle leaving the cursor in the correct location for inserting variable
+    if (button.id === "abx")
+      display.selectionEnd = display.selectionStart - 4;
 
-        if (display.value.includes('=')) {
-            display.value = display.value.split('=')[0];
-        }
+    display.focus();
+  }, []);
+
+
+  const onOtherButtonClick = useCallback ((button) => {
+    const display = displayRef.current;
+
+    // Append the button's value to the display
+    display.value += button.textContent;
+    display.focus();
+  }, [])
+
+  useEffect(() => {
+    const function_buttons = document.querySelectorAll(".function");
+    function_buttons.forEach(function (button) {
+      button.addEventListener("click", () => onClickFunction(button));
+    });
+
+    const other_buttons = document.querySelectorAll(".constant, .punctuation, .operator, .number");
+    other_buttons.forEach(function (button) {
+      button.addEventListener("click", () => onOtherButtonClick(button));
+    });
+
+    const keyDownHandler = event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        execute();
+      }
+    };
+
+    document.addEventListener('keydown', keyDownHandler);
+    return () => {
+      function_buttons.forEach(function (button) {
+        button.removeEventListener("click", () => onClickFunction);
+      });
+      other_buttons.forEach(function (button) {
+        button.removeEventListener("click", () => onOtherButtonClick);
+      });
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, []);
+
+  function clearDisplay() {
+    const display = displayRef.current;
+    display.value = "";
+    display.focus();
+  }
+
+  function submitPrep() {
+    const display = displayRef.current;
+    if (display.value.includes('=')) {
+      display.value = display.value.split('=')[0];
     }
+  }
 
-    return (
-        <div id="calculator">
-            <label htmlFor="display"></label><textarea id="display" onChange={submitPrep} autoFocus></textarea>
-            <div id="keys">
+  return (
+    <div id="calculator">
+      <label htmlFor="display"></label><textarea ref={displayRef} id="display" onChange={submitPrep} autoFocus></textarea>
+      <div id="keys">
                 <button className="function" id="sinh" value="sinh(">sinh</button>
                 <button className="function" id="arccos" value="arccos(">arccos</button>
                 <button className="function" id="mad" value="mad(">mad</button>
