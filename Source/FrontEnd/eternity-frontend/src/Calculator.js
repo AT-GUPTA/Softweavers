@@ -110,11 +110,11 @@ function Calculator() {
      * @param {number} precision digits of precision.
      * @returns the result of the mathematical equation.
      */
-    function calculate(baseUrl, value, precision) {
+    function calculate(baseUrl, formula, precision) {
         return new Promise((resolve, reject) => {
             const data = {
-                value: value,
-                precision: precision
+                formula,
+                precision
             };
 
             // Sends a POST request to the server
