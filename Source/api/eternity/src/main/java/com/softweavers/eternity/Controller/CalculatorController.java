@@ -1,5 +1,6 @@
 package com.softweavers.eternity.Controller;
 
+import com.softweavers.eternity.Common.EquationParam;
 import com.softweavers.eternity.Common.URI;
 import com.softweavers.eternity.Service.CalculatorService;
 import org.json.JSONObject;
@@ -22,16 +23,16 @@ public class CalculatorController {
     /**
      * Method to calculate the value of input equation
      *
-     * @param equationJson json object containing validated input equation and other params
+     * @param equationParam EquationParam object containing validated input equation and other params
      * @return calculated string value
      */
-    @CrossOrigin
-    @RequestMapping(value = URI.GET_CALCULATION_RESULT, method = RequestMethod.GET)
-    ResponseEntity<?> calculate(@RequestBody String equationJson) {
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(value = URI.GET_CALCULATION_RESULT, method = RequestMethod.POST)
+    ResponseEntity<?> calculate(@RequestBody EquationParam equationParam) {
         try {
             LOGGER.debug("CalculatorController: calculate -- Started");
-            JSONObject json = new JSONObject(equationJson);
-            BigDecimal result = calculatorService.calculate(json);
+            BigDecimal result = calculatorService.calculate(equationParam);
+
             LOGGER.debug("CalculatorController: calculate -- Success");
             return ResponseEntity.ok(result);
         } catch (Exception e) {

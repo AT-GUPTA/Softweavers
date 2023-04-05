@@ -48,6 +48,9 @@ Response: The issue has been addressed and comments concerning the code are now 
 Comment: "Yes, the function uses Math.Pow. It should be replaced with the in-house pow function."
 Response: The issue has been addressed and the in-house built power function is now used.
 
+Comment: "No. Some of the variables are named using single letters, which, makes it hard to understand the purpose of the variable."
+Response: "Purpose of variables can be understood in comments added."
+
 Comment: "Not too sure why, at line 69, the number "0.99999999999980993" was used to initialize a BigDecimal. This could put in a constant."
 Response: The decision to set an initial value for the Lanczos approximation to 0.99999999999980993 is critical as it helps to improve the convergence of the approximation. 
 

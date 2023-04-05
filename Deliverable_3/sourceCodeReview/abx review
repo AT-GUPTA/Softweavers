@@ -46,3 +46,17 @@ Notes:
 
 Extra Notes:
 -Function calls subordinate power function.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Response from Ruksmita:
+
+Comment : Variable test is initialized but never used in the subordinate function `power`.
+Response : This issue was adressed.
+
+Comment : Precision is not supplied to BigDecimal.divide() method.
+Response : Precision should not be applied to any intermediate operation (including divison) as it would create a loss of accuraccy. 
+The precision should only be set on the result of the function.
+
+Comment : Method call to create a new BigDecimal follows an old way. Instead of new BigDecimal(value), BigDecimal.valueOf(value) should be used.
+Response : This issue was adressed. Two occurrences of "new BigDecimal" remains as they are necessary due to initializing a BigDecimal from a string value.

@@ -98,7 +98,7 @@ public class Subordinates {
         // Calculate the natural logarithm using the Taylor series expansion
         for (int i = 2; i <= 100_000; i++) {
             zPower = zPower.multiply(z, PRECISION);
-            BigDecimal term = zPower.divide(new BigDecimal(i), PRECISION);
+            BigDecimal term = zPower.divide(BigDecimal.valueOf(i), PRECISION);
             result = result.add(term, PRECISION);
             // Break the loop if the next term is smaller than the given threshold
             if (term.abs().compareTo(threshHold) < 0) {
@@ -136,11 +136,10 @@ public class Subordinates {
         // Handle case of negative exponent
         else if (exp.compareTo(BigDecimal.ZERO) < 0) {
             BigDecimal result = power(base, BigDecimal.valueOf(-1).multiply(exp));
-            return new BigDecimal(1 / result.doubleValue());
+            return BigDecimal.valueOf(1 / result.doubleValue());
         }
 
         // Covers prior to decimal point using the property x^y = x^(y/2)^2
-        
         if (exp.compareTo(BigDecimal.ONE) >= 0) {
             BigDecimal temp = power(base, exp.divide(BigDecimal.valueOf(2)));
             return temp.multiply(temp);
@@ -159,7 +158,7 @@ public class Subordinates {
                     acc = acc.multiply(sqr);
                 } else {
                     high = mid;
-                    acc = acc.multiply(new BigDecimal(1 / sqr.doubleValue()));
+                    acc = acc.multiply(BigDecimal.valueOf((1 / sqr.doubleValue())));
                 }
                 mid = low.add(high).divide(BigDecimal.valueOf(2));
                 error = mid.subtract(exp).abs();
@@ -169,15 +168,15 @@ public class Subordinates {
     }
 
     public BigDecimal sin(BigDecimal x) {
-        BigDecimal sum = new BigDecimal(0);
-        BigDecimal fact = new BigDecimal(1);
+        BigDecimal sum = BigDecimal.valueOf(0);
+        BigDecimal fact = BigDecimal.valueOf(1);
         BigDecimal pow = new BigDecimal(x.toString());
         int count = 1;
         for (int i = 0; i < 15; ++i) {
             // todo should this be sum = sum.add?
             sum = sum.add(pow.divide(fact, PRECISION));
-            pow = x.multiply(x).multiply(pow).multiply(new BigDecimal(-1));
-            fact = fact.multiply(new BigDecimal((count + 1) * count + 2));
+            pow = x.multiply(x).multiply(pow).multiply(BigDecimal.valueOf(-1));
+            fact = fact.multiply(BigDecimal.valueOf((count + 1) * count + 2));
             count += 2;
         }
         return sum;
