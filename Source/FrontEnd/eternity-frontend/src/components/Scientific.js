@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import './Scientific.css';
 import {useEffect, useRef} from 'react';
+import Tooltip from './Tooltip';
 
 function Scientific({execute}) {
   const displayRef = useRef(null);
@@ -82,43 +83,51 @@ function Scientific({execute}) {
       display.value = display.value.split('=')[0];
     }
   }
+  const buttonTooltips = Tooltip();
+
+  const generateTooltip = (buttonId) => {
+    const tooltip = buttonTooltips[buttonId];
+    return `
+    ${tooltip.head}\n\n${tooltip.description}\n\nInput Arguments:\n${tooltip.inputParams}\n\nReturns:\n${tooltip.returns}\n\nExceptions:\n${tooltip.exceptions}
+    `;
+};
 
   return (
     <div id="calculator">
       <label htmlFor="display"></label><textarea ref={displayRef} id="display" onChange={submitPrep} autoFocus></textarea>
       <div id="keys">
-                <button className="function" id="sinh" value="sinh(">sinh</button>
-                <button className="function" id="arccos" value="arccos(">arccos</button>
-                <button className="function" id="mad" value="mad(">mad</button>
-                <button className="function" id="gamma" value="gamma(">gamma</button>
-                <button className="function" id="log" value="log(">log</button>
-                <button className="function" id="sqrt" value="pow(, 1/2)">sqrt</button>
-                <button className="function" id="pow" value="pow(">x<sup>y</sup></button>
-                <button className="function" id="sd" value="sd(">sd</button>
-                <button className="function" id="abx" value="abx(, ,)">ab<sup>x</sup></button>
-                <button className="function" id="exp" value="pow(e,)">e<sup>x</sup></button>
-                <button className="constant" id="euler">e</button>
-                <button className="constant" id="pi">π</button>
-                <button className="number">7</button>
-                <button className="number">8</button>
-                <button className="number">9</button>
-                <button className="operator">+</button>
-                <button className="number">4</button>
-                <button className="number">5</button>
-                <button className="number">6</button>
-                <button className="operator">-</button>
-                <button className="number">1</button>
-                <button className="number">2</button>
-                <button className="number">3</button>
-                <button className="operator">*</button>
-                <button className="number">0</button>
-                <button className="punctuation" id="decimal">.</button>
-                <button id="clear" onClick={clearDisplay}>C</button>
-                <button className="operator">/</button>
-                <button className="punctuation" id="open">(</button>
-                <button className="punctuation" id="comma">,</button>
-                <button className="punctuation" id="close">)</button>
-                <button id="equals" onClick={execute}>=</button>
+                <button className="function" id="sinh" value="sinh(" title={generateTooltip("sinh")}>sinh</button>
+                <button className="function" id="arccos" value="arccos(" title={generateTooltip("arccos")}>cos<sup>-1</sup></button>
+                <button className="function" id="mad" value="mad(" title='Mean Absolute Deviation Function*'>mad</button>
+                <button className="function" id="gamma" value="gamma(" title={generateTooltip("gamma")}>gamma</button>
+                <button className="function" id="log" value="log(" title={generateTooltip("log")}>log</button>
+                <button className="function" id="sqrt" value="pow(, 1/2)" title={generateTooltip("sqrt")}>sqrt</button>
+                <button className="function" id="pow" value="pow(" title={generateTooltip("pow")}>x<sup>y</sup></button>
+                <button className="function" id="sd" value="sd(" title={generateTooltip("sd")}>sd</button>
+                <button className="function" id="abx" value="abx(, ,)" title={generateTooltip("abx")}>ab<sup>x</sup></button>
+                <button className="function" id="exp" value="pow(e,)" title={generateTooltip("exp")}>e<sup>x</sup></button>
+                <button className="constant" id="euler" title="Euler\'s constant">e</button>
+                <button className="constant" id="pi" title="Math Constant pi">π</button>
+                <button className="number" title="Number 7">7</button>
+                <button className="number" title="Number 8">8</button>
+                <button className="number" title="Number 9">9</button>
+                <button className="operator" title="Addition Operator">+</button>
+                <button className="number" title="Number 4">4</button>
+                <button className="number" title="Number 5">5</button>
+                <button className="number" title="Number 6">6</button>
+                <button className="operator"  title="Subtraction Operator">-</button>
+                <button className="number" title="Number 1">1</button>
+                <button className="number" title="Number 2">2</button>
+                <button className="number" title="Number 3">3</button>
+                <button className="operator" title="Multiplication Operator">*</button>
+                <button className="number" title="Number 0">0</button>
+                <button className="punctuation" id="decimal" title="Decimal Point">.</button>
+                <button id="clear" onClick={clearDisplay} title="Clear Input">C</button>
+                <button className="operator" title="Division Operator">/</button>
+                <button className="punctuation" id="open" title="Right Parenthesis">(</button>
+                <button className="punctuation" id="comma" title="Comma">,</button>
+                <button className="punctuation" id="close"  title="Left Parenthesis">)</button>
+                <button id="equals" onClick={execute} title="Calculate Rresult">=</button>
             </div>
         </div>
     );
