@@ -91,7 +91,10 @@ function Calculator() {
                         handleChangeHistory(display);
                     })
                     .catch((error) => {
-                        console.error('Error:', error);
+                        if (error.response.data) {
+                            display.value = error.response.data;
+                            handleChangeHistory(display);
+                        }
                     });
                
             }
