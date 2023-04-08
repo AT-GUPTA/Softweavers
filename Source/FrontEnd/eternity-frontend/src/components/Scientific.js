@@ -98,16 +98,16 @@ function Scientific({execute}) {
       <div id="keys">
                 <button className="function" id="sinh" value="sinh(" title={generateTooltip("sinh")}>sinh</button>
                 <button className="function" id="arccos" value="arccos(" title={generateTooltip("arccos")}>cos<sup>-1</sup></button>
-                <button className="function" id="mad" value="mad(" title='Mean Absolute Deviation Function*'>mad</button>
                 <button className="function" id="gamma" value="gamma(" title={generateTooltip("gamma")}>gamma</button>
+                <button id="clear" onClick={clearDisplay} title="Clear Input">C</button>
                 <button className="function" id="log" value="log(" title={generateTooltip("log")}>log</button>
                 <button className="function" id="sqrt" value="pow(, 1/2)" title={generateTooltip("sqrt")}>sqrt</button>
                 <button className="function" id="pow" value="pow(" title={generateTooltip("pow")}>x<sup>y</sup></button>
+                <button className="function" id="mad" value="mad(" title='Mean Absolute Deviation Function*'>mad</button>
                 <button className="function" id="sd" value="sd(" title={generateTooltip("sd")}>sd</button>
                 <button className="function" id="abx" value="abx(, ,)" title={generateTooltip("abx")}>ab<sup>x</sup></button>
                 <button className="function" id="exp" value="pow(e,)" title={generateTooltip("exp")}>e<sup>x</sup></button>
-                <button className="constant" id="euler" title="Euler\'s constant">e</button>
-                <button className="constant" id="pi" title="Math Constant pi">π</button>
+                <button className="punctuation" id="comma" title="Comma">,</button>
                 <button className="number" title="Number 7">7</button>
                 <button className="number" title="Number 8">8</button>
                 <button className="number" title="Number 9">9</button>
@@ -120,13 +120,13 @@ function Scientific({execute}) {
                 <button className="number" title="Number 2">2</button>
                 <button className="number" title="Number 3">3</button>
                 <button className="operator" title="Multiplication Operator">*</button>
-                <button className="number" title="Number 0">0</button>
-                <button className="punctuation" id="decimal" title="Decimal Point">.</button>
-                <button id="clear" onClick={clearDisplay} title="Clear Input">C</button>
-                <button className="operator" title="Division Operator">/</button>
                 <button className="punctuation" id="open" title="Right Parenthesis">(</button>
-                <button className="punctuation" id="comma" title="Comma">,</button>
+                <button className="number" title="Number 0">0</button>
                 <button className="punctuation" id="close"  title="Left Parenthesis">)</button>
+                <button className="operator" title="Division Operator">/</button>
+                <button className="constant" id="pi" title="Math Constant pi">π</button>
+                <button className="constant" id="euler" title="Euler\'s constant">e</button>
+                <button className="punctuation" id="decimal" title="Decimal Point">.</button>
                 <button id="equals" onClick={execute} title="Calculate Rresult">=</button>
             </div>
         </div>

@@ -13,7 +13,7 @@ public class FunctionParser implements ParserHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(FunctionParser.class);
     private static final ExpressionEvaluator engine = new ExpressionEvaluator();
     private static final FunctionHandler functionCalculator = new FunctionsImpl();
-    String[] functions = {"logbx", "sd", "ab^x", "arccos", "sinh", "gamma", "pow"};
+    String[] functions = {"log", "sd", "abx", "arccos", "sinh", "gamma", "pow"};
 
     static String[] split(String expr) {
         expr += ",";
@@ -74,6 +74,8 @@ public class FunctionParser implements ParserHandler {
         LOGGER.info("expr: " + expr);
 
         expr = expr.replace(" ", "");
+        expr = expr.replace("e", "" + Math.E);
+        expr = expr.replace("π", "" + Math.PI);
 
         for (String func : functions) {
             while (expr.contains(func)) {
@@ -108,9 +110,9 @@ public class FunctionParser implements ParserHandler {
 
                 // Handle each special function
                 switch (func) {
-                    case "logbx" -> res = functionCalculator.log(values);
+                    case "log" -> res = functionCalculator.log(values);
                     case "sd" -> res = functionCalculator.standardDeviation(values);
-                    case "ab^x" -> res = functionCalculator.abx(values);
+                    case "abx" -> res = functionCalculator.abx(values);
                     case "arccos" -> res = functionCalculator.arccos(values[0]);
                     case "sinh" -> res = functionCalculator.sinh(values[0]);
                     case "gamma" -> res = functionCalculator.gamma(values[0]);
