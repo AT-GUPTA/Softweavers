@@ -83,6 +83,18 @@ function Scientific({execute}) {
       display.value = display.value.split('=')[0];
     }
   }
+
+  /**
+   * Performs a backspace, which removes the last added character from the display.
+   */
+  function performBackspace() {
+    const display = displayRef.current;
+
+    // Removing the last value of the display
+    display.value = display.value.slice(0, display.value.length - 1);
+    display.focus();
+  }
+
   const buttonTooltips = Tooltip();
 
   const generateTooltip = (buttonId) => {
@@ -103,7 +115,7 @@ function Scientific({execute}) {
                 <button className="function" id="log" value="log(" title={generateTooltip("log")}>log</button>
                 <button className="function" id="sqrt" value="pow(, 1/2)" title={generateTooltip("sqrt")}>sqrt</button>
                 <button className="function" id="pow" value="pow(" title={generateTooltip("pow")}>x<sup>y</sup></button>
-                <button className="function" id="mad" value="mad(" title='Mean Absolute Deviation Function*'>mad</button>
+                <button id="backspace" onClick={performBackspace} title="Backspace">&#9003;</button>
                 <button className="function" id="sd" value="sd(" title={generateTooltip("sd")}>sd</button>
                 <button className="function" id="abx" value="abx(, ,)" title={generateTooltip("abx")}>ab<sup>x</sup></button>
                 <button className="function" id="exp" value="pow(e,)" title={generateTooltip("exp")}>e<sup>x</sup></button>
