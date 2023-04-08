@@ -13,6 +13,12 @@ function Scientific({execute}) {
     let cursorStartPosition = display.selectionStart;
     let cursorEndPosition = display.selectionEnd;
 
+    // Gets the index of the | character, which indicates the cursor position
+    const cursorPosition = button.value.indexOf("|");
+
+    // remove the "|" character.
+    button.value = button.value.slice(0, cursorPosition) + button.value.slice(cursorPosition + 1);
+
     // Handle when we want to insert in a particular location
     if ((cursorEndPosition - cursorStartPosition) === 0) {
       let textBeforeCursorPosition = display.value.substring(0, cursorStartPosition)
@@ -25,9 +31,8 @@ function Scientific({execute}) {
       display.value = display.value.replace(toReplace, button.value);
     }
 
-    // Handle leaving the cursor in the correct location for inserting variable
-    if (button.id === "abx")
-      display.selectionEnd = display.selectionStart - 4;
+    // Places the cursor at the right position for the current function
+    display.selectionEnd = cursorPosition
 
     display.focus();
   }, []);
@@ -108,17 +113,17 @@ function Scientific({execute}) {
     <div id="calculator">
       <label htmlFor="display"></label><textarea ref={displayRef} id="display" onChange={submitPrep} autoFocus></textarea>
       <div id="keys">
-                <button className="function" id="sinh" value="sinh(" title={generateTooltip("sinh")}>sinh</button>
-                <button className="function" id="arccos" value="arccos(" title={generateTooltip("arccos")}>cos<sup>-1</sup></button>
-                <button className="function" id="gamma" value="gamma(" title={generateTooltip("gamma")}>gamma</button>
+                <button className="function" id="sinh" value="sinh(|)" title={generateTooltip("sinh")}>sinh</button>
+                <button className="function" id="arccos" value="arccos(|)" title={generateTooltip("arccos")}>cos<sup>-1</sup></button>
+                <button className="function" id="gamma" value="gamma(|)" title={generateTooltip("gamma")}>gamma</button>
                 <button id="clear" onClick={clearDisplay} title="Clear Input">C</button>
-                <button className="function" id="log" value="log(" title={generateTooltip("log")}>log</button>
-                <button className="function" id="sqrt" value="pow(, 1/2)" title={generateTooltip("sqrt")}>sqrt</button>
-                <button className="function" id="pow" value="pow(" title={generateTooltip("pow")}>x<sup>y</sup></button>
+                <button className="function" id="log" value="log(|,)" title={generateTooltip("log")}>log</button>
+                <button className="function" id="sqrt" value="pow(|, 1/2)" title={generateTooltip("sqrt")}>sqrt</button>
+                <button className="function" id="pow" value="pow(|)" title={generateTooltip("pow")}>x<sup>y</sup></button>
                 <button id="backspace" onClick={performBackspace} title="Backspace">&#9003;</button>
-                <button className="function" id="sd" value="sd(" title={generateTooltip("sd")}>sd</button>
-                <button className="function" id="abx" value="abx(, ,)" title={generateTooltip("abx")}>ab<sup>x</sup></button>
-                <button className="function" id="exp" value="pow(e,)" title={generateTooltip("exp")}>e<sup>x</sup></button>
+                <button className="function" id="sd" value="sd(|)" title={generateTooltip("sd")}>sd</button>
+                <button className="function" id="abx" value="abx(|, ,)" title={generateTooltip("abx")}>ab<sup>x</sup></button>
+                <button className="function" id="exp" value="pow(e,|)" title={generateTooltip("exp")}>e<sup>x</sup></button>
                 <button className="punctuation" id="comma" title="Comma">,</button>
                 <button className="number" title="Number 7">7</button>
                 <button className="number" title="Number 8">8</button>
@@ -127,7 +132,7 @@ function Scientific({execute}) {
                 <button className="number" title="Number 4">4</button>
                 <button className="number" title="Number 5">5</button>
                 <button className="number" title="Number 6">6</button>
-                <button className="operator"  title="Subtraction Operator">-</button>
+                <button className="operator" title="Subtraction Operator">-</button>
                 <button className="number" title="Number 1">1</button>
                 <button className="number" title="Number 2">2</button>
                 <button className="number" title="Number 3">3</button>
@@ -139,7 +144,7 @@ function Scientific({execute}) {
                 <button className="constant" id="pi" title="Math Constant pi">π</button>
                 <button className="constant" id="euler" title="Euler\'s constant">e</button>
                 <button className="punctuation" id="decimal" title="Decimal Point">.</button>
-                <button id="equals" onClick={execute} title="Calculate Rresult">=</button>
+                <button id="equals" onClick={execute} title="Calculate Result">=</button>
             </div>
         </div>
     );
