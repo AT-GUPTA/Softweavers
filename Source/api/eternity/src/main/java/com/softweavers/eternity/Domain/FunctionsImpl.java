@@ -48,7 +48,7 @@ public class FunctionsImpl implements FunctionHandler {
             throw new IllegalArgumentException("Input must be positive");
         }
         LOGGER.debug("FunctionImpl: gamma call input verified");
-        BigDecimal y = null;
+        BigDecimal y;
         // if input is less than 0.5, use Euler's reflection formula
         if (z.compareTo(new BigDecimal("0.5")) < 0) {
             BigDecimal a = z.multiply(new BigDecimal(Math.PI));
@@ -69,7 +69,7 @@ public class FunctionsImpl implements FunctionHandler {
             BigDecimal t = z.add(new BigDecimal(lanczos.length - 0.5));
             BigDecimal[] args = new BigDecimal[2];
             args[0] = t;
-            args[1] = z.add(new BigDecimal(0.5));
+            args[1] = z.add(new BigDecimal("0.5"));
             // computing gamma function using the Lanczos approximation
             y = subordinates.power(new BigDecimal(2 * Math.PI), new BigDecimal("0.5"))
                     .multiply(subordinates.power(args[0], args[1]))

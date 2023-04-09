@@ -18,6 +18,7 @@ h1, h2 {
 .columns {
     display: flex;
     flex-direction: row;
+    height: auto;
 }
 
 /* Style the first column to take up 70% of the width */

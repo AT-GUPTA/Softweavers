@@ -3,7 +3,6 @@ package com.softweavers.eternity.Controller;
 import com.softweavers.eternity.Common.EquationParam;
 import com.softweavers.eternity.Common.URI;
 import com.softweavers.eternity.Service.CalculatorService;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,21 @@ public class CalculatorController {
             BigDecimal result = calculatorService.calculate(equationParam);
 
             LOGGER.debug("CalculatorController: calculate -- Success");
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            LOGGER.error("CalculatorController: calculate -- Error");
+            return ResponseEntity.badRequest().body("FAILURE: " + e.getMessage());
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(value = URI.TEST_CALCULATIONS, method = RequestMethod.GET)
+    ResponseEntity<?> runTests() {
+        try {
+            LOGGER.debug("CalculatorController: runTests -- Started");
+            Boolean result = calculatorService.runTests();
+
+            LOGGER.debug("CalculatorController: runTests -- Success");
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             LOGGER.error("CalculatorController: calculate -- Error");
