@@ -40,9 +40,22 @@ function Scientific({execute}) {
 
   const onOtherButtonClick = useCallback ((button) => {
     const display = displayRef.current;
+    const index = display.selectionEnd;
 
-    // Append the button's value to the display
-    display.value += button.textContent;
+    const currentValueBeforeIndex = display.value.slice(0, index);
+    const currentValueAfterIndex = display.value.slice(index);
+
+    // Set the new value of the textarea with the button's value inserted at the index
+    display.value = `${currentValueBeforeIndex}${button.textContent}${currentValueAfterIndex}`;
+
+    // Set the selection end index to the end of the inserted text
+    display.selectionEnd = index + button.textContent.length;
+
+    // If the cursor is inside a function and preceding a comma, sets the cursor to after the comma.
+    if (display.value[index + 1] === ",") {
+      display.selectionEnd++;
+      display.selectionStart++;
+    }
     display.focus();
   }, [])
 
@@ -118,11 +131,11 @@ function Scientific({execute}) {
                 <button className="function" id="gamma" value="gamma(|)" title={generateTooltip("gamma")}>gamma</button>
                 <button id="clear" onClick={clearDisplay} title="Clear Input">C</button>
                 <button className="function" id="log" value="log(|,)" title={generateTooltip("log")}>log</button>
-                <button className="function" id="sqrt" value="pow(|, 1/2)" title={generateTooltip("sqrt")}>sqrt</button>
+                <button className="function" id="sqrt" value="pow(|,  1/2)" title={generateTooltip("sqrt")}>sqrt</button>
                 <button className="function" id="pow" value="pow(|)" title={generateTooltip("pow")}>x<sup>y</sup></button>
                 <button id="backspace" onClick={performBackspace} title="Backspace">&#9003;</button>
                 <button className="function" id="sd" value="sd(|)" title={generateTooltip("sd")}>sd</button>
-                <button className="function" id="abx" value="abx(|, ,)" title={generateTooltip("abx")}>ab<sup>x</sup></button>
+                <button className="function" id="abx" value="abx(|,,)" title={generateTooltip("abx")}>ab<sup>x</sup></button>
                 <button className="function" id="exp" value="pow(e,|)" title={generateTooltip("exp")}>e<sup>x</sup></button>
                 <button className="punctuation" id="comma" title="Comma">,</button>
                 <button className="number" title="Number 7">7</button>
