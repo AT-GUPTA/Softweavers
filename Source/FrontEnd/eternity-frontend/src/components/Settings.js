@@ -11,30 +11,29 @@ function Settings({onPrecisionChange}) {
     }
 
     return (
+      <div>
+        <div className="header">Settings:</div>
         <div>
-            <div className="header">
-                Settings:
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" className="switch"/>
-                    Scientific notation
-                </label>
-            </div>
-            <div>
-                <div className="header">
-                    Precision adjustment:
-                </div>
-                <label className="flushOption">
-                    Precision of:
-                    <select className="dropdown" onChange={onPrecisionChange} defaultValue={2}>
-                        {createSelectItems().map((precision) =>
-                            precision)}
-                    </select>
-                </label>
-
-            </div>
+          <label>
+            <input type="checkbox" className="switch" />
+            &nbsp;&nbsp;Scientific notation
+          </label>
         </div>
+        <div>
+          <div className="header"> Decimal Precision:</div>
+          <label className="flushOption">
+            Precision Value:
+            <select
+              className="dropdown"
+              onChange={onPrecisionChange}
+              defaultValue={5}
+            >
+              {createSelectItems().map((precision) => precision)}
+            </select>
+            &nbsp;decimal places.
+          </label>
+        </div>
+      </div>
     );
 }
 

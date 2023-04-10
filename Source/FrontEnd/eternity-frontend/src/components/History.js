@@ -1,5 +1,4 @@
 import './History.css';
-// import Stack from 'react-bootstrap/Stack';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 
@@ -15,12 +14,26 @@ function History({histories}) {
         display.focus()
     }
 
+    const exportHistory = () => {
+        const historyText = histories.map((history) => `${history.label}=${history.value}`).join('\n');
+        const element = document.createElement("a");
+        const file = new Blob([historyText], {type: 'text/plain'});
+        element.href = URL.createObjectURL(file);
+        element.download = "history.txt";
+        document.body.appendChild(element);
+        element.click();
+    }
+
     return (
         <div className="history-container">
             <div className="title">
                 History:
+                </div><div>
+                    
+                <Button variant="secondary" className="download-button" onClick={exportHistory}>
+                    Export History <i className="fa fa-download icon"></i>
+                </Button>
             </div>
-
             <div>
                 <Dropdown.Menu show id="history" className="history_input" onChange={(e) => updateDisplay(e)}
                                onClick={(e) => updateDisplay(e)}>
@@ -29,12 +42,9 @@ function History({histories}) {
                                        value={history.value}>{history.label}</Dropdown.Item>
                     )}
                 </Dropdown.Menu>
+                
             </div>
-            <div>
-                <Button className="save" variant="secondary">Save</Button>
-            </div>
-
-
+            
         </div>
     );
 }

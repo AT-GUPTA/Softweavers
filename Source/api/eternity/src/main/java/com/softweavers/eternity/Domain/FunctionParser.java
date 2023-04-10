@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -118,6 +119,9 @@ public class FunctionParser implements ParserHandler {
                     case "gamma" -> res = functionCalculator.gamma(values[0]);
                     case "pow" -> res = functionCalculator.xToY(values);
                 }
+
+                if (res.scale() > 25)
+                    res = res.setScale(25, RoundingMode.HALF_UP);
 
                 expr = expr.substring(0, funcStart) + res + expr.substring(inputEnd + 1);
 
