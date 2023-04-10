@@ -9,7 +9,7 @@ import java.math.MathContext;
 
 public class Subordinates {
     final static int NDIGITS = 10;
-   
+
     private static final Logger LOGGER = LoggerFactory.getLogger(Subordinates.class);
     private static final MathContext PRECISION = MathContext.DECIMAL128;
 
@@ -40,20 +40,6 @@ public class Subordinates {
                 return decimalSqrt(x, i.subtract(BigDecimal.ONE), i);
             i = i.add(BigDecimal.ONE);
         }
-    }
-
-    public BigInteger abs(BigInteger a) {
-        if (a.compareTo(BigInteger.ZERO) >= 0)
-            return a;
-        else
-            return a.multiply(BigInteger.valueOf(-1));
-    }
-
-    public BigDecimal abs(BigDecimal a) {
-        if (a.compareTo(BigDecimal.ZERO) >= 0)
-            return a;
-        else
-            return a.multiply(BigDecimal.valueOf(-1));
     }
 
     public BigInteger factorial(BigInteger f) {
@@ -121,7 +107,7 @@ public class Subordinates {
             // Handle case of negative base
         else if (base.compareTo(BigDecimal.ZERO) < 0) {
             try {
-                
+
                 if (exp.remainder(BigDecimal.valueOf(2)).compareTo(BigDecimal.ZERO) == 0)
                     return power(BigDecimal.valueOf(-1).multiply(base), exp);
                     // Negative base, odd exponent case
@@ -141,7 +127,7 @@ public class Subordinates {
 
         // Covers prior to decimal point using the property x^y = x^(y/2)^2
         if (exp.compareTo(BigDecimal.ONE) >= 0) {
-            BigDecimal temp = power(base, exp.divide(BigDecimal.valueOf(2)));
+            BigDecimal temp = power(base, exp.divide(BigDecimal.valueOf(2), PRECISION));
             return temp.multiply(temp);
         } else {
             //now deal with the fractional part
@@ -149,7 +135,7 @@ public class Subordinates {
             BigDecimal high = BigDecimal.ONE;
             BigDecimal sqr = sqrt(base);
             BigDecimal acc = sqr;
-            BigDecimal mid = high.divide(BigDecimal.valueOf(2));
+            BigDecimal mid = high.divide(BigDecimal.valueOf(2), PRECISION);
             BigDecimal error = mid.subtract(exp).abs();
             while (error.compareTo(THRESHOLD) > 0) {
                 sqr = sqrt(sqr);
@@ -160,7 +146,7 @@ public class Subordinates {
                     high = mid;
                     acc = acc.multiply(BigDecimal.valueOf((1 / sqr.doubleValue())));
                 }
-                mid = low.add(high).divide(BigDecimal.valueOf(2));
+                mid = low.add(high).divide(BigDecimal.valueOf(2), PRECISION);
                 error = mid.subtract(exp).abs();
             }
             return acc;
@@ -176,102 +162,9 @@ public class Subordinates {
             // todo should this be sum = sum.add?
             sum = sum.add(pow.divide(fact, PRECISION));
             pow = x.multiply(x).multiply(pow).multiply(BigDecimal.valueOf(-1));
-            fact = fact.multiply(BigDecimal.valueOf((count + 1) * count + 2));
+            fact = fact.multiply(BigDecimal.valueOf((long) (count + 1) * count + 2));
             count += 2;
         }
         return sum;
-    }
-
-    //todo why do we have this? we already have a sqrt
-//    public double sqrt(double x) {
-//        int i = 1;
-//        while (true) {
-//            //for perfect square numbers
-//            if (i * i == x)
-//                return i;
-//                //for not perfect square numbers
-//            else if (i * i > x)
-//                //returns the value calculated by the method decimalSqrt()
-//                return decimalSqrt(x, i - 1, i);
-//            i++;
-//        }
-//    }
-
-    //todo why do we have this double?
-    // recursive method to find the square root of a number up to n decimal places
-//    private double decimalSqrt(double number, double i, double j) {
-//        // using Newton's method to find a value close to the real value
-//        double midvalue = (i + j) / 2;
-//        double square = midvalue * midvalue;
-//        //compares the midvalue with square. Accuracy is set to 10 decimal places.
-//        if (square == number || abs(BigInteger.valueOf(square - number)) < 0.0000000001)
-//            return midvalue;
-//            //if the square root belongs to second half
-//        else if (square > number)
-//            return decimalSqrt(number, i, midvalue);
-//            //if the square root belongs to first half
-//        else
-//            return decimalSqrt(number, midvalue, j);
-//    }
-
-    // same principle with decimalSqrt function using Newton's method
-//    public double pow(double base, double exp) {
-//        double temp = 0;
-//        //covers prior to decimal point using the property x^y = x^(y/2)^2
-//        if (exp >= 1) {
-//            temp = pow(base, exp / 2);
-//            return temp * temp;
-//        }
-//        //now deal with the fractional part
-//        else {
-//            double low = 0;
-//            double high = 1.0;
-//            double sqr = sqrt(base);
-//            double acc = sqr;
-//            double mid = high / 2;
-//
-//            // Accuracy is set to 10 decimal points
-//            while (abs(mid - exp) > 0.0000000001) {
-//                sqr = sqrt(sqr);
-//
-//                if (mid <= exp) {
-//                    low = mid;
-//                    acc *= sqr;
-//                } else {
-//                    high = mid;
-//                    acc *= (1 / sqr);
-//                }
-//                mid = (low + high) / 2;
-//            }
-//            return acc;
-//        }
-////    }
-//    public BigDecimal nthroot(BigDecimal n, BigDecimal x) {
-//        // if x is negative, returns error message
-//        if (x.compareTo(BigDecimal.ZERO) < 0) {
-//            System.err.println("Invalid input: Negative!");
-//            return NEGATIVE_ONE;
-//        }
-//        if (x.compareTo(BigDecimal.ZERO) == 0)
-//            return BigDecimal.ZERO;
-//        BigDecimal x1 = x;
-//        BigDecimal x2 = x.divide(n,PRECISION);
-//        BigDecimal x3 = x1.subtract(x2);
-//        if (x3.compareTo(BigDecimal.ZERO) < 0)
-//            x3 = x3.multiply(NEGATIVE_ONE);
-//        while (x3.compareTo(BigDecimal.valueOf(0.0000000001))>0) {
-//            x1 = x2;
-//            x2 = ((n.subtract(BigDecimal.ONE)).multiply(x2).add( x.divide(power(x2, n.subtract(BigDecimal.ONE)),PRECISION)).divide(n,PRECISION);
-//        }
-//        return x2;
-//    }
-
-    //todo is this needed? no domain validation
-    public BigDecimal cosh(BigDecimal x) {
-        BigDecimal e = BigDecimal.valueOf(Math.E);
-        BigDecimal pow1 = power(e, x);
-        BigDecimal pow2 = BigDecimal.ONE.divide(pow1, PRECISION);
-
-        return (pow1.add(pow2)).divide(BigDecimal.valueOf(2), PRECISION);
     }
 }

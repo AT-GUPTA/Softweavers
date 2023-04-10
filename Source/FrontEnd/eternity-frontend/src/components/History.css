@@ -1,17 +1,29 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
 .title {
     font-weight: bold;
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .history_input {
     background-color: #505050 !important;
     border-color: #fff !important;
-    width: 200px;
-    height: 500px;
+    width: 20%;
+    height: 45%;
     overflow: auto;
 }
 
 .item {
     color: #fff !important;
 }
+.download-button {
+    height: auto;
+    font-size: 8px;
+    padding: auto;
+    margin-bottom: 10px;
+  }
+
+
+  
 

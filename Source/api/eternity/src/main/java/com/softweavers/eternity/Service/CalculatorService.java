@@ -2,6 +2,7 @@ package com.softweavers.eternity.Service;
 
 import com.softweavers.eternity.Common.EquationParam;
 import com.softweavers.eternity.Domain.FunctionParser;
+import com.softweavers.eternity.Domain.FunctionTest;
 import com.softweavers.eternity.Domain.ParserHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +17,11 @@ public class CalculatorService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CalculatorService.class);
     private final ParserHandler parser = new FunctionParser();
 
+    private final FunctionTest testClass = new FunctionTest();
+
     public BigDecimal calculate(EquationParam equationParam) {
-        String evaluatedFunctionExpr = "";
-        BigDecimal result = BigDecimal.ZERO;
+        String evaluatedFunctionExpr;
+        BigDecimal result;
         try {
             String expr = equationParam.formula;
             LOGGER.info("Received: " + expr);
@@ -32,5 +35,14 @@ public class CalculatorService {
         }
 
         return result.setScale(equationParam.precision, RoundingMode.HALF_UP);
+    }
+
+    public Boolean runTests() {
+        try {
+            testClass.executeTests();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

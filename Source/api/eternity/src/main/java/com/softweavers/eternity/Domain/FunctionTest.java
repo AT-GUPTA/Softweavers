@@ -12,8 +12,8 @@ public class FunctionTest {
         Subordinates s = new Subordinates();
 
 
-        double testBaseN = 15;
-        double testValue = 7;
+        double testBaseN;
+        double testValue;
 
 
         // test log for a value out of domain
@@ -34,7 +34,7 @@ public class FunctionTest {
         testValue = 0.00033;
 
         try {
-            if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal(-11.5652463551))) {
+            if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), BigDecimal.valueOf(-11.5652463551))) {
                 System.out.println("Passed very small input test");
             } else {
                 System.out.println("Failed very small input test");
@@ -46,9 +46,8 @@ public class FunctionTest {
 
         // test log for normal input
         System.out.println("log function: base 2, value 1000 should be approx equal to 9.9657842847");
-        testBaseN = 2;
         testValue = 1000;
-        if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal(9.9657842847))) {
+        if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal("9.9657842847"))) {
             System.out.println("Passed normal input test");
         } else {
             System.out.println("Failed normal input test");
@@ -56,7 +55,6 @@ public class FunctionTest {
 
         // test log for value 1 input
         System.out.println("log function: base 2, value 1 should be approx equal to 0");
-        testBaseN = 2;
         testValue = 1;
         try {
             if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal(0))) {
@@ -73,7 +71,7 @@ public class FunctionTest {
         testBaseN = 2.53356237;
         testValue = 2;
         try {
-            if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal(0.7456191085))) {
+            if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal("0.7456191085"))) {
                 System.out.println("Passed decimal input test");
             } else {
                 System.out.println("Failed decimal input test");
@@ -88,7 +86,7 @@ public class FunctionTest {
         testBaseN = 213034263;
         testValue = 932445634;
         try {
-            if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal(1.0769860062))) {
+            if (almostEqual(f.log(new BigDecimal[]{new BigDecimal(testValue), new BigDecimal(testBaseN)}), new BigDecimal("1.0769860062"))) {
                 System.out.println("Passed large input test");
             } else {
                 System.out.println("Failed large input test");
@@ -149,34 +147,18 @@ public class FunctionTest {
 
 
         // test std for large number input
-        System.out.println("std function: 21934945,2345452,564234,6565,12323,456762 should be approx equal to 7961546.8772419");
-        Numbers = new BigDecimal[]{
-                new BigDecimal(21934945),
-                new BigDecimal(2345452),
-                new BigDecimal(564234),
-                new BigDecimal(6565),
-                new BigDecimal(12323),
-                new BigDecimal(456762)};
-        try {
-            if (almostEqual(f.standardDeviation(Numbers), new BigDecimal(7961546.8772419))) {
-                System.out.println("Passed large number input");
-            } else {
-                System.out.println("Failed large number input");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("std: Failed large number input");
-        }
+        testWithInput(f);
 
         // test std for small number input
         System.out.println("std function: 0.001, 0.002, 0.003, 0.004, 0.005 should be approx equal to 0.0014142135623731");
         Numbers = new BigDecimal[]{
-                new BigDecimal(0.001),
-                new BigDecimal(0.002),
-                new BigDecimal(0.003),
-                new BigDecimal(0.004),
-                new BigDecimal(0.005)};
+                new BigDecimal("0.001"),
+                new BigDecimal("0.002"),
+                new BigDecimal("0.003"),
+                new BigDecimal("0.004"),
+                new BigDecimal("0.005")};
         try {
-            if (almostEqual(f.standardDeviation(Numbers), new BigDecimal(0.0014142135623731))) {
+            if (almostEqual(f.standardDeviation(Numbers), new BigDecimal("0.0014142135623731"))) {
                 System.out.println("Passed small number input test");
             } else {
                 System.out.println("Failed small number input test");
@@ -208,7 +190,7 @@ public class FunctionTest {
         abxB = 0.45;
         abxX = 0.213;
         try {
-            if (almostEqual(f.abx(new BigDecimal[]{new BigDecimal(abxA), new BigDecimal(abxB), new BigDecimal(abxX)}), new BigDecimal(0.00168719104))) {
+            if (almostEqual(f.abx(new BigDecimal[]{new BigDecimal(abxA), new BigDecimal(abxB), new BigDecimal(abxX)}), new BigDecimal("0.00168719104"))) {
                 System.out.println("Passed small input test");
             } else {
                 System.out.println("Failed small input test");
@@ -250,7 +232,7 @@ public class FunctionTest {
         powBase = 0.63523;
         powPow = 0.35623;
         try {
-            if (almostEqual(s.power(new BigDecimal(powBase), new BigDecimal(powPow)), new BigDecimal(0.85074246))) {
+            if (almostEqual(s.power(new BigDecimal(powBase), new BigDecimal(powPow)), new BigDecimal("0.85074246"))) {
                 System.out.println("Passed small input test");
             } else {
                 System.out.println("Failed small input test");
@@ -261,9 +243,9 @@ public class FunctionTest {
 
         // test pow for large input
         System.out.println("pow function: input of 63523,353 should be approx equal to 2.7204648e+1695");
-        powBase = 63523;
-        powPow = 353;
-        Numbers = new BigDecimal[]{new BigDecimal(powBase), new BigDecimal(powPow)};
+//        powBase = 63523;
+//        powPow = 353;
+        // Numbers = new BigDecimal[]{new BigDecimal(powBase), new BigDecimal(powPow)};
         try {
             //System.out.println(s.power(Numbers));
             //Tested. It output the correct number.
@@ -474,7 +456,7 @@ public class FunctionTest {
         testBaseX = 0.601;
         try {
             BigDecimal result = f.gamma(new BigDecimal(testBaseX));
-            if (almostEqual(result, new BigDecimal(1.486902))) {
+            if (almostEqual(result, new BigDecimal("1.486902"))) {
                 System.out.println("gamma: Passed small number input test.");
             } else {
                 System.out.println("gamma: Failed small number input test.");
@@ -490,7 +472,7 @@ public class FunctionTest {
         testBaseX = 9.78;
         try {
             BigDecimal result = f.gamma(new BigDecimal(testBaseX));
-            if (almostEqual(result, new BigDecimal(221683.678958))) {
+            if (almostEqual(result, new BigDecimal("221683.678958"))) {
                 System.out.println("gamma: Passed large number input test.");
             } else {
                 System.out.println("gamma: Failed large number input test.");
@@ -506,7 +488,7 @@ public class FunctionTest {
         testBaseX = -0.79;
         try {
             BigDecimal result = f.gamma(new BigDecimal(testBaseX));
-            if (almostEqual(result, new BigDecimal(0))) {
+            if (almostEqual(result, new BigDecimal("0"))) {
                 System.out.println("gamma: Failed error number input test.");
             } else {
                 System.out.println("gamma: Failed error number input test.");
@@ -522,7 +504,7 @@ public class FunctionTest {
         testBaseX = 1.41421356237;
         try {
             BigDecimal result = f.gamma(new BigDecimal(testBaseX));
-            if (almostEqual(result, new BigDecimal(0.886581))) {
+            if (almostEqual(result, new BigDecimal("0.886581"))) {
                 System.out.println("gamma: Passed algebraic number input test.");
             } else {
                 System.out.println("gamma: Failed algebraic number input test.");
@@ -534,16 +516,22 @@ public class FunctionTest {
         }
 
         // test std for large number input
+        testWithInput(f);
+
+    }
+
+    private void testWithInput(FunctionsImpl f) {
+        BigDecimal[] Numbers;
         System.out.println("std function: 21934945,2345452,564234,6565,12323,456762 should be approx equal to 7961546.8772419");
         Numbers = new BigDecimal[]{
-                new BigDecimal(21934945),
-                new BigDecimal(2345452),
-                new BigDecimal(564234),
-                new BigDecimal(6565),
-                new BigDecimal(12323),
-                new BigDecimal(456762)};
+                new BigDecimal("21934945"),
+                new BigDecimal("2345452"),
+                new BigDecimal("564234"),
+                new BigDecimal("6565"),
+                new BigDecimal("12323"),
+                new BigDecimal("456762")};
         try {
-            if (almostEqual(f.standardDeviation(Numbers), new BigDecimal(7961546.8772419))) {
+            if (almostEqual(f.standardDeviation(Numbers), new BigDecimal("7961546.8772419"))) {
                 System.out.println("Passed large number input");
             } else {
                 System.out.println("Failed large number input");
@@ -551,6 +539,5 @@ public class FunctionTest {
         } catch (IllegalArgumentException e) {
             System.out.println("std: Failed large number input");
         }
-
     }
 }

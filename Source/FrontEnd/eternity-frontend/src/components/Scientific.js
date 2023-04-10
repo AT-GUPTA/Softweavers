@@ -123,7 +123,13 @@ function Scientific({execute}) {
 
   return (
     <div id="calculator">
-      <label htmlFor="display"></label><textarea ref={displayRef} id="display" onChange={submitPrep} autoFocus></textarea>
+      <label htmlFor="display"></label>
+      <textarea
+        ref={displayRef}
+        id="display"
+        onChange={submitPrep}
+        autoFocus
+      ></textarea>
       <div id="keys">
                 <button className="function" id="sinh" value="sinh(|)" title={generateTooltip("sinh")} onClick={handleFunctionClick}>sinh</button>
                 <button className="function" id="arccos" value="arccos(|)" title={generateTooltip("arccos")} onClick={handleFunctionClick}>cos<sup>-1</sup></button>
