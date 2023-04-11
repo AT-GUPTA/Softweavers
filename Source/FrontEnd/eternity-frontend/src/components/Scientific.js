@@ -75,7 +75,6 @@ function Scientific({execute}) {
     const keyDownHandler = event => {
       if (event.key === 'Enter') {
         event.preventDefault();
-        execute();
       }
     };
   
@@ -139,7 +138,7 @@ function Scientific({execute}) {
                 <button className="function" id="sqrt" value="pow(|,  1/2)" title={generateTooltip("sqrt")} onClick={handleFunctionClick}>sqrt</button>
                 <button className="function" id="pow" value="pow(|)" title={generateTooltip("pow")} onClick={handleFunctionClick}>x<sup>y</sup></button>
                 <button id="backspace" onClick={performBackspace} title="Backspace">&#9003;</button>
-                <button className="function" id="sd" value="sd(|)" title={generateTooltip("sd")}>sd</button>
+                <button className="function" id="sd" value="sd(|)" title={generateTooltip("sd")} onClick={handleFunctionClick}>sd</button>
                 <button className="function" id="abx" value="abx(|,,)" title={generateTooltip("abx")} onClick={handleFunctionClick}>ab<sup>x</sup></button>
                 <button className="function" id="exp" value="pow(e,|)" title={generateTooltip("exp")} onClick={handleFunctionClick}>e<sup>x</sup></button>
                 <button className="punctuation" id="comma" title="Comma">,</button>
