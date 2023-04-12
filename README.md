@@ -25,6 +25,8 @@ Inference- Final review for the whole project was done prior to the delivery.
 
 ## Local Installation
 
+#### Clone the Github repository  ``git clone https://github.com/AT-GUPTA/Softweavers.git``
+
 ### Prerequisites
 Before you begin, make sure you have the following software installed on your machine:
 
@@ -34,17 +36,14 @@ Before you begin, make sure you have the following software installed on your ma
 
 ### Installation
 Setting up the Client
-• Open the command prompt and navigate to the eternityfrontend
-directory (./Source/FrontEnd/eternity-frontend/).
+• Open the command prompt and navigate to the eternityfrontend directory ``./Source/FrontEnd/eternity-frontend/``.
 • Run the command npm install to install all the dependencies required for the client.
 • After the installation process is complete, run the command npm start to start the client
 application.
-• The client application will be accessible on http://localhost:3000.
+• The client application will be accessible on ``http://localhost:3000``.
 Starting the Server
-• Open the command prompt and navigate to the api directory
-(./Source/api/eternity/).
+• Open the command prompt and navigate to the api directory ``./Source/api/eternity/``.
 • Run the command mvn clean install to build the server application.
-• After the build process is complete, run the command
-java -jar target/eternity.jar to start the server application.
+• After the build process is complete, run the command ``java -jar target/eternity.jar`` to start the server application.
 
 Thank you for checking out this project.
