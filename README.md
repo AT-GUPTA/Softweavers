@@ -46,4 +46,5 @@ Starting the Server
 • Run the command mvn clean install to build the server application.
 • After the build process is complete, run the command ``java -jar target/eternity.jar`` to start the server application.
 
+***
 Thank you for checking out this project.
