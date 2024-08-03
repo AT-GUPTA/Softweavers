@@ -37,7 +37,8 @@ Before you begin, make sure you have the following software installed on your ma
 ### Installation
 Setting up the Client
 • Open the command prompt and navigate to the eternityfrontend directory ``./Source/FrontEnd/eternity-frontend/``.
-• Run the command npm install to install all the dependencies required for the client.
+• Run the command npm install to install all th[Eternity_Poster_48_36_in_1 (1).pdf](https://github.com/user-attachments/files/16478355/Eternity_Poster_48_36_in_1.1.pdf)
+e dependencies required for the client.
 • After the installation process is complete, run the command npm start to start the client
 application.
 • The client application will be accessible on ``http://localhost:3000``.
@@ -48,3 +49,6 @@ Starting the Server
 
 ***
 Thank you for checking out this project.
+
+
+
